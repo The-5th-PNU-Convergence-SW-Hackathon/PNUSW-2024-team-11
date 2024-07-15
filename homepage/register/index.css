@@ -63,3 +63,7 @@ body {
   margin-top: 10px;
   height: 40px;
 }
+
+.btn-dark-color {
+  background-color: rgb(23, 51, 150);
+}

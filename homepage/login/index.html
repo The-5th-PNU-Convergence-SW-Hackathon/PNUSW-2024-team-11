@@ -48,34 +48,21 @@
     <div class="screen">
       <img class="logo" src="../pict/logo_blue_txt.png" alt="P-BUD 로고" />
       <div class="div">
-        <form action="/login" method="POST">
-          <div class="studentID">
-            <label for="studentID" class="form-label">연도 선택 (학번)</label>
-            <input
-              type="text"
-              class="form-control"
-              id="studentID"
-              name="studentID"
-              required
-            />
+        <form action="/login/chk" method="POST">
+          <div class="form-floating studentID">
+            <input type="text" class="form-control" id="studentID" name="studentID" required />
+            <label for="studentID" class="form-label" id="studentID_label">아이디</label>
           </div>
-          <div class="password">
-            <label for="password" class="form-label">비밀번호</label>
-            <input
-              type="password"
-              class="form-control"
-              id="password"
-              name="password"
-              required
-            />
+          <div class="form-floating password">
+            <input type="password" class="form-control" id="password" name="password" required />
+            <label for="password" class="form-label" id="password_label">비밀번호</label>
           </div>
+          <label class="form-label is-invalid" id="success_label" style="display: none;">아이디 혹은 비밀번호가 다릅니다.</label>
           <button type="submit" class="btn btn-primary">P-BUD 로그인</button>
         </form>
         <div id="else">
           <div class="find">
-            <a href="/find" class="text-decoration-none"
-              >아이디/비밀번호 찾기</a
-            >
+            <a href="/find" class="text-decoration-none">아이디/비밀번호 찾기</a>
           </div>
           <div class="register">
             <a href="/register" class="text-decoration-none">회원가입</a>

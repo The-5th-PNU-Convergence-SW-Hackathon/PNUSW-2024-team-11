@@ -1,10 +1,3 @@
-const fs = require('fs');
-
-const jsonFile = fs.readFileSync('/home/pnubuddy/github/P-bud/homepage/json/slang.json', 'utf8');
-// console.log(jsonFile.substring(8));
-const slang_arr = JSON.parse(jsonFile.substring(8));
-// console.log(slang_arr);
-
 const not_word = /[^a-zA-Z0-9]/;
 const special = /[-;'"\/\\:+= ]/;
 const name_t = /[^a-zA-Z가-힣]/;
@@ -15,6 +8,8 @@ const email = /[a-zA-Z0-9_]+@[a-z]+\.[a-z]+/;
 const password = /[a-zA-Z]+[0-9]+[`~!@#$%^&*():<>,\.?\{\}\[\]|_]+/;
 
 //정규식
+
+const slang_arr = JSON.parse(JSON.stringify(slang));
 
 let length_check = (str, a, b) => a <= str.length && str.length <= b;
 let check_word = str => !not_word.test(str);
@@ -37,4 +32,3 @@ let make_alert = (res, str) => {
     res.write("<script>alert("+ str + ");</script>");
     res.redirect("back");
 }
-module.exports = {check_id, check_pw, check_name, check_phone_010, check_phone, check_email, check_class, check_stu_num, check_special, check_nickname, make_alert};

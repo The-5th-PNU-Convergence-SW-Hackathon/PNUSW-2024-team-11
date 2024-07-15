@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="index.css" rel="stylesheet"></script>
     <title>P-BUD</title>
+    <script src="../json/slang.json" type="text/javascript"></script>
     <script type="text/javascript">
         let today = new Date();
         let nowTime = "?ver=" + today.getYear() + today.getMonth() + today.getDay() + today.getHours() + today.getMinutes() + today.getSeconds();
@@ -17,7 +18,7 @@
         console.log(nowTime);
 
         let checkScriptElement = document.createElement("script");
-        checkScriptElement.src = "../js/check.js" + nowTime;
+        checkScriptElement.src = "../js/check_js.js" + nowTime;
         checkScriptElement.type = "text/javascript";
         document.head.appendChild(checkScriptElement);
 
@@ -41,42 +42,45 @@
             
             <div class="register">
                 <img src="../pict/logo_blue_notxt.png">
-                <div id="register-txt">회원가입</div>
+                <div id="register-txt">회원가입 (1/3)</div>
             </div>
 
-            <form class="center-block" action="test.p-bud.duckdns.org/register_chk" method="post" id="register_form">
+            <form class="center-block" action="/register/chk" method="post" id="register_form">
                 <div id="first-page">
                     <div class="form-label">아이디</div>
-                    <div class="form-floating mb-3">
-                        <input class="form-control" type="text" id="id" placeholder="ID를 입력하세요" maxlength=16>
-                        <label for="id" id="id_label">ID를 입력해주세요.</label>
+                    <div class="input-group mb-3">
+                        <div class="form-floating">
+                            <input class="form-control" type="text" id="id" placeholder="ID를 입력하세요" maxlength=16 name="id" required>
+                            <label for="id" id="id_label">ID를 입력해주세요.</label>
+                        </div>
+                        <span></span><button class="btn btn-dark-color btn-primary" type="button" id="id_check" disabled>중복확인</button>
                     </div>
 
                     <div class="form-label">비밀번호</div>
                     <div class="form-floating mb-3">
-                        <input class="form-control" type="password" id="pw" placeholder="비밀번호를 입력하세요">
+                        <input class="form-control" type="password" id="pw" placeholder="비밀번호를 입력하세요" name="pw" required>
                         <label for="pw" id="pw_label">비밀번호를 입력해주세요.</label>
                     </div>
 
                     <div class="form-label">비밀번호 재입력</div>
                     <div class="form-floating mb-3">
-                        <input class="form-control" type="password" id="pw_chk" placeholder="비밀번호 확인">
+                        <input class="form-control" type="password" id="pw_chk" placeholder="비밀번호 확인" name="pw_chk" required>
                         <label for="pw_chk" id="pw_chk_label">상단의 비밀번호를 다시 입력해주세요.</label>
                     </div>
                 </div>
 
-                <div id="second-page">
+                <div id="second-page" style="display: none;">
                     <div class="form-label">이름</div>
                     <div class="form-floating mb-3">
-                        <input class="form-control" type="text" id="name" placeholder="이름을 입력하세요">
+                        <input class="form-control" type="text" id="name" placeholder="이름을 입력하세요" name="name" required>
                         <label for="name" id="name_label">이름을 입력해주세요.</label>
                     </div>
 
                     <div class="form-label">전화번호</div>
-                    <div class="phonenum"> <!-- 두개 수평으로 맞춰줘잉 -->
+                    <div class="phonenum">
                         <div class="mb-3">
                             <!-- <label for="phone_front" id="phone_front_label">전화번호를 입력하세요.</label> -->
-                            <select class="form-select" id="phone_front" style="width: 80px; height: 58px; text-align: center;">
+                            <select class="form-select" id="phone_front" style="width: 80px; height: 58px; text-align: center;" name="phone_front">
                                 <option value="010" selected>010</option>
                                 <option value="011">011</option>
                                 <option value="013">013</option>
@@ -88,37 +92,68 @@
                             </select>
                         </div>
                         <div class="form-floating mb-3">
-                            <input class="form-control" type="tel" id="phone_back" placeholder="-를 생략하고 입력하세요">
+                            <input class="form-control" type="tel" id="phone_back" placeholder="-를 생략하고 입력하세요" name="phone_back" required>
                             <label for="phone_back" id="phone_back_label">-를 생략하고 입력하세요</label>
                         </div>
-                    </div>
-                    <!-- <br> -->
-                                
+                    </div>    
                     <div class="form-label">이메일</div>
                     <div class="form-floating mb-3">
-                        <input class="form-control" type="email" id="email" placeholder="example@example.com">
+                        <input class="form-control" type="email" id="email" placeholder="example@example.com" name="email" required>
                         <label for="email" id="email_label">이메일을 입력하세요.</label>
                     </div>
                 </div>
 
-                <div  id="third-page">
+                <div id="third-page" style="display: none;">
                     <div class="form-label">학과</div>
-                    <div class="form-floating mb-3">
-                        <input class="form-control" type="text" id="class" placeholder="정보컴퓨터공학부">
-                        <label for="class" id="class_label">학과을 입력하세요.</label>
+                    <div class="mb-3">
+                        <select id="collegeSelect" class="form-select" aria-label="Default select example">
+                            <option selected>단과대학을 선택하세요.</option>
+                            <option value="인문대학">인문대학</option>
+                            <option value="사회과학대학">사회과학대학</option>
+                            <option value="자연과학대학">자연과학대학</option>
+                            <option value="공과대학">공과대학</option>
+                            <option value="사범대학">사범대학</option>
+                            <option value="경제통상대학">경제통상대학</option>
+                            <option value="경영대학">경영대학</option>
+                            <option value="약학대학">약학대학</option>
+                            <option value="생활과학대학">생활과학대학</option>
+                            <option value="예술대학">예술대학</option>
+                            <option value="나노과학기술대학">나노과학기술대학</option>
+                            <option value="생명자원과학대학">생명자원과학대학</option>
+                            <option value="간호대학">간호대학</option>
+                            <option value="의과대학">의과대학</option>
+                            <option value="치의학전문대학원">치의학전문대학원</option>
+                            <option value="한의학전문대학원">한의학전문대학원</option>
+                            <option value="정보의생명공학대학">정보의생명공학대학</option>
+                        </select>
+
+                        <select id="departmentSelect" class="form-select" aria-label="Default select example" disabled>
+                            <option selected>학과를 선택하세요.</option>
+                        </select>
                     </div>
 
                     <div class="form-label">학번</div>
                     <div class="form-floating mb-3">
-                        <input class="form-control" type="text" id="stu_num" placeholder="200012345" maxlength="9">
+                        <input class="form-control" type="text" id="stu_num" placeholder="200012345" maxlength="9" name="stu_num" required>
                         <label for="stu_num" id="stu_num_label">학번을 입력하세요.</label>
                     </div>
+
+                    <div class="form-label">닉네임</div>
+                    <div class="input-group mb-3">
+                        <div class="form-floating">
+                            <input class="form-control" type="text" id="nickname" placeholder="닉네임을 입력하세요" maxlength=16 name="nickname" required>
+                            <label for="nickname" id="nickname_label">닉네임을 입력해주세요.</label>
+                        </div>
+                        <span></span><button class="btn btn-dark-color btn-primary" type="button" id="nickname_check" disabled>중복확인</button>
+                    </div>
+
                     <div class="mb-3">
-                        <input type="submit" class="btn btn-dark" placeholder="확인">
+                        <input type="submit" class="btn btn-dark" placeholder="회원가입" id="register" disabled>
                     </div>
                 </div>
             </form>
 
+            <button id="before-btn" class="btn btn-dark" style="display: none;">이전 단계</button>
             <button id="next-btn" class="btn btn-dark">다음 단계</button>
 
         </div>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	모바일 top 및 bottom 메뉴 테스트
+	<div class="menu top_menu_1">
+		<a href="profile.html">
+			<img src="../pict/bar/user.png" alt="프로필사진">
+		</a>
+		<div class="center">검색결과</div>
+		<div>
+			<a href="chat.html">
+				<img src="../pict/bar/chat.png" alt="메세지사진">
+			</a>
+		</div>
+	</div>
+
+	<div class="search_container">
+		<input type="text" placeholder="검색어를 입력하세요">
+	</div>
+
+	<div class="menu top_menu_2">
+		<button>인기순</button>
+		<button>최신순</button>
+		<button>가격</button>
+		<button>상태</button>
+		<button>상태</button>
+	</div>
+
+	<!-- 내용 -->
+	<!-- <div style="width: 100%; height: 500px; background-color: #eea236">
+	</div>
+	<div style="width: 100%; height: 500px; background-color: #a94442">
+	</div> -->
+
+	<!-- 글쓰기버튼 -->
+	<style>
+        .post-button {
+            position: fixed;
+            bottom: 70px; /* 원하는 여백 조정 */
+            right: 20px; /* 원하는 여백 조정 */
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: #1148A6;
+            border-radius: 40%;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .post-button:hover {
+            background-color: darkblue;
+        }
+		.post-button img {
+            width: 30px; /* 이미지의 너비를 원하는 크기로 조정 */
+            height: 30px; /* 이미지의 높이를 원하는 크기로 조정 */
+        }
+    </style>
+	<a href="post.html" class="post-button">
+		<img src="pencil.png" alt=게시>
+	</a>
+	<!-------------------------------->
+
+	<div class="bottom_menu">
+		<div>
+			<a href="home.html">
+				<img src="../pict/bar/home.png" alt="홈">
+				<span>홈</span>
+			</a>
+		</div>
+		<div>
+			<a href="matching.html">
+				<img src="../pict/bar/collaboration.png" alt="룸메매칭">
+				<span>룸메매칭</span>
+			</a>
+		</div>
+		<div>
+			<a href="map.html">
+				<img src="../pict/bar/placeholder.png" alt="지도">
+				<span>지도</span>
+			</a>
+		</div>
+		<div>
+			<a href="notification.html">
+				<img src="../pict/bar/bell.png" alt="알림">
+				<span>알림</span>
+			</a>
+		</div>
+	</div>
+</body>
+</html>

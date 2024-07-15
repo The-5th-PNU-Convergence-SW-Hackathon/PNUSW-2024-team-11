@@ -8,6 +8,8 @@
   "description": "",
   "dependencies": {
     "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "memorystore": "^1.6.7",
     "mysql": "^2.18.1"
   }
 }
