@@ -7,7 +7,9 @@ router.get('/', (req, res) => {
 });
 
 router.post('/login_status', (req, res) => res.json({login_status: req.session.login_status}));
-router.post('/login_info', (req, res) => res.json({login_info: req.session.login_info}));
+router.post('/USER', (req, res) => res.json({USER: req.session.USER}));
 router.post('/register_status', (req, res) => res.json({register_status: req.session.register_status}));
+router.post('/send_verify', (req, res) => res.json({send_verify: req.session.send_verify}));
+router.post('/verify_email_status', (req, res) => res.json({verify_email_status: req.session.verify_email_status}));
 
 module.exports = router;

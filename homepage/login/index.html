@@ -23,13 +23,7 @@
     <script type="text/javascript">
       let today = new Date();
       let nowTime =
-        "?ver=" +
-        today.getYear() +
-        today.getMonth() +
-        today.getDay() +
-        today.getHours() +
-        today.getMinutes() +
-        today.getSeconds();
+        "?ver=" + today.getTime();
 
       console.log(nowTime);
 
@@ -62,7 +56,7 @@
         </form>
         <div id="else">
           <div class="find">
-            <a href="/find" class="text-decoration-none">아이디/비밀번호 찾기</a>
+            <a href="/findIDPW" class="text-decoration-none">아이디/비밀번호 찾기</a>
           </div>
           <div class="register">
             <a href="/register" class="text-decoration-none">회원가입</a>

@@ -1,0 +1,123 @@
+.div-wrapper {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+.div-wrapper .div {
+  background-color: #ffffff;
+  width: 375px;
+  position: relative;
+}
+.button {
+  width: 250px;
+  height: 80px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.button.active {
+  background-color: #2d5fb4;
+  color: #ffffff;
+}
+.button.inactive {
+  background-color: #e0e0e0;
+  color: #828282;
+}
+.div-wrapper .text-wrapper-2,
+.div-wrapper .text-wrapper-3 {
+  display: flex;
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: 700;
+  font-size: 24px;
+  cursor: pointer;
+}
+/* 아이디찾기 버튼 */
+.div-wrapper .text-wrapper-2 {
+  position: absolute;
+  top: 268px;
+  left: -25%;
+}
+/* 비밀번호찾기 버튼 */
+.div-wrapper .text-wrapper-3 {
+  position: absolute;
+  top: 268px;
+  left: 60%;
+}
+/* 아이디/비번찾기 글자 부분*/
+.div-wrapper .text-wrapper-4 {
+  position: absolute;
+  top: 190px;
+  left: -55px;
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: bolder;
+  color: #000000;
+  font-size: xx-large;
+  text-align: center;
+  line-height: 28px;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+/* P 아이콘 */
+.div-wrapper .image {
+  position: absolute;
+  top: 152px;
+  left: -50%;
+}
+.div-wrapper .form-container {
+  display: none;
+}
+/* 블럭 */
+.div-wrapper .form-container.active {
+  display: block;
+  position: absolute;
+  width: 800px;
+  top: 380px;
+  left: -62%;
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  border: solid #dfdfdf;
+}
+/* 블럭 안에있는 아이디찾기 글자 */
+.div-wrapper .form-container h2 {
+  font-family: "Inter-Bold", Helvetica;
+  font-size: 25px;
+  color: #000000;
+  margin-top: 30px;
+  margin-bottom: 35px;
+  margin-left: 6px;
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: bolder;
+}
+/* 입력 */
+.div-wrapper .form-container input {
+  width: 100%;
+  height: 80px;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: solid #dfdfdf;
+  border-radius: 10px;
+  font-size: 23px;
+  box-sizing:border-box;
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: bolder;
+}
+/* 조회버튼 */
+.div-wrapper .form-container button {
+  width: 100%;
+  height: 70px;
+  padding: 10px;
+  background-color: #2d5fb4;
+  color: #ffffff;
+  border: none;
+  margin-top:10px;
+  margin-bottom:10px;
+  border-radius: 10px;
+  font-size: 24px;
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: bolder;
+  cursor: pointer;
+}

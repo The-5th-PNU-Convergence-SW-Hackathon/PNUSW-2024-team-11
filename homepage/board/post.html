@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상품 등록</title>
+    <link href="post.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h3 class="mt-4">상품 등록</h3>
+        <!-- Single form element, action and method specified here -->
+        <form id="postForm" action="/post/insert" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="title">제목</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="content">자세한 설명</label>
+                <textarea class="form-control" id="content" name="content" rows="5" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="price">가격</label>
+                <input type="number" class="form-control" id="price" name="price" step="100" required>
+            </div>
+            <div class="form-group">
+                <label for="category">카테고리</label>
+                <select class="form-control" id="category" name="category" required>
+                    <option value="" selected disabled>카테고리를 선택하세요</option>
+                    <option value="1">도서</option>
+                    <option value="2">의류</option>
+                    <option value="3">전자기기</option>
+                    <option value="4">기타</option>
+                </select>
+            </div>
+            <div id="additionalFields"></div>
+            <div class="form-group">
+                <label for="photos">사진 선택</label>
+                <input type="file" class="form-control" id="photos" name="photos" multiple required>
+            </div>
+            <div id="photoPreview" class="mt-3"></div>
+            <button type="submit" class="btn btn-primary mt-3" disabled>작성 완료</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('category').addEventListener('change', function() {
+            const category = this.value;
+            const additionalFields = document.getElementById('additionalFields');
+            additionalFields.innerHTML = ''; // Clear previous fields
+
+            // Add conditionally rendered fields
+            if (category === '1') { // 도서
+                additionalFields.innerHTML += `
+                    <div class="form-group">
+                        <label for="underline">밑줄 흔적</label>
+                        <select class="form-control" id="underline" name="underline" required>
+                            <option value="yes">있음</option>
+                            <option value="no" selected>없음</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="notes">필기 흔적</label>
+                        <select class="form-control" id="notes" name="notes" required>
+                            <option value="yes">있음</option>
+                            <option value="no" selected>없음</option>
+                        </select>
+                    </div>
+                `;
+            }
+
+            if (category === '1' || category === '2' || category === '3' || category === '4') {
+                additionalFields.innerHTML += `
+                    <div class="form-group">
+                        <label for="condition">상품 상태</label>
+                        <select class="form-control" id="condition" name="condition" required>
+                            <option value="very_bad">매우 나쁨</option>
+                            <option value="bad">나쁨</option>
+                            <option value="average" selected>보통</option>
+                            <option value="good">좋음</option>
+                            <option value="very_good">매우 좋음</option>
+                        </select>
+                    </div>
+                `;
+            }
+
+            // Enable submit button if all required fields are filled
+            validateForm();
+        });
+
+        document.getElementById('photos').addEventListener('change', function() {
+            const photoPreview = document.getElementById('photoPreview');
+            photoPreview.innerHTML = '';
+            const files = this.files;
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.className = 'img-thumbnail';
+                    img.style.margin = '10px';
+                    img.style.width = '100px';
+                    img.style.height = '100px';
+                    photoPreview.appendChild(img);
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        document.getElementById('postForm').addEventListener('input', validateForm);
+
+        function validateForm() {
+            const form = document.getElementById('postForm');
+            const isValid = form.checkValidity() && document.getElementById('photos').files.length > 0;
+            form.querySelector('button[type="submit"]').disabled = !isValid;
+        }
+    </script>
+</body>
+</html>

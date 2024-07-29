@@ -1,0 +1,37 @@
+.mt-4 {
+    font-weight: 600;
+    font-size: 23px;
+    margin-bottom: 20px;
+    margin-left: 8px;
+    font-family: "Inter-Bold", Helvetica;
+}
+
+.form-group label {
+    font-weight: 550;
+    font-size: 16px;
+    font-family: "Inter-Bold", Helvetica;
+}
+
+#title, #content, #price, #category, #photos, #underline, #notes, #condition {
+    border: solid #ced4da;
+    border-radius: 8px;
+    margin-top: -3px;
+}
+
+#photos {
+    padding: 10px;
+    margin-bottom: 15px;
+    height: 100%;
+}
+
+button[type="submit"] {
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background-color: rgb(23, 51, 150);
+    color: white;
+    border: none;
+}
+
+button[type="submit"]:disabled {
+    background-color: rgba(23, 51, 150, 0.5);
+}

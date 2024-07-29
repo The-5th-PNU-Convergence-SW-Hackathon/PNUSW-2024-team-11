@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <div class="div-wrapper">
+      <div class="div">
+        <div class="button text-wrapper-2 active" id="id-btn" onclick="showForm('id-form', 'id-btn', 'pw-btn')">아이디 찾기</div>
+        <div class="button text-wrapper-3 inactive" id="pw-btn" onclick="showForm('pw-form', 'pw-btn', 'id-btn')">비밀번호 찾기</div>
+        <div class="text-wrapper-4">아이디/비밀번호 찾기</div>
+        <img class="image" src="/pict/logo_blue_notxt.png"/>
+        
+        <!-- 아이디 찾기 폼 -->
+        <div id="id-form" class="form-container active">
+          <h2>아이디 찾기</h2>
+          <form>
+            <input type="text" placeholder="이름" required>
+            <input type="email" placeholder="이메일" required>
+            <button type="submit">아이디 찾기</button>
+          </form>
+        </div>
+
+        <!-- 비밀번호 찾기 폼 -->
+        <div id="pw-form" class="form-container">
+          <h2>비밀번호 찾기</h2>
+          <form>
+            <input type="text" placeholder="아이디" required>
+            <input type="email" placeholder="이메일" required>
+            <button type="submit">비밀번호 찾기</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function showForm(formId, activeBtnId, inactiveBtnId) {
+        document.getElementById('id-form').classList.remove('active');
+        document.getElementById('pw-form').classList.remove('active');
+        document.getElementById(formId).classList.add('active');
+        
+        document.getElementById('id-btn').classList.remove('active');
+        document.getElementById('id-btn').classList.add('inactive');
+        document.getElementById('pw-btn').classList.remove('active');
+        document.getElementById('pw-btn').classList.add('inactive');
+        document.getElementById(activeBtnId).classList.remove('inactive');
+        document.getElementById(activeBtnId).classList.add('active');
+      }
+    </script>
+  </body>
+</html>

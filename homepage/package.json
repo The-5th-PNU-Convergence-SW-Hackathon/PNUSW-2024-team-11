@@ -3,13 +3,20 @@
   "version": "0.0.1",
   "main": "index.js",
   "scripts": {
-    "start": "node index"
+    "start": "node index",
+    "dev": "nodemon ./index.js"
   },
   "description": "",
   "dependencies": {
     "express": "^4.19.2",
     "express-session": "^1.18.0",
     "memorystore": "^1.6.7",
-    "mysql": "^2.18.1"
+    "multer": "^1.4.5-lts.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.11.0",
+    "nodemailer": "^6.9.14"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
   }
 }

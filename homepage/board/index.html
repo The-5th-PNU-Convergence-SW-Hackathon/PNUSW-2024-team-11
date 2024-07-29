@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css" />
+    <title>Board</title>
+</head>
+<body>
+    <!-- Top Menu 1 -->
+    <div class="menu top_menu_1">
+        <a href="/profile">
+            <img src="/pict/bar/user.png" alt="프로필사진">
+        </a>
+        <div class="center">검색결과</div>
+        <div style="position: relative; margin-right: 3.5%;">
+            <a href="chat.html">
+                <img src="/pict/bar/chat.png" alt="메세지사진">
+            </a>
+        </div>
+    </div>
+
+    <!-- Search Container -->
+    <div class="search_container">
+        <input type="text" placeholder="검색어를 입력하세요">
+    </div>
+
+    <!-- Top Menu 2 -->
+    <div class="menu top_menu_2">
+        <button>인기순</button>
+        <button>최신순</button>
+        <button>가격</button>
+        <button>상태</button>
+        <button>상태</button>
+    </div>
+
+    <!-- Board Content -->
+    <div class="container">
+        <div id="postsContainer" class="posts-container">
+            <!-- Posts will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <!-- 글쓰기 버튼 -->
+    <a href="post.html" class="post-button">
+        <img src="/pict/bar/pencil.png" alt="게시">
+    </a>
+
+    <!-- Bottom Menu -->
+    <div class="bottom_menu">
+        <div>
+            <a href="/">
+                <img src="/pict/bar/home.png" alt="홈">
+                <span>홈</span>
+            </a>
+        </div>
+        <div>
+            <a href="matching.html">
+                <img src="/pict/bar/collaboration.png" alt="룸메매칭">
+                <span>룸메매칭</span>
+            </a>
+        </div>
+        <div>
+            <a href="map.html">
+                <img src="/pict/bar/placeholder.png" alt="지도">
+                <span>지도</span>
+            </a>
+        </div>
+        <div>
+            <a href="notification.html">
+                <img src="/pict/bar/bell.png" alt="알림">
+                <span>알림</span>
+            </a>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

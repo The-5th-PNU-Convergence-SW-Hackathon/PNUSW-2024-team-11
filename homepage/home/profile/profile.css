@@ -1,0 +1,87 @@
+.header{
+    margin: 20px;
+    display: flex;
+    font-weight: bold;
+    align-items: center;
+    text-align: center;
+} header > a {
+    display: flex;
+    align-items: center;
+}
+header img {
+    align-items:center ;
+}
+#line{
+    border-style: solid;
+    border-color: rgb(161, 161, 161);
+}
+
+.header > span {
+    font-size: large;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+    margin-top: 2px;
+}
+
+#profilephoto{
+    width:60px;
+    height:60px;
+    margin:10px;
+}
+#mention {
+    margin:5px;
+}
+#studentInfo{
+    margin:5px;
+    font-weight: bold;
+}
+#profileBox{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding:20px;
+    margin:20px;
+    border-style: solid;
+    border-width: thin;
+    border-color: rgb(203, 203, 203);
+    border-radius: 10px;
+}
+#profileBox > #line{
+    border : 1px solid rgb(161, 161, 161);
+    width: 93%;
+}
+#choice1{
+    display: flex;
+
+}
+#choice1 img {
+    margin-top:10px;
+    width:50px;
+    height: 50px;
+}
+#choices{
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#choices span {
+    margin: 6px;
+    font-weight: bold;
+}
+#menu2 {
+    padding:20px;
+    margin:10px;
+}
+#menu2 > div {
+    display: flex;
+    font-weight: bold;
+}
+#menu2 img {
+	width:24px;
+	height:24px;
+    margin-right:10px;
+    margin-left:5px;
+}

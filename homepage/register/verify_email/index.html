@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/pict/logo_blue_notxt.png"> <!-- for title logo -->
+    <script src="https://code.jquery.com/jquery-latest.js"></script> <!-- for jquery -->
+    <!-- under the 2 lines for bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <title>P-BUD</title>
+    <script type="text/javascript">
+        let today = new Date();
+        let nowTime = "?ver=" + today.getYear() + today.getMonth() + today.getDay() + today.getHours() + today.getMinutes() + today.getSeconds();
+
+        console.log(nowTime);
+
+        let scriptElement = document.createElement("script");
+        scriptElement.src = "index.js" + nowTime;
+        scriptElement.type = "text/javascript";
+        document.head.appendChild(scriptElement);
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2 id="verify_status"></h2>
+        <button id="homepage_btn" class="btn" onclick="location.href = '/'">홈페이지로 돌아가기</button>
+    </div>
+</body>
+</html>

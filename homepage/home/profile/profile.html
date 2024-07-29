@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/pict/logo_blue_notxt.png"> <!-- for title logo -->
+    <script src="https://code.jquery.com/jquery-latest.js"></script> <!-- for jquery -->
+    <!-- under the 2 lines for bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <title>P-BUD</title>
+    <script type="text/javascript">
+        let today = new Date();
+        let nowTime = "?ver=" + today.getTime();
+
+        console.log(nowTime);
+
+        let scriptElement = document.createElement("script");
+        scriptElement.src = "profile.js" + nowTime;
+        scriptElement.type = "text/javascript";
+        document.head.appendChild(scriptElement);
+
+        let cssElement = document.createElement("link");
+        cssElement.href = "profile.css" + nowTime;
+        cssElement.rel = "stylesheet";
+        document.head.appendChild(cssElement);
+    </script>
+</head>
+<body>
+    <div class="header">
+        <a href="../home.html" ><img src="/pict/icons/arrow-left.png" alt="Arrow Icon" width="9.5" height="16"></a>
+        <span>마이페이지</span>
+    </div>
+    <hr id="line">
+    <div class="body">
+        <div id="profileBox">
+		    <img src="/pict/bar/user.png" alt="프로필사진" id="profilephoto">
+            <span id="mention"></span>
+            <span id="studentInfo"></span>
+            <hr id="line">
+            <div id="menu1">
+                <div id="choice1">
+                    <div id="choices">
+                        <img src="/pict/profile/sell.png" alt="판매내역">
+                        <span>판매내역</span>
+                    </div>
+                    <div id="choices">
+                        <img src="/pict/profile/buy.png" alt="구매내역">
+                        <span>구매내역</span>
+                    </div>
+                    <div id="choices">
+                        <img src="/pict/profile/like.png" alt="관심목록">
+                        <span>관심목록</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="menu2">
+            <hr id="line">
+            <div id="logout">
+                <img src="/pict/profile/logout.png" alt="로그아웃">
+                <span>로그아웃</span>
+            </div>
+            <hr id="line">
+            <div id="setting">
+                <img src="/pict/profile/setting.png" alt="앱설정">
+                <span>앱설정</span>
+            </div>
+            <hr id="line">
+            <div id="quit">
+                <img src="/pict/profile/quit.png" alt="회원탈퇴">
+                <span>회원탈퇴</span>
+            </div>
+            <hr id="line">
+        </div>
+    </div>
+</body>
+</html>

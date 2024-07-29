@@ -1,18 +1,16 @@
 const express = require("express");
 const router = express.Router();
-const register_route    = require('./register.js');
-const login_route       = require('./login.js');
-const ajax_route        = require('./ajax.js');
+const config = require('./config');
 
-router.use('/register', register_route); // routers
-router.use('/login', login_route);
-router.use('/ajax', ajax_route);
+config(router); // another router setting
 
 // route single page
-router.get('/', (req, res) => res.sendFile('index.html', {root: './html'}));
-router.get('/find', (req, res) => res.sendFile('index.html', {root: './find'}));
+router.get('/', (req, res) => res.sendFile('home.html', {root: './home'}));
+router.get('/findIDPW', (req, res) => res.sendFile('index.html', {root: './findIDPW'}));
 router.get('/search', (req, res) => res.sendFile('index.html', {root: './search'}));
-router.get('/test', (req, res) => res.sendFile('test.html', {root: './test'}));
+router.get('/error', (req, res) => res.send("error"));
+router.get('/board', (req, res) => res.sendFile('index.html', {root: './board'}));
+router.get('/bar', (req, res) => res.sendFile('index.html', {root: './bar'}));
 router.get('/logout', (req, res) => {
     req.session.destroy(err => {
         if(err) {
@@ -22,6 +20,7 @@ router.get('/logout', (req, res) => {
         else res.redirect('/');
     })
 });
-router.get('/error', (req, res) => res.send("error"));
+
+router.all('*', (req, res) => res.status(404).send('<h1>404 Not found</h1>')); // error handler
 
 module.exports = router;
