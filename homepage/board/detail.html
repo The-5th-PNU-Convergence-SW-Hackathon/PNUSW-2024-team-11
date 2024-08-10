@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Details</title>
+    <script type="text/javascript">
+        let today = new Date();
+        let nowTime = "?ver=" + today.getTime();
+
+        let cssElement = document.createElement("link");
+        cssElement.href = "/board/style.css" + nowTime;
+        cssElement.rel = "stylesheet";
+        document.head.appendChild(cssElement);
+    </script>
+</head>
+
+<body>
+    <div class="header">
+        <a href="/board"><img src="/pict/icons/arrow-left.png" alt="Arrow Icon" class="back-arrow"></a>
+        <span>뒤로가기</span>
+    </div>
+    <main id="postDetails">
+        <!-- Post details will be injected here by JavaScript -->
+    </main>
+</body>
+</html>
+
+<!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        loadPostDetails();
+    });
+
+    function loadPostDetails() {
+        const path = window.location.pathname;
+        const postId = path.split('/').pop();
+
+        if (postId) {
+            //조회수를 위한 fetch 
+            fetch(`/board/api/post/${postId}/view`, {
+                method: 'POST'
+            })
+            .then(() => fetch(`/board/api/post/${postId}`))
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(post => {
+                displayPostDetails(post);
+            })
+            .catch(error => {
+                document.getElementById('postDetails').innerHTML = '<p>Error loading post details. Please try again later.</p>';
+            });
+        } else {
+            document.getElementById('postDetails').innerHTML = '<p>No post ID provided.</p>';
+        }
+    }
+
+    function displayPostDetails(post) {
+    const container = document.getElementById('postDetails');
+
+    container.innerHTML = `
+        <h2>${post.title}</h2>
+        <p><strong>Category:</strong> ${post.category}</p>
+        <p><strong>Price:</strong> ${priceComma(post.price)}원</p>
+        <p><strong>Condition:</strong> ${statusMap(post.condition)}</p>
+        <p><strong>Views:</strong> ${post.views}</p>
+        <p><strong>Status:</strong> ${post.status === 'On Sale' ? '판매중' : '판매 완료'}</p>
+        <p><strong>Updated At:</strong> ${timeAgo(post.updatedAt)}</p>
+        <div>
+            <h3>Content</h3>
+            <p>${post.content}</p>
+        </div>
+        <div>
+            ${post.photos ? post.photos.split(',').map(photo => `<img src="${photo}" alt="Post Photo">`).join('') : '<p>No photos available</p>'}
+        </div>
+        <div class="button-container">
+            <button>찜하기</button>
+            <button>채팅하기</button>
+        </div>
+    `;
+
+    if (post.isAuthor) {
+        const editDeleteContainer = document.createElement('div');
+        editDeleteContainer.className = 'edit-delete-container';
+        editDeleteContainer.innerHTML = `
+            <button onclick="window.location.href='/board/post/${post.productId}/edit'">수정하기</button>
+            <button onclick="deletePost(${post.productId})">삭제하기</button>
+        `;
+        container.appendChild(editDeleteContainer);
+    }
+}
+
+
+
+    function timeAgo(dateString) {
+        const now = new Date();
+        const updatedDate = new Date(dateString);
+        const diffInSeconds = Math.floor((now - updatedDate) / 1000);
+
+        const seconds = diffInSeconds;
+        const minutes = Math.floor(seconds / 60);
+        const hours = Math.floor(minutes / 60);
+        const days = Math.floor(hours / 24);
+        const months = Math.floor(days / 30);
+        const years = Math.floor(days / 365);
+
+        if (years > 0) {
+            return `${years} 년 전`;
+        } else if (months > 0) {
+            return `${months} 달 전`;
+        } else if (days > 0) {
+            return `${days} 일 전`;
+        } else if (hours > 0) {
+            return `${hours} 시간 전}`;
+        } else if (minutes > 0) {
+            return `${minutes} 분 전`;
+        } else {
+            return `${seconds} 초 전`;
+        }
+    }
+
+    function statusMap(status) {
+        const statusMap = {
+            "very_bad": '상태 매우 나쁨',
+            "bad": '상태 나쁨',
+            "average": '상태 보통',
+            "good": '상태 좋음',
+            "very_good": '상태 매우 좋음'
+        };
+        return statusMap[status] || '상태 알 수 없음';
+    }
+
+    function priceComma(number) {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    function deletePost(postId) {
+    if (confirm('게시글을 삭제하시겠습니까?')) {
+        fetch(`/board/api/post/${postId}`, {
+            method: 'DELETE'
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('게시글이 삭제되었습니다.');
+                window.location.href = '/board/';
+            } else {
+                alert('게시글 삭제에 실패했습니다. 나중에 다시 시도해주세요.');
+            }
+        })
+        .catch(error => {
+            alert('게시글 삭제에 실패했습니다. 나중에 다시 시도해주세요.');
+        });
+    }
+}
+
+
+    function editPost(postId) {
+        window.location.href = `/board/post/${postId}/edit`;
+    }
+</script>
+

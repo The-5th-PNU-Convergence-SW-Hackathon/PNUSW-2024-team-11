@@ -12,6 +12,14 @@ function handleScroll() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    loadPosts();
+    // loadPosts();
     window.addEventListener('scroll', handleScroll);
 });
+
+if('serviceWorker' in navigator) {
+    // let today = new Date();
+    // let nowTime = "?ver=" + today.getTime();
+    navigator.serviceWorker
+    .register('/pwa/service_worker.js'/*  + nowTime */)
+    .then(() => console.log('서비스 워커 등록!'));
+}

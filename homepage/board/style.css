@@ -1,0 +1,104 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+/* 헤더 스타일 */
+.header {
+    display: flex;
+
+    padding: 15px;
+
+    font-weight: bold;
+    font-size: 16px;
+
+    width: 100%;
+    z-index: 1000;
+    border-radius: 0 0 10px 10px; /* 아래쪽 모서리 둥글게 */
+}
+
+/* 뒤로가기 아이콘 스타일 */
+.header img {
+
+    margin : 10px;
+    width: 16px;
+    height: 16px;
+}
+/* a 태그 스타일링 */
+.header a {
+    display: flex;
+    color: black;
+}
+/* 헤더의 텍스트 스타일 */
+.header > span {
+    font-size: large;
+    margin-left: 5px;
+    margin-top:5px;
+}
+
+header {
+    width: 100%;
+    background-color: #1148A6;
+    padding: 15px 0;
+    text-align: center;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+main {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+h1, h2 {
+    color: #1148A6;
+}
+
+
+button {
+    background-color: #1148A6;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+    display: inline-block;
+}
+
+button:hover {
+    background-color: #0e3a82;
+}
+
+img {
+    max-width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.edit-delete-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.edit-delete-container button {
+    margin-left: 10px;
+}

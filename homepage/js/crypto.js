@@ -1,7 +1,7 @@
 const crypto      = require('crypto');
 
 let create_crypto = str => new Promise (res => res(crypto.createHash('sha512').update(str).digest('hex')));
-let convert_buffer = iv => Buffer.from(iv, "hex");
+let convert_buffer = iv => new Promise (res => res(Buffer.from(iv, "hex")));
 let create_iv = () => crypto.randomBytes(16);
 
 const algorithm = 'aes-256-cbc';

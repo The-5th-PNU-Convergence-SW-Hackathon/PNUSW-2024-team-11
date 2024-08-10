@@ -3,17 +3,26 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs'); // 파일 시스템 모듈 추가
 
+// Define the absolute path for the upload directory
+const uploadDir = path.resolve(__dirname, '../../uploads');
+
+// Ensure the upload directory exists
+if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir, { recursive: true });
+}
+
 // Multer 설정
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'board/uploads/');
+        cb(null, uploadDir); // Use the absolute path
     },
     filename: (req, file, cb) => {
         const ext = path.extname(file.originalname).toLowerCase();
         cb(null, `${Date.now()}${ext}`);
     }
 });
-const upload = multer({ 
+
+const upload = multer({
     storage: storage,
     fileFilter: (req, file, cb) => {
         const ext = path.extname(file.originalname).toLowerCase();
@@ -50,8 +59,8 @@ let post_insert = async (req, res) => {
         console.log(req.files);
 
         const contentValue = content || null;
-        const underlineValue = underline || 0;
-        const notesValue = notes || 0;
+        const underlineValue = (underline === 'no') ? 0 : 1;
+        const notesValue = (notes === 'no') ? 0 : 1;
 
         // SQL 쿼리 작성
         const sql = 'INSERT INTO PRODUCT (SELLER_ID, TITLE, CONTENT, PRICE, CATEGORY_ID, UNDERLINE, NOTES, PRODUCT_CONDITION) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
@@ -68,9 +77,9 @@ let post_insert = async (req, res) => {
                 let photoValues = photos.map(photo => {
                     const ext = path.extname(photo.originalname).toLowerCase();
                     const newFileName = `${productId}-${Date.now()}${ext}`;  // 새로운 파일 이름
-                    const newPath = path.join('board/uploads/', newFileName);
+                    const newPath = path.join(uploadDir, newFileName); // Use the absolute path
                     fs.renameSync(photo.path, newPath); // 파일 이름 변경
-                    return [productId, `board/uploads/${newFileName}`];
+                    return [productId, `/uploads/${newFileName}`];
                 });
 
                 connection.query(photoSql, [photoValues], (err) => {

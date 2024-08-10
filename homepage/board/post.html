@@ -1,11 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>상품 등록</title>
     <link href="post.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .error-message {
+            color: red;
+            font-size: 0.875em;
+            margin-top: 0.5em;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -23,6 +30,7 @@
             <div class="form-group">
                 <label for="price">가격</label>
                 <input type="number" class="form-control" id="price" name="price" step="100" required>
+                <div id="priceError" class="error-message"></div>
             </div>
             <div class="form-group">
                 <label for="category">카테고리</label>
@@ -113,7 +121,19 @@
 
         function validateForm() {
             const form = document.getElementById('postForm');
-            const isValid = form.checkValidity() && document.getElementById('photos').files.length > 0;
+            const priceInput = document.getElementById('price');
+            const priceError = document.getElementById('priceError');
+            const price = parseFloat(priceInput.value);
+            const isPriceValid = price <= 10000000;
+            const isValid = form.checkValidity() && document.getElementById('photos').files.length > 0 && isPriceValid;
+            
+            // Show or hide the price error message
+            if (price > 1000000) {
+                priceError.textContent = '가격은 10,000,000원 이하로 입력해 주세요.';
+            } else {
+                priceError.textContent = '';
+            }
+
             form.querySelector('button[type="submit"]').disabled = !isValid;
         }
     </script>

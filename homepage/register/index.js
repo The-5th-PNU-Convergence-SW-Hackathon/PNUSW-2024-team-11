@@ -237,7 +237,7 @@ $(document).ready(() => {
         if(status) return;
         status = 1;
         clickCount--;
-        console.log(clickCount);
+        // console.log(clickCount);
         if (clickCount == 0) {
             $("#second-page").fadeOut(200, () => {
                 $("#first-page").fadeIn(200);
@@ -317,7 +317,7 @@ $(document).ready(() => {
     });
     
     let deptData ;
-    fetch('../json/deptData.json')
+    fetch('/json/deptData.json')
     .then(response => response.json())
     .then(data => {
         deptData = data;

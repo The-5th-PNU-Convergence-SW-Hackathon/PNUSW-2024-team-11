@@ -9,7 +9,6 @@ router.get('/', (req, res) => res.sendFile('home.html', {root: './home'}));
 router.get('/findIDPW', (req, res) => res.sendFile('index.html', {root: './findIDPW'}));
 router.get('/search', (req, res) => res.sendFile('index.html', {root: './search'}));
 router.get('/error', (req, res) => res.send("error"));
-router.get('/board', (req, res) => res.sendFile('index.html', {root: './board'}));
 router.get('/bar', (req, res) => res.sendFile('index.html', {root: './bar'}));
 router.get('/logout', (req, res) => {
     req.session.destroy(err => {

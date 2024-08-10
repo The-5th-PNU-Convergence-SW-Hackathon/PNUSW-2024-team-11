@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Post</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+        }
+        .back-arrow {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+        .header span {
+            font-size: 18px;
+        }
+        main {
+            max-width: 800px;
+            margin: 30px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        label {
+            font-weight: 600;
+        }
+        textarea {
+            resize: vertical;
+        }
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="/board"><img src="/pict/icons/arrow-left.png" alt="Arrow Icon" class="back-arrow"></a>
+        <span>뒤로가기</span>
+    </div>
+
+    <main>
+        <h1>게시글 수정</h1>
+        <form id="editPostForm">
+            <input type="hidden" id="postId">
+            <div class="form-group">
+                <label for="title">제목:</label>
+                <input type="text" id="title" name="title" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="category">카테고리:</label>
+                <input type="text" id="category" name="category" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="price">가격:</label>
+                <input type="number" id="price" name="price" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="condition">상태:</label>
+                <select id="condition" name="condition" class="form-control" required>
+                    <option value="very_good">매우 좋음</option>
+                    <option value="good">좋음</option>
+                    <option value="average">보통</option>
+                    <option value="bad">나쁨</option>
+                    <option value="very_bad">매우 나쁨</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="content">내용:</label>
+                <textarea id="content" name="content" class="form-control" rows="5" required></textarea>
+            </div>
+            
+            <button type="submit">수정하기</button>
+        </form>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadPostDetailsForEdit();
+        });
+
+        function loadPostDetailsForEdit() {
+            // URL에서 postId 추출
+            const path = window.location.pathname;
+            const postId = path.split('/')[3]; // /board/post/123/edit -> 123
+
+            console.log('Post ID:', postId); // 디버깅: postId 로그
+
+            // 서버에서 데이터 가져오기
+            fetch(`/board/api/post/${postId}`)
+                .then(response => {
+                    console.log('Response status:', response.status); // 디버깅: 응답 상태 로그
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok.');
+                    }
+                    return response.json();
+                })
+                .then(post => {
+                    document.getElementById('postId').value = post.productId;
+                    document.getElementById('title').value = post.title;
+                    document.getElementById('category').value = post.category;
+                    document.getElementById('price').value = post.price;
+                    document.getElementById('condition').value = post.condition;
+                    document.getElementById('content').value = post.content;
+                })
+                .catch(error => {
+                    alert('게시글 정보를 불러오는데 실패했습니다.');
+                    console.error('Error:', error);
+                });
+        }
+
+        document.getElementById('editPostForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const postId = document.getElementById('postId').value;
+            const updatedPost = {
+                title: document.getElementById('title').value,
+                category: document.getElementById('category').value,
+                price: document.getElementById('price').value,
+                condition: document.getElementById('condition').value,
+                content: document.getElementById('content').value
+            };
+
+            // 수정 요청
+            fetch(`/board/api/post/${postId}`, {
+                method: 'PUT', // 서버에서 PUT 요청을 처리해야 합니다.
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(updatedPost)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok.');
+                }
+                return response.json();
+            })
+            .then(data => {
+                alert('게시글이 수정되었습니다.');
+                window.location.href = '/board'; // 수정 완료 후 이동
+            })
+            .catch(error => {
+                alert('게시글 수정에 실패했습니다.');
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>

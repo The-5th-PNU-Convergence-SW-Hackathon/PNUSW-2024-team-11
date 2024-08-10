@@ -2,7 +2,6 @@
     margin: 20px;
     display: flex;
     font-weight: bold;
-    align-items: center;
     text-align: center;
 } header > a {
     display: flex;
@@ -21,7 +20,6 @@ header img {
     display: flex;
     align-items: center;
     margin-left: 5px;
-    margin-top: 2px;
 }
 
 #profilephoto{

@@ -1,13 +1,14 @@
 const fs = require('fs');
 
 const jsonFile = fs.readFileSync('/home/pnubuddy/github/P-bud/homepage/json/slang.json', 'utf8');
+// console.log(typeof(jsonFile));
 // console.log(jsonFile.substring(8));
-const slang_arr = JSON.parse(jsonFile.substring(8));
+const slang_arr = JSON.parse(jsonFile).slang;
 // console.log(slang_arr);
 
 const not_word = /[^a-zA-Z0-9]/;
 const special = /[-;'"\/\\:+= ]/;
-const name_t = /[^a-zA-Z가-힣]/;
+const name_t = /[^a-zA-Z��-�R]/;
 const stu_num = /\d{9}/;
 const phone_010 = /\d{8}/;
 const phone = /\d{7}/;

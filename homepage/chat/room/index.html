@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/pict/logo_blue_notxt.png"> <!-- for title logo -->
+    <script src="https://code.jquery.com/jquery-latest.js"></script> <!-- for jquery -->
+    <!-- under the 2 lines for bootstrap -->
+    <link rel="stylesheet" href="/bootstrap-5.3.3-dist/css/bootstrap.min.css" />
+    <script src="/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <title>P-BUD</title>
+    <script type="text/javascript">
+        let today = new Date();
+        let nowTime = "?ver=" + today.getTime();
+
+        let scriptElement = document.createElement("script");
+        scriptElement.src = "./index.js" + nowTime;
+        scriptElement.type = "text/javascript";
+        document.head.appendChild(scriptElement);
+
+        let cssElement = document.createElement("link");
+        cssElement.href = "./index.css" + nowTime;
+        cssElement.rel = "stylesheet";
+        document.head.appendChild(cssElement);
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <a class="header-basis" href="/chat" ><img src="/pict/icons/arrow-left.png" alt="Arrow Icon" width="9.5" height="16"></a>
+            <div class="header-basis" id="away_nickname"></div>
+            <div class="header-basis" id="online">away_offline</div>
+        </div>
+        <div>사용자 프로필/정보/신고버튼 추가 필요</div>
+
+        <hr id="line">
+
+        <div class="container">
+            <div id="chatlist"></div>
+            <div class="chatting">
+                <div class="input-group mb-3">
+                    <input class="form-control" type="text" id="chat" placeholder="채팅.." name="chat">
+                    <span></span><button class="btn btn-dark-color btn-dark" id="send">전송</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

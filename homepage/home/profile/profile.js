@@ -9,18 +9,20 @@ $(document).ready(() => {
     })
     .done(json => {
         if(json.login_status) {
-            login_status = true;
-            $.ajax({
-                url : "/ajax/session/USER", // get login status
+            login_status = true; 
+            $.ajax({ 
+                url : "/ajax/session/profile", // get login status 
                 type : 'POST', 
-                dataType: 'JSON',
-                data: {}
-            })
-            .done(info => {
-                USER = info.USER;
-		console.log(USER);
-                $("#mention").text(`${USER[1]}님 환영합니다.`);
-                $("#studentInfo").text(`${USER[2]} 23학번`);
+                dataType: 'JSON', 
+                data: {} 
+            }) 
+            .done(USER => {
+                // USER = info.USER; 
+                console.log(USER);
+                const YearPart = USER[2].substring(2, 4);
+                console.log(`학번 : ${YearPart}`);
+                $("#mention").text(`${USER[0]}님 환영합니다.`);
+                $("#studentInfo").text(`${USER[1]} ${YearPart}학번`); 
                 $("#mention").show();
                 $("#btn_login").hide();
                 $("#btn_register").hide();
@@ -30,17 +32,19 @@ $(document).ready(() => {
         }
     })
     .fail((xhr, status, error) => console.log(error));
+    $("#timetable").on("click", () => {
 
-    $("#btn_register").on("click", () => {
-        location.href = '/register';
     });
-
-    $("#btn_login").on("click", () => {
-        location.href = '/login';
-    });
-
+    
     $("#logout").on("click", () => {
-        console.log("logout btn clicked")
         location.href = '/logout';
+    });
+
+    $("#setting").on("click", () => {
+
+    });
+
+    $("#quit").on("click", () => {
+
     });
 });

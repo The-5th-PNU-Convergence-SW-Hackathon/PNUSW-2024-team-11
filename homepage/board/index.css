@@ -1,7 +1,12 @@
+button.active {
+    background-color: #1148A6;
+    color: white;
+}
 a {
     text-decoration: none;
     color: black;
 }
+
 .menu {
     position: fixed; 
     left: 0px; 
@@ -39,9 +44,26 @@ a {
     padding-top: 10px;
     border-bottom: 1px solid black;
 }
+
+  input {
+    width: 100%;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+  
+  .search_container img {
+    position : absolute;
+    width: 17px;
+    right: 10%;
+    margin: 0;
+    bottom: 20px;
+  }
+
 .search_container input[type="text"] {
     width: 80%;
-    height: 30px;
+    height: 18px;
 }
 .top_menu_2 {
     top: 100px;
@@ -56,7 +78,16 @@ a {
     font-size: 16px;
     background-color: #F6F6F6;
     border: 0px solid #ddd;
-    border-radius: 20px;    /*¹öÆ° 20px¸¸Å­ µÕ±Û°Ô*/
+    border-radius: 20px;    /*ë²„íŠ¼ 20pxë§Œí¼ ë‘¥ê¸€ê²Œ*/
+}
+.top_menu_2 button:hover {
+    background-color: #3161b4;
+    color: white;
+}
+
+.top_menu_2 button.active {
+    background-color: #1148A6;
+    color: white;
 }
 .bottom_menu { 
     position: fixed; 
@@ -65,7 +96,7 @@ a {
     width: 100%; 
     height: 50px; 
     z-index: 100; 
-    border-top: 0px solid black; /*Å×µÎ¸®¸¦ ÇÒÁö.. °í¹Î*/
+    border-top: 0px solid black; /*í…Œë‘ë¦¬ë¥¼ í• ì§€.. ê³ ë¯¼*/
     background-color: white; 
     display: flex;
     align-items: center;
@@ -88,8 +119,8 @@ body {
 }
 .post-button {
     position: fixed;
-    bottom: 70px; /* ¿øÇÏ´Â ¿©¹é Á¶Á¤ */
-    right: 20px; /* ¿øÇÏ´Â ¿©¹é Á¶Á¤ */
+    bottom: 70px; /* ì›í•˜ëŠ” ì—¬ë°± ì¡°ì • */
+    right: 20px; /* ì›í•˜ëŠ” ì—¬ë°± ì¡°ì • */
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -107,8 +138,8 @@ body {
     background-color: darkblue;
 }
 .post-button img {
-    width: 30px; /* ÀÌ¹ÌÁöÀÇ ³Êºñ¸¦ ¿øÇÏ´Â Å©±â·Î Á¶Á¤ */
-    height: 30px; /* ÀÌ¹ÌÁöÀÇ ³ôÀÌ¸¦ ¿øÇÏ´Â Å©±â·Î Á¶Á¤ */
+    width: 30px; /* ì´ë¯¸ì§€ì˜ ë„ˆë¹„ë¥¼ ì›í•˜ëŠ” í¬ê¸°ë¡œ ì¡°ì • */
+    height: 30px; /* ì´ë¯¸ì§€ì˜ ë†’ì´ë¥¼ ì›í•˜ëŠ” í¬ê¸°ë¡œ ì¡°ì • */
 }
 .posts-container {
     margin-top: 12px;
@@ -119,20 +150,50 @@ body {
 .post {
     display: flex;
     width: 100%;
-    height: 20vh;
-    border: solid #ddd;
+    height: 20vh; /* ìœ ì§€ */
+    border: 1px solid #ddd;
     margin-bottom: 10px;
+    background-color: white;
+    position: relative; /* For positioning .post-views inside */
 }
+
 .post img {
     width: 30%;
     height: 100%;
     object-fit: cover;
 }
+
 .post-content {
     padding: 10px;
     flex: 1;
-    line-height:80%;
+    line-height: 1.0;
+    position: relative; /* Position relative for child absolute positioning */
 }
-.post-content h5 {
-    margin-top: 0;
+
+.post-content h3 {
+    margin-top: 10px;
+    line-height: 20px;
+}
+
+.post-time{
+    line-height: 0px;
+}
+/* Position .post-views at the bottom-right of .post */
+.post-views{
+    position: absolute;
+    bottom: 10px; /* Distance from the bottom */
+    right: 10px;  /* Distance from the right */
+    font-size: 14px;
+    color:gray;
+    background-color: white; /* Ensure visibility */
+    margin: 0; /* Remove any default margin */
+}
+.post-info {
+    text-align: left;
+    position: absolute;
+    bottom: 10px; /* Distance from the bottom */
+    font-size: 14px;
+    color:gray;
+    background-color: white; /* Ensure visibility */
+    margin: 0; /* Remove any default margin */
 }

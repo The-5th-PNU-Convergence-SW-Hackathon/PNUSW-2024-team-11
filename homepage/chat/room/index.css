@@ -1,0 +1,108 @@
+.wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    margin: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px; /* 이 값을 필요에 따라 조정 */
+    justify-content: space-around;
+} 
+
+.header-basis {
+    flex-basis: 10px;
+    flex-grow: 1;
+}
+
+#line {
+    border-style: solid;
+    border-color: rgb(161, 161, 161);
+    margin-top: 0; /* 이 값을 필요에 따라 조정 */
+
+}
+
+.container {
+    text-align: center;
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#chatlist {
+    flex: 1;
+    margin-bottom: 70px; /* Ensure this matches the height + padding of .chatting */
+    overflow-y: auto;
+}
+
+.my_chat {
+    background-color: rgb(45, 95, 180);
+    color: white;
+}
+
+.away_chat {
+    background-color: rgb(241, 241, 241);
+}
+
+.my_line {
+    text-align: right;
+}
+
+.away_line {
+    text-align: left;
+}
+
+.time {
+    color: blueviolet;
+    font-weight: 200;
+    font-size: smaller;
+}
+
+.read_status {
+    color: rgb(224, 224, 255);
+    font-weight: 300;
+    font-size: smaller;
+}
+
+.btn-dark-color {
+    background-color: rgb(23, 51, 150);
+}
+
+.chatting {
+    position: fixed; 
+    bottom: 0px; 
+    left: 5%; 
+    width: 90%; 
+    height: 65px; 
+    background-color: white; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.msgLine {
+    margin: 15px;
+}
+
+.msgBox {
+    padding: 8px 18px;
+    border-radius: 30px;
+    display: inline-block;
+}
+
+#msg {
+    width: 80%;
+    height: 32px;
+    border-radius: 8px;
+}
+
+.date_hr {
+    width: 40%;
+}

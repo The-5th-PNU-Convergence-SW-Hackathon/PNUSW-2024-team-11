@@ -9,12 +9,16 @@
   "description": "",
   "dependencies": {
     "express": "^4.19.2",
+    "express-mysql-session": "^3.0.3",
     "express-session": "^1.18.0",
     "memorystore": "^1.6.7",
     "multer": "^1.4.5-lts.1",
     "mysql": "^2.18.1",
     "mysql2": "^3.11.0",
-    "nodemailer": "^6.9.14"
+    "node-fetch": "^2.7.0",
+    "nodemailer": "^6.9.14",
+    "session-file-store": "^1.5.0",
+    "socket.io": "^4.7.5"
   },
   "devDependencies": {
     "nodemon": "^3.1.4"

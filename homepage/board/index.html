@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <!-- <link rel="stylesheet" href="index.css" /> -->
+    <script type="text/javascript">
+        let today = new Date();
+        let nowTime = "?ver=" + today.getTime();
+
+        let scriptElement = document.createElement("script");
+        scriptElement.src = "index.js" + nowTime;
+        scriptElement.type = "text/javascript";
+        document.head.appendChild(scriptElement);
+
+        let cssElement = document.createElement("link");
+        cssElement.href = "index.css" + nowTime;
+        cssElement.rel = "stylesheet";
+        document.head.appendChild(cssElement);
+    </script>
     <title>Board</title>
+    
 </head>
 <body>
     <!-- Top Menu 1 -->
@@ -22,22 +38,26 @@
 
     <!-- Search Container -->
     <div class="search_container">
-        <input type="text" placeholder="검색어를 입력하세요">
-    </div>
+        <input type="text" placeholder="검색어 입력">
+        <img id= searchimg src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
+        
+      </div>
 
     <!-- Top Menu 2 -->
     <div class="menu top_menu_2">
-        <button>인기순</button>
-        <button>최신순</button>
-        <button>가격</button>
-        <button>상태</button>
-        <button>상태</button>
+        <button id="sortPopularity">인기순</button>
+        <button id="sortRecent">최신순</button>
+        <button id="sortPrice">가격순</button>
+        <button id="filterCondition">상태</button>
     </div>
 
     <!-- Board Content -->
     <div class="container">
         <div id="postsContainer" class="posts-container">
-            <!-- Posts will be dynamically inserted here -->
+            <!-- Posts will be dynamically inserted here 여기에 게시글이 추가됩니다~ -->
+
+            </script>
+
         </div>
     </div>
 
@@ -74,6 +94,6 @@
         </div>
     </div>
 
-    <script src="index.js"></script>
+    <!-- <script src="./index.js"></script> -->
 </body>
 </html>
