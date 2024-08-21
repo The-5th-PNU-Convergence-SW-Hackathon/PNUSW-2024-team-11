@@ -9,13 +9,7 @@ const node_crypto   = require('crypto');
 
 let copy_room_id;
 
-const get_room_id = async (req, res) => {
-    if(req.session.USER === undefined) {
-        res.redirect('/error');
-        return;
-    }
-    if(req.session.chat !== undefined) delete req.session.chat;
-    copy_room_id = null;
+const find_room_id = async (req, res) => {
     const id = req.session.USER[0];
     let arr = [], opponent = [], nickname = [];
     const connection = await pool.getConnection(async(conn) => conn);
@@ -56,6 +50,18 @@ const get_room_id = async (req, res) => {
         });
     }
     user_connecion.release();
+    // console.log(arr, nickname);
+    return [arr, nickname];
+}
+
+const get_room_id = async (req, res) => {
+    if(req.session.USER === undefined) {
+        res.redirect('/error');
+        return;
+    }
+    if(req.session.chat !== undefined) delete req.session.chat;
+    copy_room_id = null;
+    let [arr, nickname] = await find_room_id(req, res);
     res.json({"arr": arr, "nickname": nickname});
 };
 
@@ -84,6 +90,7 @@ let check_id = async (req, res) => {
         ret = 0;
     });
     connection.release();
+    return ret;
 };
 
 let check_room = (req, res) => {
@@ -96,7 +103,7 @@ let check_room = (req, res) => {
 }
 
 let make_room = async (req, res) => {
-    if(await check_id(req, res)) res.redirect('/login');
+    if(await check_id(req, res) == 0) res.redirect('/login');
     let chat = [];
     const room_id = req.session.chat.room_id;
     const id = req.session.USER[0];
@@ -151,6 +158,16 @@ let send_chat = async (req, res) => {
             res.redirect("/error");
         });
     connection.release();
+    if(!JSON.parse(away_online)) {
+        const userconnection = await user_pool.getConnection(async(conn) => conn);
+        await userconnection.query(`INSERT INTO NOTIFICATION VALUES ('${id}', 0, '${req.session.chat.away_nickname}', now(), ${away_online});`)
+            .catch(error => {
+                console.log(error)
+                res.redirect("/error");
+            });
+        userconnection.release();
+    }
+    res.json({});
 };
 
 let update_room_id = num => {
@@ -160,26 +177,36 @@ let update_room_id = num => {
 let ret_room_id = () => copy_room_id;
 
 let make_table = async (req, res) => {
-    const room_id = node_crypto.randomBytes(20).toString('hex');
-    const connection = await pool.getConnection(async(conn) => conn);
-    await connection.query(`CREATE TABLE ${room_id} (
-    CHAT TEXT NOT NULL,
-    ID VARCHAR(255) NOT NULL,
-    READ_STATUS TINYINT(1) NOT NULL,
-    SEND_TIME DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    hash VARCHAR(255) NOT NULL,
-    CONSTRAINT PRIMARY KEY(hash)
-    );`)
-    .catch(error => {
-        console.log(error);
-        res.redirect("/error");
-    });
-    await connection.query(`INSERT INTO CHAT_ROOMS VALUES ('${room_id}', '${req.session.USER[0]}', '${second_id}')`)
-    .catch(error => {
-        console.log(error);
-        res.redirect("/error");
-    });
-    connection.release();
+    let [arr, nickname] = await find_room_id(req, res);
+    console.log(arr, nickname, arr.length);
+    if(arr.length != 0) {
+        req.session.chat = {};
+        req.session.chat.room_id = arr[0];
+    }
+    else {
+        const room_id = node_crypto.randomBytes(20).toString('hex');
+        req.session.chat.room_id = room_id;
+        const connection = await pool.getConnection(async(conn) => conn);
+        await connection.query(`CREATE TABLE ${room_id} (
+        CHAT TEXT NOT NULL,
+        ID VARCHAR(255) NOT NULL,
+        READ_STATUS TINYINT(1) NOT NULL,
+        SEND_TIME DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+        hash VARCHAR(255) NOT NULL,
+        CONSTRAINT PRIMARY KEY(hash)
+        );`)
+        .catch(error => {
+            console.log(error);
+            res.redirect("/error");
+        });
+        await connection.query(`INSERT INTO CHAT_ROOM VALUES ('${room_id}', '${req.session.USER[0]}', '${req.session.chat.away_id}')`)
+        .catch(error => {
+            console.log(error);
+            res.redirect("/error");
+        });
+        connection.release();
+    }
+    res.json({url: '/chat/room'});
 }
 
 module.exports = {get_room_id, make_room, check_room, send_chat, update_room_id, ret_room_id, make_table};

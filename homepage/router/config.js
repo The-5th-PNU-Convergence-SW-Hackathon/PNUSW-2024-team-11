@@ -9,6 +9,8 @@ const chat_route        = require('./chat');
 const board_route       = require('./board');
 const matching_route    = require('./matching');
 const checklist_route   = require('./checklist');
+const map_route         = require('./map');
+const notification_route= require('./notification');
 
 const config = router => {
     router.use('/register', register_route); // routers
@@ -22,5 +24,7 @@ const config = router => {
     router.use('/board', board_route);
     router.use('/matching', matching_route);
     router.use('/checklist', checklist_route);
+    router.use('/map', map_route);
+    router.use('/notification', notification_route);
 }
 module.exports = config;

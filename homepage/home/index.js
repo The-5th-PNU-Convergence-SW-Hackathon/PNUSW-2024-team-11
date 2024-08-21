@@ -7,7 +7,7 @@ function handleScroll() {
     const bodyHeight = document.body.offsetHeight;
 
     if (scrollTop + windowHeight >= bodyHeight - 100) {
-        loadPosts();
+        // loadPosts();
     }
 }
 
@@ -20,6 +20,6 @@ if('serviceWorker' in navigator) {
     // let today = new Date();
     // let nowTime = "?ver=" + today.getTime();
     navigator.serviceWorker
-    .register('/pwa/service_worker.js'/*  + nowTime */)
+    .register('./service_worker.js'/*  + nowTime */)
     .then(() => console.log('서비스 워커 등록!'));
 }

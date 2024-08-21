@@ -14,7 +14,8 @@
             color: black;
         }
     </style>
-    <script type="text/javascript">
+    <link rel="stylesheet" href="index.css"> 
+    <!-- <script type="text/javascript">
         let today = new Date();
         let nowTime = "?ver=" + today.getTime();
 
@@ -29,7 +30,7 @@
         cssElement.href = "index.css" + nowTime;
         cssElement.rel = "stylesheet";
         document.head.appendChild(cssElement);
-    </script>
+    </script> -->
     <title>P-BUD</title>
 </head>
 <body>
@@ -53,30 +54,36 @@
         <!-- 검색창 -->
         <form>
             <div class="input-group">
-                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                <button type="button" class="btn btn-outline-primary">search</button>
+                <input type="search" class="form-control rounded" id="searchInput" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                <button type="button" class="btn btn-outline-primary" id="searchButton">search</button>
             </div>
         </form>
 
         <!-- 카테고리 -->
         <div class="category">
             <div>
-                <a href="/board/?sort=recent&order=desc">
+                <a href="/board/?sort=popularity&order=desc">
                 <img src="/pict/category/star.png" />
                 <span>피벗's PICK!</span>
                 </a>
             </div>
             <div>
+                <a href="/board/?category=book">
                 <img src="/pict/category/book.png" />
                 <span>도서</span>
+                </a>
             </div>
             <div>
+                <a href="/board/?category=clothes">
                 <img src="/pict/category/clothes.png" />
-                <span>옷</span>
+                <span>의류</span>
+                </a>
             </div>
             <div>
+                <a href="/board/?category=electronics">
                 <img src="/pict/category/computer.png" />
                 <span>전자기기</span>
+                </a>
             </div>
         </div>
     </div>
@@ -119,5 +126,14 @@
         document.head.appendChild(scriptElement);
     </script> -->
     <!-- <script src="index.js" type="text/javascript"></script> -->
+    <script src="index.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        document.getElementById('searchButton').addEventListener('click', function() {
+            const searchQuery = document.getElementById('searchInput').value;
+            const url = `https://test.p-bud.duckdns.org/board/?sort=popularity&search=${encodeURIComponent(searchQuery)}&category=`;
+            window.location.href = url;
+        });
+    </script>
 </body>
 </html>

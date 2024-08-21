@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/pict/logo_blue_notxt.png"> <!-- for title logo -->
+    <script src="https://code.jquery.com/jquery-latest.js"></script> <!-- for jquery -->
+    <!-- under the 2 lines for bootstrap -->
+    <link rel="stylesheet" href="/bootstrap-5.3.3-dist/css/bootstrap.min.css" />
+    <script src="/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <title>P-BUD</title>
+    <script type="text/javascript">
+        let today = new Date();
+        let nowTime = "?ver=" + today.getTime();
+
+        console.log(nowTime);
+
+        let scriptElement = document.createElement("script");
+        scriptElement.src = "faq.js" + nowTime;
+        scriptElement.type = "text/javascript";
+        document.head.appendChild(scriptElement);
+
+        let cssElement = document.createElement("link");
+        cssElement.href = "faq.css" + nowTime;
+        cssElement.rel = "stylesheet";
+        document.head.appendChild(cssElement);
+    </script>
+</head>
+<body>
+    <div class="header">
+        <a href="../home.html" ><img src="/pict/icons/arrow-left.png" alt="Arrow Icon" width="9.5" height="16"></a>
+        <span>FAQ</span>
+    </div>
+
+    <hr id="line">
+    
+    <div class="body">
+        <h1>무엇을 도와드릴까요?</h1>
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <span class="badge rounded-pill text-bg-danger">사기 신고</span> 
+                    <span id="question">  Q. 사기 거래를 당했습니다.</span>
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <strong>사기거래 발생 시 수사기관 접수</strong>
+                    <br>사기거래 발생 시 즉시 수사기관을 통해 신고 접수해 주시기 바라며, 아래의 접수 방법 참고를 부탁드립니다
+                    <br>[수사기관 접수 채널 및 신고 방법] 
+                    <br>1. 상대방과 거래한 내용에 대해 증거자료 수집 (대화내용, 입금내역)
+                    <br>2. 경찰청 사이버안전지킴이 신고(온라인 접수 바로가기)
+                    <br>※ 범죄유형은 사이버사기 > 직거래사기로 선택
+                    <br>※ 사전 질문 '2. 환불 관련 문제인가요?' 에 [아니오] 를 선택하여야 수사가 진행되며, 사건에 따라 경찰서 방문이 필요할 수 있습니다.
+                </div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <span class="badge rounded-pill text-bg-warning">거래 분쟁</span> 
+                    <span id="question">  Q. 거래 중 분쟁이 발생했어요.</span>
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <strong>피벗에서는 거래 중 분쟁이 발생하면 적극적으로 분쟁 해결을 도와드립니다.</strong> 
+
+                    <br>판매자와 구매자 모두 거래 중 분쟁 예방 및 발생 시 도움이 될 수 있도록 아래 내용을 참고하여 상품의 상태를 상세히 기록하고 공유해야 합니다.
+                    
+                    <br>■ 판매자
+                    <br>- 상품 등록 시, 상태불량이 여러개인 경우 개수, 위치 등이 상세하게 표기합니다.
+                    <br>- 상품 등록 시, 육안으로 명확히 확인하기 어려운 중요정보는 가급적 상품 설명으로 기재합니다.
+                    <br>- 상품 발송 시, 택배 포장 과정을 사진이나 영상으로 기록하여 보관합니다. 
+                    
+                    <br>■ 구매자
+                    <br>- 상품 거래 전, 판매자를 통해 상품의 상태를 상세히 확인합니다. 
+                    <br>- 상품 수령 시, 개봉 직후 상품의 상태를 사진이나 영상으로 기록하여 보관합니다. 
+                    
+                    <br>원활한 협의가 되지 않는 경우 1:1 문의로 접수해 주시면 피벗에서 거래 분쟁 해결을 도와드립니다. 
+                    
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <span class="badge rounded-pill text-bg-info">사기 의심</span> 
+                    <span id="question">  Q. 사기꾼의 사기패턴이 궁금해요</span>
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <strong>거래 전, 아래와 같이 행동하는 판매자가 있다면 즉시 거래를 중단하고 피벗에 신고해 주시기 바랍니다.</strong>
+                  <br>- 직거래 가능 지역을 미리 고지하지 않거나 택배 거래 만을 요구한다. 또는 구매자에게 먼저 거주 지역을 물어본 뒤, 자신이 거기서 멀리 있는 지역에 있다고 속이며 택배 거래를 해야 한다는 식으로 유도한다.
+                  <br>- 가격이 시세보다 20~30% 이상 저렴하다.
+                  <br>- 가상 계좌를 사용한다.
+                  <br>- 실명과 예금주의 이름이 일치하지 않는다.
+                  <br>- 구매자와 입금자의 실명이 일치하지 않는다.
+                  <br>- 계좌 이체를 유도한다.
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+        
+</body>
+</html>

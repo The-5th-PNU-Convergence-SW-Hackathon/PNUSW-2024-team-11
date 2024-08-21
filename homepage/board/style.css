@@ -89,13 +89,16 @@ img {
 
 .button-container {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     margin-top: 20px;
+}
+.button-container button{
+    margin-left: 10px;
 }
 
 .edit-delete-container {
     display: flex;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
     margin-top: 20px;
 }
 

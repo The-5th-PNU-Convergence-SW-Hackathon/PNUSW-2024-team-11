@@ -17,7 +17,7 @@ const config = server => {
         socket.join(id);
         if(connection_status[id] === undefined) connection_status[id] = 1;
         else connection_status[id]++;
-        console.log(connection_status);
+        // console.log(connection_status);
         io.to(id).emit('status', connection_status[id]);
         
         // message receives

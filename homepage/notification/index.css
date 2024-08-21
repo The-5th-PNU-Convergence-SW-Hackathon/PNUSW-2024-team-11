@@ -1,0 +1,107 @@
+a {
+    text-decoration: none;
+    color: black;
+}
+.menu {
+    position: fixed; 
+    left: 0px; 
+    width: 100%; 
+    height: 50px; 
+    z-index: 100; 
+    background-color: white; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+.top_menu_1 {
+    top: 0px;
+}
+.top_menu_1 .center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px;
+    font-weight: bold;
+}
+.top_menu_1 img {
+    height: 30px;
+}
+.search_container {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 100;
+    background-color: white;
+    text-align: center;
+    padding-top: 10px;
+    border-bottom: 1px solid black;
+}
+.search_container input[type="text"] {
+    width: 80%;
+    height: 30px;
+}
+.bottom_menu { 
+    position: fixed; 
+    bottom: 0px; 
+    left: 0px; 
+    width: 100%; 
+    height: 50px; 
+    z-index: 100; 
+    border-top: 1px solid rgba(0, 0, 0, 0.287); /*�׵θ��� ����.. ����*/
+    background-color: white; 
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 5px;
+}
+.bottom_menu > div { 
+    text-align: center; 
+}
+.bottom_menu img {
+    height: 30px;
+}
+.bottom_menu div span {
+    display: block;
+    font-size: 12px;
+}
+body {
+    padding-top: 150px; /* to avoid content being hidden behind the top menus and search bar */
+    padding-bottom: 60px; /* to avoid content being hidden behind the bottom menu */
+}
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.search {
+    margin: 10%;
+}
+.main img {
+    width: 240px;
+    margin: 10%;
+}
+.category {
+    display: grid;
+    grid-template-columns: 100px 100px 100px 100px;
+}
+.category > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.category img {
+    width: 80px;
+    border: 1px solid #f2f2f2;
+    background-color: #f2f2f2;
+    border-radius: 100%;
+    padding: 10px;
+    margin-top: 30px;
+}
+.category span {
+    font-size: small;
+}

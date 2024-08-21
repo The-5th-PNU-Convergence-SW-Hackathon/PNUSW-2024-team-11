@@ -36,8 +36,10 @@
         const path = window.location.pathname;
         const postId = path.split('/').pop();
 
+        console.log(postId);
+
         if (postId) {
-            //조회수를 위한 fetch 
+            // 조회수를 위한 fetch 
             fetch(`/board/api/post/${postId}/view`, {
                 method: 'POST'
             })
@@ -49,7 +51,7 @@
                 return response.json();
             })
             .then(post => {
-                displayPostDetails(post);
+                displayPostDetails(post, postId);
             })
             .catch(error => {
                 document.getElementById('postDetails').innerHTML = '<p>Error loading post details. Please try again later.</p>';
@@ -59,42 +61,64 @@
         }
     }
 
-    function displayPostDetails(post) {
-    const container = document.getElementById('postDetails');
+    function displayPostDetails(post, postId) {
+        const container = document.getElementById('postDetails');
 
-    container.innerHTML = `
-        <h2>${post.title}</h2>
-        <p><strong>Category:</strong> ${post.category}</p>
-        <p><strong>Price:</strong> ${priceComma(post.price)}원</p>
-        <p><strong>Condition:</strong> ${statusMap(post.condition)}</p>
-        <p><strong>Views:</strong> ${post.views}</p>
-        <p><strong>Status:</strong> ${post.status === 'On Sale' ? '판매중' : '판매 완료'}</p>
-        <p><strong>Updated At:</strong> ${timeAgo(post.updatedAt)}</p>
-        <div>
-            <h3>Content</h3>
-            <p>${post.content}</p>
-        </div>
-        <div>
-            ${post.photos ? post.photos.split(',').map(photo => `<img src="${photo}" alt="Post Photo">`).join('') : '<p>No photos available</p>'}
-        </div>
-        <div class="button-container">
-            <button>찜하기</button>
-            <button>채팅하기</button>
-        </div>
-    `;
-
-    if (post.isAuthor) {
-        const editDeleteContainer = document.createElement('div');
-        editDeleteContainer.className = 'edit-delete-container';
-        editDeleteContainer.innerHTML = `
-            <button onclick="window.location.href='/board/post/${post.productId}/edit'">수정하기</button>
-            <button onclick="deletePost(${post.productId})">삭제하기</button>
+        container.innerHTML = `
+            <h2>${post.title}</h2>
+            <p><strong>Category:</strong> ${post.category}</p>
+            <p><strong>Price:</strong> ${priceComma(post.price)}원</p>
+            <p><strong>Condition:</strong> ${statusMap(post.condition)}</p>
+            <p><strong>Views:</strong> ${post.views}</p>
+            <p><strong>Status:</strong> ${post.status === 'On Sale' ? '판매중' : '판매 완료'}</p>
+            <p><strong>Updated At:</strong> ${timeAgo(post.updatedAt)}</p>
+            <div>
+                <h3>Content</h3>
+                <p>${post.content}</p>
+            </div>
+            <div>
+                ${post.photos ? post.photos.split(',').map(photo => `<img src="${photo}" alt="Post Photo">`).join('') : '<p>No photos available</p>'}
+            </div>
         `;
-        container.appendChild(editDeleteContainer);
+
+        if (post.isAuthor) {
+            // 게시글 작성자인 경우
+            const editDeleteContainer = document.createElement('div');
+            editDeleteContainer.className = 'edit-delete-container';
+            editDeleteContainer.innerHTML = `
+                <button onclick="window.location.href='/board/post/${post.productId}/edit'">수정하기</button>
+                <button onclick="deletePost(${post.productId})">삭제하기</button>
+            `;
+            container.appendChild(editDeleteContainer);
+        } else {
+            // 게시글 작성자가 아닌 경우
+            const buttonContainer = document.createElement('div');
+            buttonContainer.className = 'button-container';
+            buttonContainer.innerHTML = `
+                <button>찜하기 ♥</button>
+                <button id="chatting">채팅하기</button>
+            `;
+            container.appendChild(buttonContainer);
+
+            // 채팅하기 버튼 클릭 이벤트 핸들러
+            document.getElementById("chatting").addEventListener('click', () => {
+                const httpRequest = new XMLHttpRequest();
+                httpRequest.onreadystatechange = () => {
+                    if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                        if (httpRequest.status === 200) {
+                            location.href = httpRequest.response.url;
+                        } else {
+                            alert('request에 뭔가 문제가 있어요.');
+                        }
+                    }
+                };
+                httpRequest.open('POST', '/board/chat', true);
+                httpRequest.responseType = "json";
+                httpRequest.setRequestHeader('Content-Type', 'application/json');
+                httpRequest.send(JSON.stringify({id: postId}));
+            });
+        }
     }
-}
-
-
 
     function timeAgo(dateString) {
         const now = new Date();
@@ -115,7 +139,7 @@
         } else if (days > 0) {
             return `${days} 일 전`;
         } else if (hours > 0) {
-            return `${hours} 시간 전}`;
+            return `${hours} 시간 전`;
         } else if (minutes > 0) {
             return `${minutes} 분 전`;
         } else {
@@ -139,27 +163,25 @@
     }
 
     function deletePost(postId) {
-    if (confirm('게시글을 삭제하시겠습니까?')) {
-        fetch(`/board/api/post/${postId}`, {
-            method: 'DELETE'
-        })
-        .then(response => {
-            if (response.ok) {
-                alert('게시글이 삭제되었습니다.');
-                window.location.href = '/board/';
-            } else {
+        if (confirm('게시글을 삭제하시겠습니까?')) {
+            fetch(`/board/api/post/${postId}`, {
+                method: 'DELETE'
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('게시글이 삭제되었습니다.');
+                    window.location.href = '/board/';
+                } else {
+                    alert('게시글 삭제에 실패했습니다. 나중에 다시 시도해주세요.');
+                }
+            })
+            .catch(error => {
                 alert('게시글 삭제에 실패했습니다. 나중에 다시 시도해주세요.');
-            }
-        })
-        .catch(error => {
-            alert('게시글 삭제에 실패했습니다. 나중에 다시 시도해주세요.');
-        });
+            });
+        }
     }
-}
-
 
     function editPost(postId) {
         window.location.href = `/board/post/${postId}/edit`;
     }
 </script>
-

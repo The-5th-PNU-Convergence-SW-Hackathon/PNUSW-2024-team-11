@@ -1,8 +1,12 @@
 const mysql = require('mysql');
 const dbconfig = require('../../config/database.js');
+const chatdbconfig = require('../../config/chat')
 const fs = require('fs');
 const path = require('path'); 
 const connection = mysql.createConnection(dbconfig);
+const chatconnection = mysql.createConnection(chatdbconfig);
+const crypto = require('../crypto');
+const {make_table} = require('./chat');
 
 connection.connect();
 
@@ -134,27 +138,48 @@ let deletePost = (postId) => {
 };
 
 // 게시글 수정 함수
-// let editPost = (postId, postData) => {
-//     return new Promise((resolve, reject) => {
-//         const { title, category, price, condition, content } = postData;
-//         const sql = `
-//             UPDATE PRODUCT
-//             SET TITLE = ?, CATEGORY_ID = ?, PRICE = ?, PRODUCT_CONDITION = ?, CONTENT = ?, UPDATED_AT = NOW()
-//             WHERE PRODUCT_ID = ?
-//         `;
-//         connection.query(sql, [title, category, price, condition, content, postId], (err, result) => {
-//             if (err) {
-//                 reject(err);
-//             } else {
-//                 resolve(result);
-//             }
-//         });
-//     });
-// };
+let editPost = (postId, postData) => {
+    return new Promise((resolve, reject) => {
+        const { title, category, price, condition, content } = postData;
+        const sql = `
+            UPDATE PRODUCT
+            SET TITLE = ?, CATEGORY_ID = ?, PRICE = ?, PRODUCT_CONDITION = ?, CONTENT = ?, UPDATED_AT = NOW()
+            WHERE PRODUCT_ID = ?
+        `;
+        connection.query(sql, [title, category, price, condition, content, postId], (err, result) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(result);
+            }
+        });
+    });
+};
+
+// 채팅방 함수
+
+let check_chat = (my_id, away_id) => {
+    return new Promise((resolve, reject) => {
+        const sql = `
+            SELECT ROOM_ID FROM CHAT_ROOM WHERE (USER1 = '${my_id}' AND USER2 = '${away_id}') OR (USER1 = '${away_id}' AND USER2 = '${my_id}')
+        ;`;
+        chatconnection.query(sql, (err, result) => {
+            if (err) {
+                reject(err);
+            } else resolve(result[0][sql]);
+        });
+    });
+}
+
+let make_chat = (req, res) => {
+    make_table(req, res);
+};
 
 module.exports = {
     deletePost,
     incrementViewCount,
     getPosts,
-    getPostDetails
+    getPostDetails,
+    editPost,
+    make_chat
 };

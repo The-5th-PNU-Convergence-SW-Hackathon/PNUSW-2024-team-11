@@ -1,7 +1,5 @@
 $(document).ready(() => {
-
-    const defaultUrl = '/checklist';
-
+    // Function to update the submit button state
     const updateSubmitButtonState = () => {
         const formData = {
             gender: $('input[name="gender"]:checked').val(),
@@ -12,17 +10,15 @@ $(document).ready(() => {
             guest_visit: $('input[name="guest_visit"]:checked').val()
         };
 
-        // Check if all fields are filled
         const isFormValid = Object.values(formData).every(value => value !== undefined);
 
-        // Check if all checkboxes and radio buttons have a selected option
         const checkRequired = () => {
             let allSelected = true;
             $('input[type="checkbox"], input[type="radio"]').each(function () {
                 const name = $(this).attr('name');
                 if ($(`input[name="${name}"]:checked`).length === 0) {
                     allSelected = false;
-                    return false; // Exit loop early if a required input is not selected
+                    return false;
                 }
             });
             return allSelected;
@@ -35,32 +31,38 @@ $(document).ready(() => {
         }
     };
 
-    // Initial check when the page loads
-    updateSubmitButtonState();
+    // Function to populate form with existing checklist data
+    const populateFormData = (data) => {
+        if (data) {
+            $(`input[name="gender"][value="${data.GENDER}"]`).prop('checked', true);
+            $(`input[name="smoking"][value="${data.SMOKING}"]`).prop('checked', true);
+            $(`input[name="drinking_frequency"][value="${data.DRINKING_FREQUENCY}"]`).prop('checked', true);
+            $(`input[name="sleep_pattern"][value="${data.SLEEP_PATTERN}"]`).prop('checked', true);
+            $(`input[name="sleep_habit"][value="${data.SLEEP_HABIT}"]`).prop('checked', true);
+            $(`input[name="guest_visit"][value="${data.GUEST_VISIT}"]`).prop('checked', true);
+        }
 
-    $('#rmt_checklist').on('submit', (event) => {
-        event.preventDefault();
+        updateSubmitButtonState();
+    };
 
-        // Collect form data
-        const formData = {
-            gender: $('input[name="gender"]:checked').val(),
-            smoking: $('input[name="smoking"]:checked').val(),
-            drinking_frequency: $('input[name="drinking_frequency"]:checked').val(),
-            sleep_pattern: $('input[name="sleep_pattern"]:checked').val(),
-            sleep_habit: $('input[name="sleep_habit"]:checked').val(),
-            guest_visit: $('input[name="guest_visit"]:checked').val()
-        };
-
-        console.log(formData);
-
+    // AJAX call to fetch existing checklist data
+    $.ajax({
+        url: '/checklist/get_checklist',
+        method: 'GET',
+        success: (response) => {
+            populateFormData(response);
+        },
+        error: (error) => {
+            console.error("Error fetching checklist data:", error);
+        }
     });
 
-    // When a checkbox or radio button is clicked, update the submit button state
+    // Update submit button state on input click
     $("input[type='checkbox'], input[type='radio']").on('click', function () {
         const name = $(this).attr('name');
         if (this.checked) {
             $(`input[name='${name}']`).not(this).prop('checked', false);
         }
-        updateSubmitButtonState(); // Update the submit button state
+        updateSubmitButtonState();
     });
 });

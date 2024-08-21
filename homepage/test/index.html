@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/pict/logo_blue_notxt.png"> <!-- for title logo -->
+    <script src="https://code.jquery.com/jquery-latest.js"></script> <!-- for jquery -->
+    <!-- under the 2 lines for bootstrap -->
+    <link rel="stylesheet" href="/bootstrap-5.3.3-dist/css/bootstrap.min.css" />
+    <script src="/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <title>P-BUD</title>
+    <!-- <script type="text/javascript">
+        let today = new Date();
+        let nowTime = "?ver=" + today.getTime();
+
+        console.log(nowTime);
+
+        let scriptElement = document.createElement("script");
+        scriptElement.src = "index.js" + nowTime;
+        scriptElement.type = "text/javascript";
+        document.head.appendChild(scriptElement);
+
+        let cssElement = document.createElement("link");
+        cssElement.href = "index.css" + nowTime;
+        cssElement.rel = "stylesheet";
+        document.head.appendChild(cssElement);
+    </script> -->
+    <link rel="stylesheet" href="index.css"> 
+    <link rel="manifest" href="/pwa/manifest.json">
+</head>
+<body>
+    <nav>
+
+    </nav>
+    <div class="wrapper">
+        <div class="container" style="margin: auto;">
+		    <h1>This is P-bud Service!</h1>
+            <p id="mention" style="display: none;"></p>
+            <button class="btn btn-light" id="btn_register">회원가입</button>
+            <button class="btn btn-light" id="btn_login">로그인</button>
+            <button class="btn btn-light" id="btn_logout" style="display: none;">로그아웃</button>
+        </div>
+    </div>
+    <script src="index.js" type="text/javascript"></script>
+</body>
+</html>

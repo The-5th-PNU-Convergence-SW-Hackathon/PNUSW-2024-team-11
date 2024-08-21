@@ -33,7 +33,6 @@ $(document).ready(() => {
     })
     .fail((xhr, status, error) => console.log(error));
     $("#timetable").on("click", () => {
-
     });
     
     $("#logout").on("click", () => {

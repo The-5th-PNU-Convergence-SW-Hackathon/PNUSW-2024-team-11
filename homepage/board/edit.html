@@ -8,14 +8,16 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
+            background-color: #f0f4f8;
+            margin: 10px;
+            
         }
         .header {
             display: flex;
             align-items: center;
             padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
+            color: #000000;
+            padding-bottom: 20px;
         }
         .back-arrow {
             width: 24px;
@@ -24,40 +26,63 @@
         }
         .header span {
             font-size: 18px;
+            font-weight: bolder;
         }
         main {
             max-width: 800px;
-            margin: 30px auto;
             background-color: #fff;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 15px; /* 동글동글한 모서리 */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* 부드러운 그림자 */
+            margin: 0 auto;
         }
         h1 {
             font-size: 24px;
             margin-bottom: 20px;
             font-weight: bold;
+            color: rgb(11, 32, 105);
         }
         label {
             font-weight: 600;
         }
         textarea {
             resize: vertical;
+            border-radius: 8px; /* 동글동글한 모서리 */
+        }
+        .form-control{
+            border-radius: 8px !important; /* 동글동글한 모서리 */
+        }
+        input.form-control, select.form-control {
+            border-radius: 8px;
         }
         button[type="submit"] {
-            background-color: #007bff;
+            background-color: rgb(23, 51, 150);
             color: #fff;
             border: none;
             padding: 10px 20px;
-            border-radius: 5px;
+            border-radius: 8px; /* 동글동글한 모서리 */
             font-size: 16px;
             cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s; /* 부드러운 전환 효과 */
         }
         button[type="submit"]:hover {
-            background-color: #0056b3;
+            background-color: rgb(11, 32, 105);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* 부드러운 그림자 */
+        }
+        button[type="submit"]:disabled {
+            background-color: rgba(23, 51, 150, 0.5);
+            cursor: not-allowed;
         }
         .form-group {
             margin-bottom: 1rem;
+        }
+        .error-message {
+            color: red;
+            font-size: 0.875em;
+            margin-top: 0.5em;
+        }
+        .content{
+            border-radius: 8px; /* 동글동글한 모서리 */
         }
     </style>
 </head>
@@ -72,23 +97,36 @@
         <form id="editPostForm">
             <input type="hidden" id="postId">
             <div class="form-group">
-                <label for="title">제목:</label>
+                <label for="title">제목</label>
                 <input type="text" id="title" name="title" class="form-control" required>
             </div>
-            
+
             <div class="form-group">
-                <label for="category">카테고리:</label>
-                <input type="text" id="category" name="category" class="form-control" required>
+                <label for="content">자세한 설명</label>
+                <textarea id="content" name="content" class="form-control" rows="5" required></textarea>
             </div>
-            
+
             <div class="form-group">
-                <label for="price">가격:</label>
+                <label for="price">가격</label>
                 <input type="number" id="price" name="price" class="form-control" required>
+                <div id="priceError" class="error-message"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="category">카테고리</label>
+                <select class="form-control" id="category" name="category" required>
+                    <option value="" disabled selected>카테고리를 선택하세요</option>
+                    <option value="1">도서</option>
+                    <option value="2">의류</option>
+                    <option value="3">전자기기</option>
+                    <option value="4">기타</option>
+                </select>
             </div>
             
             <div class="form-group">
-                <label for="condition">상태:</label>
+                <label for="condition">상태</label>
                 <select id="condition" name="condition" class="form-control" required>
+                    <option value="" disabled selected>상태를 선택하세요</option>
                     <option value="very_good">매우 좋음</option>
                     <option value="good">좋음</option>
                     <option value="average">보통</option>
@@ -97,10 +135,6 @@
                 </select>
             </div>
             
-            <div class="form-group">
-                <label for="content">내용:</label>
-                <textarea id="content" name="content" class="form-control" rows="5" required></textarea>
-            </div>
             
             <button type="submit">수정하기</button>
         </form>
@@ -109,19 +143,18 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             loadPostDetailsForEdit();
+            document.getElementById('price').addEventListener('input', validatePrice);
         });
 
         function loadPostDetailsForEdit() {
-            // URL에서 postId 추출
             const path = window.location.pathname;
-            const postId = path.split('/')[3]; // /board/post/123/edit -> 123
+            const postId = path.split('/')[3]; 
 
-            console.log('Post ID:', postId); // 디버깅: postId 로그
+            console.log('Post ID:', postId);
 
-            // 서버에서 데이터 가져오기
             fetch(`/board/api/post/${postId}`)
                 .then(response => {
-                    console.log('Response status:', response.status); // 디버깅: 응답 상태 로그
+                    console.log('Response status:', response.status);
                     if (!response.ok) {
                         throw new Error('Network response was not ok.');
                     }
@@ -130,15 +163,34 @@
                 .then(post => {
                     document.getElementById('postId').value = post.productId;
                     document.getElementById('title').value = post.title;
-                    document.getElementById('category').value = post.category;
                     document.getElementById('price').value = post.price;
                     document.getElementById('condition').value = post.condition;
                     document.getElementById('content').value = post.content;
+                    document.getElementById('category').value = post.category;
+
+                    if (post.category=="도서") document.getElementById('category').value = "1";
+                    else if (post.category=="의류") document.getElementById('category').value = "2";
+                    else if (post.category=="전자기기") document.getElementById('category').value = "3";
+                    else document.getElementById('category').value = "4";
                 })
                 .catch(error => {
                     alert('게시글 정보를 불러오는데 실패했습니다.');
                     console.error('Error:', error);
                 });
+        }
+
+        function validatePrice() {
+            const priceInput = document.getElementById('price');
+            const priceError = document.getElementById('priceError');
+            const price = parseFloat(priceInput.value);
+
+            if (price > 10000000) {
+                priceError.textContent = '가격은 10,000,000원 이하로 입력해 주세요.';
+                document.querySelector('button[type="submit"]').disabled = true;
+            } else {
+                priceError.textContent = '';
+                document.querySelector('button[type="submit"]').disabled = false;
+            }
         }
 
         document.getElementById('editPostForm').addEventListener('submit', function(event) {
@@ -153,9 +205,8 @@
                 content: document.getElementById('content').value
             };
 
-            // 수정 요청
             fetch(`/board/api/post/${postId}`, {
-                method: 'PUT', // 서버에서 PUT 요청을 처리해야 합니다.
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -169,7 +220,7 @@
             })
             .then(data => {
                 alert('게시글이 수정되었습니다.');
-                window.location.href = '/board'; // 수정 완료 후 이동
+                window.location.href = '/board';
             })
             .catch(error => {
                 alert('게시글 수정에 실패했습니다.');

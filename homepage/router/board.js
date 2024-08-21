@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const router = express.Router();
-const { deletePost, incrementViewCount, getPosts, getPostDetails } = require('../js/sql/board');
+const { deletePost, incrementViewCount, getPosts, getPostDetails, editPost, make_chat } = require('../js/sql/board');
 
 // 메인 페이지 로드
 router.get('/', (req, res) => {
@@ -88,5 +88,22 @@ router.delete('/api/post/:id', async (req, res) => {
         res.status(500).json({ message: '게시글 삭제에 실패했습니다.' });
     }
 });
+
+// 게시글 수정 API
+router.put('/api/post/:postId', async (req, res) => {
+    const postId = req.params.postId;
+    const postData = req.body;
+
+    try {
+        const result = await editPost(postId, postData);
+        res.status(200).json({ message: '게시글이 성공적으로 수정되었습니다.', result });
+    } catch (error) {
+        res.status(500).json({ message: '게시글 수정에 실패했습니다.', error: error.message });
+    }
+});
+
+router.post('/chat', (req, res) => {
+    make_chat(req, res);
+})
 
 module.exports = router;

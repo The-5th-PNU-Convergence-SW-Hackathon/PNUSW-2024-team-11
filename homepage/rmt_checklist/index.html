@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="index.css" /> -->
-    <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css" />
-    <script src="bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/bootstrap-5.3.3-dist/css/bootstrap.min.css" />
+    <script src="/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
         let today = new Date();
@@ -44,7 +44,7 @@
         내 Checklist 수정하기
     </div>
 
-    <form id="rmt_checklist">
+    <form id="rmt_checklist" method="post" action="/checklist/post_checklist" name="checklist">
 
         <ul class="rmt_checklist">
             <li>
@@ -67,12 +67,12 @@
                 <div class="input_label">흡연 여부</div>
                 <div class="align-chkbox">
                     <div class="checkbox-wrapper-19">
-                        <input class="form-check-input" type="checkbox" name="smoking" id="흡연" value="흡연">
+                        <input class="form-check-input" type="checkbox" name="smoking" id="흡연" value="1">
                         <label class="check-box" for="흡연"></label>
                         <label class="chk-label" for="흡연">흡연</label>
                     </div>
                     <div class="checkbox-wrapper-19">
-                        <input class="form-check-input" type="checkbox" name="smoking" id="비흡연" value="비흡연">
+                        <input class="form-check-input" type="checkbox" name="smoking" id="비흡연" value="0">
                         <label class="check-box" for="비흡연"></label>
                         <label class="chk-label" for="비흡연">비흡연</label>
                     </div>
@@ -164,7 +164,7 @@
             </li>
             
             <div class="mb-3">
-                <input type="submit" class="btn btn-light" style="color: rgb(81, 132, 221);" placeholder="제출" id="submit" disabled>
+                <input type="submit" class="btn btn-light" style="color: rgb(81, 132, 221);" placeholder="제출" id="submit" value="저장" disabled />
             </div>
         </ul>
     </form>
@@ -198,5 +198,11 @@
     </div>
 
     <!-- <script src="index.js"></script> -->
+    <!-- <script type="text/javascript">
+        document.getElementById("rmt_checklist").addEventListener("submit", function(event) {
+            const actionPath = this.action;
+            alert("Form action path: " + actionPath);
+        });
+    </script> -->
 </body>
 </html>

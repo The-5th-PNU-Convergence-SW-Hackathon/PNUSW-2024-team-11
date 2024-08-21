@@ -3,6 +3,7 @@ $(document).ready(() => {
     const currentUrlParams = new URLSearchParams(window.location.search);
     const currentSort = currentUrlParams.get('sort') || 'recent'; // 기본값으로 'recent'
     const currentOrder = currentUrlParams.get('order') || 'desc'; // 기본값으로 'desc'
+    const currentCategory = currentUrlParams.get('category') || ''; // 기본값으로 전체 카테고리
     const currentSearchQuery = currentUrlParams.get('search') || '';
 
     if (!currentSort || !currentOrder) {
@@ -25,6 +26,7 @@ $(document).ready(() => {
         })
         .then(data => {
             posts = data;
+            applyCategoryFilter(); // 카테고리 필터 적용
             currentPage = 0;
             applySortingAndFiltering();
             loadPosts(true);
@@ -36,6 +38,19 @@ $(document).ready(() => {
                     console.log('Received instead of valid JSON:', bodyText);
                 });
         });
+    }
+
+    function applyCategoryFilter() {
+        const categoryMap = {
+            'clothes': '의류',
+            'book': '도서',
+            'electronics': '전자기기'
+        };
+
+        const selectedCategory = categoryMap[currentCategory];
+        if (selectedCategory) {
+            posts = posts.filter(post => post.category === selectedCategory);
+        }
     }
 
     function timeAgo(date) {
@@ -99,9 +114,9 @@ $(document).ready(() => {
                 <img src="${post.photos || 'https://via.placeholder.com/150'}" class="post-image" alt="${post.title}">
                 <div class="post-content">
                     <h3>${post.title}</h3>
-                    <p class= "post-time" style="color: grey;">${timeAgo(post.updatedAt)}</p>
+                    <p class="post-time" style="color: grey;">${timeAgo(post.updatedAt)}</p>
                     <h3><strong>${pricecomma(post.price)}원</strong></h3>
-                    <p class= "post-info" style="color: grey;">${post.category} | ${statusMap(post.condition)}</p>
+                    <p class="post-info" style="color: grey;">${post.category} | ${statusMap(post.condition)}</p>
                     <p class="post-views" style="color: grey; text-align: right;"><strong>👁️‍🗨️</strong> ${post.views}</p> 
                 </div>
             `;
@@ -185,12 +200,12 @@ $(document).ready(() => {
     function reloadPageWithParams(params) {
         const searchQuery = $('input[type="text"]').val() || currentSearchQuery;
         params.search = searchQuery;
+        params.category = currentCategory; // 카테고리 파라미터를 추가합니다.
         const queryString = new URLSearchParams(params).toString();
         window.location.search = queryString;
     }
 
     $('#sortPopularity').on('click', () => {
-        const params = new URLSearchParams(window.location.search);
         reloadPageWithParams({ sort: 'popularity', search: currentSearchQuery });
     });
 
@@ -215,7 +230,7 @@ $(document).ready(() => {
         fetchPosts(searchQuery);
     });
 
-    //  sorting buttons 상태 초기화 based on current URL parameters
+    // sorting buttons 상태 초기화 based on current URL parameters
     applySortingAndFiltering();
     fetchPosts(currentSearchQuery);
     window.addEventListener('scroll', handleScroll);

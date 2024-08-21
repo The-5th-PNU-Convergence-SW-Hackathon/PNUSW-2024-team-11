@@ -3,7 +3,7 @@ const router = express.Router();
 const crypto = require('../js/crypto');
 const verify = require('../js/verify');
 
-router.get('/', (req, res) => res.sendFile('test.html', {root: './test'}));
+router.get('/', (req, res) => res.sendFile('index.html', {root: './test'}));
 router.get('/verify_email', async (req, res) => {
     const email = "scientistkjm@naver.com";
     const iv = crypto.create_iv();

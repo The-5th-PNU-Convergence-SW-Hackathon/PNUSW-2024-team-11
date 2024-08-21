@@ -16,5 +16,6 @@ router.post('/makeroom', (req, res) => {
     res.json({});
 });
 router.post('/chat', (req, res) => sql.make_room(req, res));
+router.post('/notification', (req, res) => sql.get_notification(req, res));
 
 module.exports = router;

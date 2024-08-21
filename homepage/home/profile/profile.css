@@ -57,6 +57,7 @@ header img {
     margin-top:10px;
     width:50px;
     height: 50px;
+    
 }
 #choices{
     margin-left: 10px;
@@ -70,6 +71,8 @@ header img {
     font-weight: bold;
 }
 #menu2 {
+    display: flex;
+    flex-direction: column;
     padding:20px;
     margin:10px;
 }
@@ -82,4 +85,13 @@ header img {
 	height:24px;
     margin-right:10px;
     margin-left:5px;
+}
+#menu2 div, #menu2 a {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    font-size: 16px; /* 로그아웃과 동일한 폰트 크기 */
+    color: black; /* 로그아웃과 동일한 색상 */
+    text-decoration: none; /* 링크의 밑줄 제거 */
+    font-family: Arial, sans-serif; /* 로그아웃과 동일한 폰트 */
 }
