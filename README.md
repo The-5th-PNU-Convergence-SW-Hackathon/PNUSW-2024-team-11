@@ -191,7 +191,21 @@ P-bud
 > 프로젝트 소개 동영상을 교육원 메일(swedu@pusan.ac.kr)로 제출 이후 센터에서 부여받은 youtube URL주소를 넣으세요.
 
 ### 6. 팀 소개
-> 팀원 소개 & 구성원 별 역할 분담 & 간단한 연락처를 작성하세요.
+| 김진목 | 박혜린 | 여채언 | 이유민 | 이유진 |
+|:-------:|:-------:|:-------:|:-------:|:-------:|
+|<img width="100px" alt="안성수" src="https://avatars.githubusercontent.com/u/67642811?v=4" /> | <img width="100px" alt="홍태근" src="https://avatars.githubusercontent.com/u/79072462?v=4" /> | <img width="100px" alt="정솔빈" src="https://avatars.githubusercontent.com/u/108869351?v=4" /> | <img width="100px" alt="임정근" src="https://avatars.githubusercontent.com/u/102662177?v=4" /> | <img width="100px" alt="김상준" src="https://avatars.githubusercontent.com/u/133668870?v=4" /> |
+| truetree@pusan.ac.kr | hyerin010140@pusan.ac.kr | codjs2659@pusan.ac.kr | wint123@pusan.ac.kr | pustraw0454@naver.com |
+| 정보컴퓨터공학과 <br/> 백엔드, 보안 | 언어정보학과 <br/> 기획, 디자인 |  정보컴퓨터공학과 <br/> 백엔드 | 정보컴퓨터공학과 <br/> 프론트엔드, 디자인 | 정보컴퓨터공학과 <br/> 벡엔드, DB | 
+
 
 ### 7. 해커톤 참여 후기
-> 팀원 별 해커톤 참여 후기를 작성하세요. 
+- 김진목
+  > 작성하세요.
+- 박혜린
+  > 작성하세요.
+- 여채언
+  > 작성하세요.
+- 이유민
+  > 작성하세요.
+- 이유진
+  > 작성하세요.
