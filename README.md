@@ -25,23 +25,23 @@
 
 ### 3. 개발결과
 #### 3.1. 전체시스템 흐름도
-- IA (information architecture)
-<img width="646" alt="IA" src="https://github.com/user-attachments/assets/49c20b3d-904a-4afb-a998-b5bcb1ad1657">
+- IA (information architecture)   
+  <img width="800" alt="IA" src="https://github.com/user-attachments/assets/98d31b78-52bb-44c4-b0ae-b563e74b0a8b">
 
-- 컴포넌트
-<img width="479" alt="컴포넌트_형식" src="https://github.com/user-attachments/assets/8d9caa10-826e-4084-a76b-1213d59d3066">
+- 컴포넌트   
+  <img width="479" alt="컴포넌트_형식" src="https://github.com/user-attachments/assets/8d9caa10-826e-4084-a76b-1213d59d3066">
 
-- 회원가입/로그인
-<img width="674" alt="회원가입-로그인" src="https://github.com/user-attachments/assets/e49a411f-6bc5-4816-bb5b-57db3e384a52">
+- 회원가입/로그인   
+  <img width="674" alt="회원가입-로그인" src="https://github.com/user-attachments/assets/e49a411f-6bc5-4816-bb5b-57db3e384a52">
 
-- 게시판
-<img width="547" alt="게시판" src="https://github.com/user-attachments/assets/7654f053-7702-4969-83b1-ae0212311e5a">
+- 게시판   
+  <img width="514" alt="게시판" src="https://github.com/user-attachments/assets/3c9be36a-9f6c-44eb-90d1-21f26e8591e2">
 
-- 채팅
-<img width="389" alt="채팅" src="https://github.com/user-attachments/assets/36f5771d-abc3-4f05-9179-d1b165163519">
+- 채팅   
+  <img width="389" alt="채팅" src="https://github.com/user-attachments/assets/36f5771d-abc3-4f05-9179-d1b165163519">
 
-- 마이페이지
-<img width="695" alt="마이페이지" src="https://github.com/user-attachments/assets/8d13d214-d613-4090-89c8-0d039a66f51c">
+- 마이페이지   
+  <img width="695" alt="마이페이지" src="https://github.com/user-attachments/assets/8d13d214-d613-4090-89c8-0d039a66f51c">
 
 
 #### 3.2. 기능설명
@@ -62,26 +62,29 @@
 > (영상)
 
 #### 3.3. 기능명세서
-- 회원가입
-<img width="700" alt="기능명세서-홈상하단바" src="https://github.com/user-attachments/assets/37236283-da5b-49e1-8fdb-f8037e6e756e">
+- 홈, 상하단바   
+  <img width="700" alt="기능명세서-홈상하단바" src="https://github.com/user-attachments/assets/9c116cf2-51b1-480c-8f06-394797566a5d">
 
-- 로그인
-<img width="700" alt="기능명세서-로그인" src="https://github.com/user-attachments/assets/0d8599bc-0975-4986-abc5-c0fce4e234a4">
+- 회원가입   
+  <img width="700" alt="기능명세서-회원가입" src="https://github.com/user-attachments/assets/21d587fe-9fec-40c3-b8a7-d8a45468a255">
 
-- 마이페이지
-<img width="700" alt="기능명세서-마이페이지" src="https://github.com/user-attachments/assets/834ac611-1220-4f01-9111-93c3a32b75c8">
+- 로그인   
+  <img width="700" alt="기능명세서-로그인" src="https://github.com/user-attachments/assets/0d8599bc-0975-4986-abc5-c0fce4e234a4">
 
-- 게시판
-<img width="700" alt="기능명세서-게시판" src="https://github.com/user-attachments/assets/3946a5aa-6275-4fa6-a9d9-a38be0818462">
+- 마이페이지   
+  <img width="700" alt="기능명세서-마이페이지" src="https://github.com/user-attachments/assets/834ac611-1220-4f01-9111-93c3a32b75c8">
 
-- 채팅
-<img width="700" alt="기능명세서-채팅" src="https://github.com/user-attachments/assets/11005c42-f86a-488d-9c56-cde66d506876">
+- 게시판   
+  <img width="700" alt="기능명세서-게시판" src="https://github.com/user-attachments/assets/3946a5aa-6275-4fa6-a9d9-a38be0818462">
 
-- 룸메이트 매칭
-<img width="700" alt="기능명세서-룸메매칭" src="https://github.com/user-attachments/assets/20b0d29f-5030-4387-82ff-e453f7274f1e">
+- 채팅   
+  <img width="700" alt="기능명세서-채팅" src="https://github.com/user-attachments/assets/11005c42-f86a-488d-9c56-cde66d506876">
 
-- 지도
-<img width="700" alt="기능명세서-지도" src="https://github.com/user-attachments/assets/e9dd3eb2-b2fb-4a34-9095-2cc118f1d9c5">
+- 룸메이트 매칭   
+  <img width="700" alt="기능명세서-룸메매칭" src="https://github.com/user-attachments/assets/20b0d29f-5030-4387-82ff-e453f7274f1e">
+
+- 지도   
+  <img width="700" alt="기능명세서-지도" src="https://github.com/user-attachments/assets/e9dd3eb2-b2fb-4a34-9095-2cc118f1d9c5">
 
 
 #### 3.4. 디렉토리 구조
