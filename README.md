@@ -1,35 +1,3 @@
-# Template for Hackathon
-이 레파지토리는 참여자들이 해커톤 결과물을 위한 레파지토리 생성시에 참고할 내용들을 담고 있습니다.
-1. 레파지토리 생성
-2. 레파지토리 구성
-3. README.md 가이드라인
-4. README.md 작성팁
-<br/>
-
-
-## 1. 레파지토리 생성
-- [https://classroom.github.com/a/mrBmI_GF](https://classroom.github.com/a/mrBmI_GF)
-- 위 Github Classroom 링크에 접속해 본인 조의 github 레파지토리를 생성하세요.
-<img src="https://github.com/pnuswedu/SW-Hackathon-2024/assets/34933690/a1e1403b-eeb5-40f1-b2a3-83f5d640a369" width="600px" alt="Classroom에서 team 생성" />
-
-- 레파지토리 생성 시 팀 이름은 `{연도}-TEAM-{조번호}` 형식으로 생성하세요.
-- 예를 들어, 2024년도 3조의 팀명은 `2024-TEAM-03` 입니다.
-- 이 경우 `PNUSW-2024-TEAM-03`이라는 이름으로 레포지토리가 생성됩니다.
-<br/>
-
-
-## 2. 레파지토리 구성
-- 레파지토리 내에 `README.md` 파일 생성하고 아래의 가이드라인과 작성팁을 참고하여 파일을 작성하세요.
-- 레파지토리 내에 `docs` 폴더를 생성하고 폴더 내에는 과제 수행 하면서 작성한 각종 보고서, 발표자료를 올려둡니다.
-- 그 밖에 레파지토리의 폴더 구성은 과제 결과물에 따라 자유롭게 구성하되 가급적 코드의 목적이나 기능에 따라 폴더를 나누어 구성하세요.  
-<br/>
-
-
-## 3. README.md 가이드라인
-- README 파일 작성시에 아래의 5가지 항목의 내용은 필수적으로 포함해야 합니다.
-- 아래의 7가지 항목이외에 프로젝트의 이해를 돕기위한 내용을 추가해도 됩니다.
-- `SAMPLE_README.md`가 단순한 형태의 예제이니 참고하세요.
-```markdown
 ### 1. 프로젝트 소개
 #### 1.1. 개발배경 및 필요성
 > 프로젝트를 실행하게 된 배경 및 필요성을 작성하세요.
@@ -58,7 +26,24 @@
 
 ### 3. 개발결과
 #### 3.1. 전체시스템 흐름도
-> 위 내용을 작성하세요.
+- IA (information architecture)
+<img width="646" alt="IA" src="https://github.com/user-attachments/assets/49c20b3d-904a-4afb-a998-b5bcb1ad1657">
+
+- 컴포넌트
+<img width="479" alt="컴포넌트_형식" src="https://github.com/user-attachments/assets/8d9caa10-826e-4084-a76b-1213d59d3066">
+
+- 회원가입/로그인
+<img width="674" alt="회원가입-로그인" src="https://github.com/user-attachments/assets/e49a411f-6bc5-4816-bb5b-57db3e384a52">
+
+- 게시판
+<img width="547" alt="게시판" src="https://github.com/user-attachments/assets/7654f053-7702-4969-83b1-ae0212311e5a">
+
+- 채팅
+<img width="389" alt="채팅" src="https://github.com/user-attachments/assets/36f5771d-abc3-4f05-9179-d1b165163519">
+
+- 마이페이지
+<img width="695" alt="마이페이지" src="https://github.com/user-attachments/assets/8d13d214-d613-4090-89c8-0d039a66f51c">
+
 
 #### 3.2. 기능설명
 > 각 페이지 마다 사용자의 입력의 종류와 입력에 따른 결과 설명 및 시연 영상.
@@ -78,17 +63,126 @@
 > (영상)
 
 #### 3.3. 기능명세서
-> 개발한 제품에 대한 기능명세서를 작성해 제출하세요.
-> 
-> 노션 링크, 한글 문서, pdf 파일, 구글 스프레드 시트 등...
+- 회원가입
+<img width="666" alt="기능명세-회원가입" src="https://github.com/user-attachments/assets/a37094ed-28d0-4c97-a7c7-4f7370063a96">
+
+- 로그인
+<img width="835" alt="기능명세-로그인" src="https://github.com/user-attachments/assets/5e5f34d7-6781-4a3b-b027-255cf0ff5967">
+
+- 마이페이지
+<img width="830" alt="기능명세-마이페이지" src="https://github.com/user-attachments/assets/2145bed7-b4ee-401d-b488-18f658762555">
+
+- 게시판
+<img width="289" alt="기능명세-게시판" src="https://github.com/user-attachments/assets/d312da75-a6d8-4746-b26f-0117bfa76e8d">
+
+- 채팅
+<img width="832" alt="기능명세-채팅" src="https://github.com/user-attachments/assets/e707ea04-c967-42ff-a5f9-f69aad19894f">
+
+- 룸메이트 매칭
+<img width="666" alt="기능명세-룸메매칭" src="https://github.com/user-attachments/assets/ce83ccea-0609-4397-bafe-75e115707823">
+
+- 지도
+<img width="668" alt="기능명세-지도" src="https://github.com/user-attachments/assets/62f37d74-5721-477d-891f-55212dd02e12">
+
 
 #### 3.4. 디렉토리 구조
-> 위 레포지토리의 디렉토리 구조를 설명하세요.
+```
+P-bud
+   ├─ board 
+   │  ├─ detail.html     # 상세 게시글 
+   │  ├─ edit.html       # 게시글 수정
+   │  ├─ index.html      # 게시판 
+   │  ├─ post.html       # 게시글 등록
+   │  └─ matching
+   │     ├─ index.html   # 매칭 게시판
+   ├─ bootstrap-5.3.3-dist # Bootstrap 라이브러리
+   ├─ chat    # 대화방 목록 
+   │  ├─ index.html
+   │  ├─ room            # 1:1 채팅방
+   │  │  ├─ index.html
+   │  └─ timematching    # 시간 정하기
+   │     ├─ index.html
+   ├─ config             # 환경 설정 및 설정 관련 파일들
+   │  ├─ chat.js
+   │  ├─ database.js
+   │  ├─ email.js
+   │  ├─ session.js
+   │  ├─ sessiondb.js
+   │  └─ timetable.js
+   ├─ findIDPW           # ID/PW 찾기
+   │  ├─ index.html
+   ├─ home               # 메인 페이지
+   │  ├─ home.html
+   │  └─ profile              # 내 프로필
+   │     ├─ profile.html
+   │     ├─ purchaseHistory   # 판매내역
+   │     │  ├─ purchase.html
+   │     ├─ salesHistory      # 구매내역
+   │     │  ├─ sales.html
+   │     ├─ wishlist          # 관심목록
+   │     │  ├─ wishlist.html
+   │     ├─ faq               # FAQ
+   │     │  ├─ faq.html
+   │     └─ timetable    # 내 시간표 저장
+   │        ├─ timetable.html
+   ├─ js                 # JavaScript 유틸리티 스크립트 
+   ├─ json               # JSON 데이터 파일들
+   │  ├─ deptData.json
+   │  ├─ slang.json
+   ├─ login              # 로그인 페이지
+   │  ├─ index.html
+   ├─ map                # 맛집 지도
+   │  ├─ index.html
+   │  ├─ lottery.html    # 식사 메뉴 추천 룰렛
+   │  └─ navigation      # 사용자 위치 추적
+   │     ├─ navigation.html
+   │     └─ nodelist.json
+   ├─ notification       # 알림
+   │  ├─ index.html
+   ├─ pict               # 사진 및 이미지 파일들
+   │  ├─ bar
+   │  ├─ category
+   │  ├─ chkbox
+   │  ├─ icons
+   │  ├─ map
+   │  └─ profile
+   ├─ pwa                # PWA 변환 관련 파일
+   │  ├─ cache.json
+   │  └─ manifest.json
+   ├─ register           # 회원가입
+   │  ├─ index.html
+   │  ├─ status.html     # 이메일 인증 상태
+   │  └─ verify_email    # 이메일 인증
+   │     ├─ index.html
+   ├─ rmt_checklist      # 룸메이트 체크리스트
+   │  ├─ index.html
+   ├─ rmt_matching       # 룸메이트 매칭 게시판
+   │  ├─ index.html
+   ├─ router             # 라우팅 관련 스크립트 (이 디렉토리 전체 제거)
+   ├─ slang.csv          # 슬랭 단어 데이터
+   ├─ uploads            # 업로드한 사진 파일
+   ├─ package.json       # Node.js 패키지 설정 파일
+   ├─ package-lock.json  # Node.js 패키지 잠금 파일
+   ├─ node_modules       # 설치된 Node.js 모듈들
+   └─ service_worker.js  # PWA 서비스 워커 파일
+```
 
 ### 4. 설치 및 사용 방법
-> 제품을 설치하기 위헤 필요한 소프트웨어 및 설치 방법을 작성하세요.
->
-> 제품을 설치하고 난 후, 실행 할 수 있는 방법을 작성하세요.
+> IOS
+1. https://p-bud.duckdns.org 링크로 접속하기
+2. 하단 공유 버튼 클릭하기
+3. "홈 화면에 추가" 선택
+<div style="display: flex; justify-content: space-between;">
+    <img src="https://github.com/user-attachments/assets/4372fac8-aab1-4497-ada8-1b02929302ab" alt="IOS_1" style="width: 25%; margin-right: 5px;">
+    <img src="https://github.com/user-attachments/assets/0557702b-836e-4f2d-8915-bfd9ba63e64e" alt="IOS_2" style="width: 25%; margin-right: 5px;">
+</div>
+
+> Android 
+1. https://p-bud.duckdns.org 링크로 접속하기
+2. 오른쪽 상단 더보기 버튼 클릭하기
+3. "홈 화면에 추가" 선택
+
+![Android_process](https://github.com/user-attachments/assets/4f33a8a3-3e70-4fc7-b00b-35bb3d322371)
 
 ### 5. 소개 및 시연 영상
 > 프로젝트에 대한 소개와 시연 영상을 넣으세요.
@@ -98,132 +192,4 @@
 > 팀원 소개 & 구성원 별 역할 분담 & 간단한 연락처를 작성하세요.
 
 ### 7. 해커톤 참여 후기
-> 팀원 별 해커톤 참여 후기를 작성하세요.
-```
-<br/>
-
-
-## 4. README.md 작성 팁
-- 마크다운 언어를 이용해 README.md 파일을 작성할 때 참고할 수 있는 마크다운 언어 문법을 공유합니다.
-- 다양한 예제와 보다 자세한 문법은 [이 문서](https://www.markdownguide.org/basic-syntax/)를 참고하세요.
-
-### 4.1. 헤더 Header
-```
-# This is a Header 1
-## This is a Header 2
-### This is a Header 3
-#### This is a Header 4
-##### This is a Header 5
-###### This is a Header 6
-####### This is a Header 7 은 지원되지 않습니다.
-```
-
-# This is a Header 1
-## This is a Header 2
-### This is a Header 3
-#### This is a Header 4
-##### This is a Header 5
-###### This is a Header 6
-####### This is a Header 7 은 지원되지 않습니다.
-<br />
-
-### 4.2. 인용문 BlockQuote
-```
-> This is a first blockqute.
->	> This is a second blockqute.
->	>	> This is a third blockqute.
-```
-> This is a first blockqute.
->	> This is a second blockqute.
->	>	> This is a third blockqute.
-<br />
-
-### 4.3. 목록 List
-* **Ordered List**
-```
-1. first
-2. second
-3. third  
-```
-1. first
-2. second
-3. third
-<br />
-
-* **Unordered List**
-```
-* 하나
-  * 둘
-
-+ 하나
-  + 둘
-
-- 하나
-  - 둘
-```
-* 하나
-  * 둘
-
-+ 하나
-  + 둘
-
-- 하나
-  - 둘
-<br />
-
-### 4.4. 코드 CodeBlock
-* 코드 블럭 이용 '``'
-```
-여러줄 주석 "```" 이용
-"```
-#include <stdio.h>
-int main(void){
-  printf("Hello world!");
-  return 0;
-}
-```"
-
-단어 주석 "`" 이용
-"`Hello world`"
-
-* 큰 따움표(") 없이 사용하세요.
-``` 
-<br />
-
-### 4.5. 링크 Link
-```
-[Title](link)
-[부산대 소프트웨어융합교육원](https://swedu.pusan.ac.kr/swedu/index.do)
-
-<link>
-<https://swedu.pusan.ac.kr>
-``` 
-[부산대 소프트웨어융합교육원](https://swedu.pusan.ac.kr)
-
-<https://swedu.pusan.ac.kr>  
-<br />
-
-### 4.6. 강조 Highlighting
-```
-*single asterisks*
-_single underscores_
-**double asterisks**
-__double underscores__
-~cancelline~~
-```
-*single asterisks* <br />
-_single underscores_ <br />
-**double asterisks** <br />
-__double underscores__ <br />
-~cancelline~~  <br />
-<br />
-
-### 4.7. 이미지 Image
-```
-<img src="/path/to/img.jpg" width="600px" title="Title" alt="Alt text"></img>
-![Alt text](/path/to/img.jpg "Optional title")
-```
-<img src="https://github.com/pnuswedu/SW-Hackathon-2024/assets/34933690/be7beb64-490f-4480-b121-f25cde7f2a8d" width="600px" title="부산대학교 소프트웨어융합교육원" alt="부산대학교 소프트웨어융합교육원"></img>
-<br/>
-![부산대학교 소프트웨어융합교육원](https://github.com/pnuswedu/SW-Hackathon-2024/assets/34933690/884154bb-28f6-4498-9f64-a8a878972951, "부산대학교 소프트웨어융합교육원")
-<br/>
+> 팀원 별 해커톤 참여 후기를 작성하세요. 
