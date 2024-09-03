@@ -189,6 +189,7 @@ P-bud
       2. 하단에 있는 공유 버튼 클릭하기<br>
       3. "홈 화면에 추가" 선택<br>
       4. 다운로드 완료 !<br>
+      <br>
       <img src="https://github.com/user-attachments/assets/61ecf333-63ec-45c2-b844-424ebe4d4776" width=200>
     </td>
   </tr>
@@ -206,6 +207,7 @@ P-bud
       2. 오른쪽 상단 더보기 버튼 클릭하기<br>
       3. "홈 화면에 추가" 선택<br>
       4. 다운로드 완료 !<br>
+      <br>
       <img src="https://github.com/user-attachments/assets/bc55a4c1-e2d4-4b7b-b2a1-8bd6e8666fc4" width=200>
     </td>
   </tr>
