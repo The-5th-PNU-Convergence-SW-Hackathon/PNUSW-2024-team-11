@@ -63,25 +63,25 @@
 
 #### 3.3. 기능명세서
 - 회원가입
-<img width="613" alt="기능명세서-홈상하단바" src="https://github.com/user-attachments/assets/37236283-da5b-49e1-8fdb-f8037e6e756e">
+<img width="700" alt="기능명세서-홈상하단바" src="https://github.com/user-attachments/assets/37236283-da5b-49e1-8fdb-f8037e6e756e">
 
 - 로그인
-<img width="613" alt="기능명세서-로그인" src="https://github.com/user-attachments/assets/0d8599bc-0975-4986-abc5-c0fce4e234a4">
+<img width="700" alt="기능명세서-로그인" src="https://github.com/user-attachments/assets/0d8599bc-0975-4986-abc5-c0fce4e234a4">
 
 - 마이페이지
-<img width="613" alt="기능명세서-마이페이지" src="https://github.com/user-attachments/assets/834ac611-1220-4f01-9111-93c3a32b75c8">
+<img width="700" alt="기능명세서-마이페이지" src="https://github.com/user-attachments/assets/834ac611-1220-4f01-9111-93c3a32b75c8">
 
 - 게시판
-<img width="613" alt="기능명세서-게시판" src="https://github.com/user-attachments/assets/3946a5aa-6275-4fa6-a9d9-a38be0818462">
+<img width="700" alt="기능명세서-게시판" src="https://github.com/user-attachments/assets/3946a5aa-6275-4fa6-a9d9-a38be0818462">
 
 - 채팅
-<img width="613" alt="기능명세서-채팅" src="https://github.com/user-attachments/assets/11005c42-f86a-488d-9c56-cde66d506876">
+<img width="700" alt="기능명세서-채팅" src="https://github.com/user-attachments/assets/11005c42-f86a-488d-9c56-cde66d506876">
 
 - 룸메이트 매칭
-<img width="613" alt="기능명세서-룸메매칭" src="https://github.com/user-attachments/assets/20b0d29f-5030-4387-82ff-e453f7274f1e">
+<img width="700" alt="기능명세서-룸메매칭" src="https://github.com/user-attachments/assets/20b0d29f-5030-4387-82ff-e453f7274f1e">
 
 - 지도
-<img width="613" alt="기능명세서-지도" src="https://github.com/user-attachments/assets/e9dd3eb2-b2fb-4a34-9095-2cc118f1d9c5">
+<img width="700" alt="기능명세서-지도" src="https://github.com/user-attachments/assets/e9dd3eb2-b2fb-4a34-9095-2cc118f1d9c5">
 
 
 #### 3.4. 디렉토리 구조
