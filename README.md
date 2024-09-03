@@ -1,4 +1,3 @@
-<img width="811" alt="기능명세서-홈상하단바" src="https://github.com/user-attachments/assets/97fff4aa-de7c-4362-b25f-462078a9e8db">### 1. 프로젝트 소개
 #### 1.1. 개발배경 및 필요성
 > 프로젝트를 실행하게 된 배경 및 필요성을 작성하세요.
 
