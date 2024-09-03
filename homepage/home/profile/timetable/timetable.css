@@ -48,9 +48,10 @@ a {
   bottom: 0px; 
   left: 0px; 
   width: 100%; 
-  height: 50px; 
+  height: 90px; 
+  padding-bottom: 20px;  
   z-index: 100; 
-  border-top: 1px solid rgba(0, 0, 0, 0.287); /*테두리를 할지.. 고민*/
+  border-top: 1px solid rgba(0, 0, 0, 0.200);
   background-color: white; 
   display: flex;
   align-items: center;
@@ -113,4 +114,89 @@ input[type="checkbox"] + label {
 input[type="checkbox"]:checked + label {
   background-color: rgba(119, 119, 206, 0.536);
   border: 1px solid rgb(157, 157, 223);
+}
+
+.container {
+  text-align: center;
+}
+
+.btn-submit {
+  margin-top: 25px;
+}
+
+.days-header, .table-row {
+  display: flex;
+  width: 100%;
+}
+
+.time-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  padding: 1.24rem 0; /* Adjust padding to match your design */
+  border: 1px solid rgb(211, 211, 211);
+  background-color: #f9f9f9;
+  font-weight: bold;
+}
+
+.day-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: 1.24rem 0s; /* Adjust padding to match your design */
+  border: 1px solid rgb(211, 211, 211);
+  background-color: #f9f9f9;
+  font-weight: bold;
+}
+
+.table-box {
+  flex: 1; /* Ensures each table box takes equal width */
+}
+
+.day {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: 3.2rem;
+  width: calc(100% - 0px); /* 시간표 너비에서 좌측 여백을 제외한 크기 */
+  font-weight: bold;
+}
+
+.time {
+  display: absolute;
+  flex-direction: column;
+  /* justify-content: space-around; */
+  align-items: center;
+  width: 60px; /* 시간표의 좌측 여백 크기 */
+  font-weight: bold;
+}
+
+.time div {
+  margin-bottom: 1rem;
+}
+
+.timetable-full {
+  display: flex;
+}
+
+#timetable {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-top: 1px solid rgb(211, 211, 211);
+}
+
+.instruction {
+  background-color: #e9e9e9; /* 밝은 파란색 배경 */
+  padding: 15px;             /* 내부 여백 */
+  border-radius: 10px;       /* 모서리를 둥글게 */
+  margin: 20px auto;         /* 상하 여백, 중앙 정렬 */
+  margin-left: 50px;
+  text-align: center;        /* 텍스트 가운데 정렬 */
+  font-size: 16px;           /* 글자 크기 */
+  color: #333;               /* 텍스트 색상 */
+  max-width: 100%;            /* 최대 너비 설정 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 약간의 그림자 */
 }

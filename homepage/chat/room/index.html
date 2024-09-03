@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard-dynamic-subset.css" />
+    <style>
+        *{
+            /* Pretendard 우선하는 경우 */
+            font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+        }
+    </style>
     <link rel="icon" type="image/png" href="/pict/logo_blue_notxt.png"> <!-- for title logo -->
     <script src="https://code.jquery.com/jquery-latest.js"></script> <!-- for jquery -->
     <!-- under the 2 lines for bootstrap -->
@@ -28,17 +35,51 @@
 <body>
     <div class="wrapper">
         <div class="header">
-            <a class="header-basis" href="/chat" ><img src="/pict/icons/arrow-left.png" alt="Arrow Icon" width="9.5" height="16"></a>
-            <div class="header-basis" id="away_nickname"></div>
-            <div class="header-basis" id="online">away_offline</div>
+            <a class="header-basis header-icon" href="/chat">
+                <img src="/pict/icons/arrow-left.png" alt="Arrow Icon" width="9.5" height="16">
+            </a>
+            <div class="header-center">
+                <div class="header-basis header-title" id="away_nickname">테스트2</div>
+                <div class="header-basis header-status" id="online">away_offline</div>
+            </div>
+            <!-- 신고 버튼 -->
+            <img class="header-basis header-icon" src="/pict/report.png" alt="신고" id="report">
+            <!-- 신고 모달 구조 -->
+            <div id="reportModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h2>신고사유</h2>
+                    <form id="reportForm">
+                        <!-- 신고 사유 선택 (예: 옵션) -->
+                        <div class="filter-group">
+                            <label><input type="radio" name="report_reason" value="상품 정보 거짓 게시">  상품 정보 거짓 게시</label>
+                            <label><input type="radio" name="report_reason" value="사기거래">  사기거래</label>
+                            <label><input type="radio" name="report_reason" value="가품 판매">  가품(위조품) 판매</label>
+                            <label><input type="radio" name="report_reason" value="노쇼">  노쇼</label>
+                            <label><input type="radio" name="report_reason" value="청소년 유해상품">  청소년 유해상품</label>
+                            <label><input type="radio" name="report_reason" value="욕설/인신공격">  욕설/인신공격</label>
+                            <label><input type="radio" name="report_reason" value="기타">  기타</label>
+                        </div>
+                        <textarea placeholder="상세 사유 입력" rows="4"></textarea>
+                        <!-- 신고 제출 버튼 -->
+                        <button type="submit" id="submitReport">신고하기</button>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div>사용자 프로필/정보/신고버튼 추가 필요</div>
-
-        <hr id="line">
-
+        <div id="report-info">신고 내역을 불러오는 중...</div>
+        <!-- <div>사용자 프로필/정보/신고버튼 추가 필요</div> -->
         <div class="container">
             <div id="chatlist"></div>
             <div class="chatting">
+                <div class="timetable-button">
+                    <button id="timetable" class="timetable"><img src="/pict/icons/clock.png" />시간 정하기</button>
+                </div>
+                <div class="timetable-button">
+                    <button id="recommend0" class="timetable" style="display: none;">1</button>
+                    <button id="recommend1" class="timetable" style="display: none;">2</button>
+                    <button id="recommend2" class="timetable" style="display: none;">3</button>
+                </div>
                 <div class="input-group mb-3">
                     <input class="form-control" type="text" id="chat" placeholder="채팅.." name="chat">
                     <span></span><button class="btn btn-dark-color btn-dark" id="send">전송</button>

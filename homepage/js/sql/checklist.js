@@ -9,11 +9,13 @@ let post_checklist = async (req, res) => {
     try {
         let user_id = req.session.USER[0];
         let gender = body.gender; // 1 = 남, 2 = 여
+        let dorm = body.dorm; // 0 = 자유관, 1 = 웅비관, 2 = 효원재
         let smoking = body.smoking; // 0 = 비흡연, 1 = 흡연
-        let drinking_frequency = body.drinking_frequency; // 주1회미만, 주23회, 주4회이상
+        let drinking_frequency = body.drinking_frequency; // 주1회미만, 주2~3회, 주4회이상
         let sleep_pattern = body.sleep_pattern; // 아침형, 저녁형
         let sleep_habit = body.sleep_habit; // 없음, 이갈이, 잠꼬대, 코골이
         let guest_visit = body.guest_visit; // 0 = 불가능, 1 = 상관X, 2 = 사전허락
+        let comment = body.comment;
 
         // Query to check if a checklist entry exists for the given USER_ID
         const checkQuery = `
@@ -35,11 +37,11 @@ let post_checklist = async (req, res) => {
 
                 const updateQuery = `
                     UPDATE ROOMMATE_CHECKLIST
-                    SET GENDER = ?, SMOKING = ?, DRINKING_FREQUENCY = ?, SLEEP_PATTERN = ?, SLEEP_HABIT = ?, GUEST_VISIT = ?
+                    SET GENDER = ?, DORM = ?, SMOKING = ?, DRINKING_FREQUENCY = ?, SLEEP_PATTERN = ?, SLEEP_HABIT = ?, GUEST_VISIT = ?, COMMENT = ?
                     WHERE CHECKLIST_ID = ?;
                 `;
 
-                connection.query(updateQuery, [gender, smoking, drinking_frequency, sleep_pattern, sleep_habit, guest_visit, checklist_id], (err) => {
+                connection.query(updateQuery, [gender, dorm, smoking, drinking_frequency, sleep_pattern, sleep_habit, guest_visit, comment, checklist_id], (err) => {
                     if (err) {
                         console.error('데이터 업데이트 중 오류 발생:', err);
                         res.status(500).send("데이터 업데이트 중 오류가 발생했습니다.");
@@ -52,11 +54,11 @@ let post_checklist = async (req, res) => {
             } else {
                 // If no record exists, insert a new one
                 const insertQuery = `
-                    INSERT INTO ROOMMATE_CHECKLIST (USER_ID, GENDER, SMOKING, DRINKING_FREQUENCY, SLEEP_PATTERN, SLEEP_HABIT, GUEST_VISIT)
-                    VALUES (?, ?, ?, ?, ?, ?, ?);
+                    INSERT INTO ROOMMATE_CHECKLIST (USER_ID, GENDER, DORM, SMOKING, DRINKING_FREQUENCY, SLEEP_PATTERN, SLEEP_HABIT, GUEST_VISIT, COMMENT)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
                 `;
 
-                connection.query(insertQuery, [user_id, gender, smoking, drinking_frequency, sleep_pattern, sleep_habit, guest_visit], (err) => {
+                connection.query(insertQuery, [user_id, gender, dorm, smoking, drinking_frequency, sleep_pattern, sleep_habit, guest_visit, comment], (err) => {
                     if (err) {
                         console.error('데이터 삽입 중 오류 발생:', err);
                         res.status(500).send("데이터 삽입 중 오류가 발생했습니다.");
@@ -72,14 +74,14 @@ let post_checklist = async (req, res) => {
         console.error("post_checklist 함수 실행 중 오류 발생:", error);
         res.status(500).send("post_checklist 함수 실행 중 오류가 발생했습니다.");
     }
-}
+};
 
 let get_checklist = async (req, res) => {
     try {
         let user_id = req.session.USER[0];
 
         const selectQuery = `
-            SELECT GENDER, SMOKING, DRINKING_FREQUENCY, SLEEP_PATTERN, SLEEP_HABIT, GUEST_VISIT
+            SELECT GENDER, DORM, SMOKING, DRINKING_FREQUENCY, SLEEP_PATTERN, SLEEP_HABIT, GUEST_VISIT, COMMENT
             FROM ROOMMATE_CHECKLIST
             WHERE USER_ID = ?;
         `;
@@ -101,7 +103,6 @@ let get_checklist = async (req, res) => {
         console.error("get_checklist 함수 실행 중 오류 발생:", error);
         res.status(500).send("get_checklist 함수 실행 중 오류가 발생했습니다.");
     }
-}
-
+};
 
 module.exports = { post_checklist, get_checklist };

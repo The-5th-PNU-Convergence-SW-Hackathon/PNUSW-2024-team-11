@@ -95,3 +95,12 @@ header img {
     text-decoration: none; /* 링크의 밑줄 제거 */
     font-family: Arial, sans-serif; /* 로그아웃과 동일한 폰트 */
 }
+#menu1 div, #menu1 a {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    font-size: 16px; /* 로그아웃과 동일한 폰트 크기 */
+    color: black; /* 로그아웃과 동일한 색상 */
+    text-decoration: none; /* 링크의 밑줄 제거 */
+    font-family: Arial, sans-serif; /* 로그아웃과 동일한 폰트 */
+}

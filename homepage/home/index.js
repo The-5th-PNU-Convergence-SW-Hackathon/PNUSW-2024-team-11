@@ -21,5 +21,5 @@ if('serviceWorker' in navigator) {
     // let nowTime = "?ver=" + today.getTime();
     navigator.serviceWorker
     .register('./service_worker.js'/*  + nowTime */)
-    .then(() => console.log('서비스 워커 등록!'));
+    // .then(() => console.log('서비스 워커 등록!'));
 }

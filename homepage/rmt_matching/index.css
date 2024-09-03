@@ -1,22 +1,32 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding-top: 50px;  /* Padding for top menu */
+    padding-bottom: 63px;  /* Padding for bottom menu */
+    box-sizing: border-box;
+}
+
+/* Link Styles */
 a {
     text-decoration: none;
     color: black;
 }
+
+/* Top Menu */
 .menu {
-    position: fixed; 
-    left: 0px; 
-    width: 100%; 
-    height: 50px; 
-    z-index: 100; 
-    background-color: white; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 100;
+    background-color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 10px;
 }
-.top_menu_1 {
-    top: 0px;
-}
+
 .top_menu_1 .center {
     position: absolute;
     left: 50%;
@@ -24,9 +34,12 @@ a {
     font-size: 18px;
     font-weight: bold;
 }
+
 .top_menu_1 img {
     height: 30px;
 }
+
+/* Search Bar */
 .search_container {
     position: fixed;
     top: 50px;
@@ -39,72 +52,283 @@ a {
     padding-top: 10px;
     border-bottom: 1px solid black;
 }
+
 .search_container input[type="text"] {
     width: 80%;
     height: 30px;
 }
+
+/* Bottom Menu */
 .bottom_menu { 
     position: fixed; 
     bottom: 0px; 
     left: 0px; 
     width: 100%; 
-    height: 50px; 
+    height: 90px; 
+    padding-bottom: 20px;
     z-index: 100; 
-    border-top: 1px solid rgba(0, 0, 0, 0.287); /*�׵θ��� ����.. ����*/
+    border-top: 1px solid rgba(0, 0, 0, 0.200);
     background-color: white; 
     display: flex;
     align-items: center;
     justify-content: space-around;
     padding-top: 5px;
 }
-.bottom_menu > div { 
-    text-align: center; 
+
+.bottom_menu > div {
+    text-align: center;
 }
+
 .bottom_menu img {
     height: 30px;
 }
+
 .bottom_menu div span {
     display: block;
     font-size: 12px;
 }
-body {
-    padding-top: 80px; /* to avoid content being hidden behind the top menus and search bar */
-    padding-bottom: 60px; /* to avoid content being hidden behind the bottom menu */
-}
+
+/* Edit Button */
 .edit {
-    background-color: rgb(81, 132, 221);
+    background-color: #2D5FB4;
     color: white;
     padding: 0.7rem;
-    border: 0px;
+    border: 0;
     border-radius: 100%;
-    position: absolute;
-    right: 1rem;
-    bottom: 4rem;
+    position: fixed;
+    right: 1.5rem;
+    bottom: 4.5rem;
     transition: 0.4s;
 }
+
 button:hover {
     opacity: 0.3;
 }
+
 .edit-img {
     width: 3rem;
 }
 
-/* <div class="col-md-4">
-<div class="card mb-4">
-    <div class="card-body">
-        <h5 class="card-title">${Major} ${YearPart}</h5> <!-- 학과와 학번 표시 -->
-        <p class="card-text"><strong>Gender:</strong> ${roommate.GENDER === 1 ? 'Male' : 'Female'}</p>
-        <details>
-            <summary>ㅎㅇ</summary
-            <p class="card-text"><strong>Smoking:</strong> ${roommate.SMOKING === 1 ? 'Yes' : 'No'}</p>
-            <p class="card-text"><strong>Drinking Frequency:</strong> ${roommate.DRINKING_FREQUENCY}</p>
-            <p class="card-text"><strong>Sleep Pattern:</strong> ${roommate.SLEEP_PATTERN}</p>
-            <p class="card-text"><strong>Sleep Habit:</strong> ${roommate.SLEEP_HABIT}</p>
-            <p class="card-text"><strong>Guest Visit:</strong> ${roommate.GUEST_VISIT === 0 ? '불가능' : roommate.GUEST_VISIT === 1 ? '상관X' : '사전 허락'}</p>
-        </details>
-    </div>
-</div>
-</div> */
+/* Checkbox Button Styles */
+.align-chkbox {
+    display: flex;
+    justify-content: left;  /* Center align the checkboxes */
+    margin: 10px 0;  /* Add some margin for spacing */
+}
 
-/* 게시물 css */
-/* .card-text  */
+.align-chkbox > div {
+    margin-right: 10px; /* Space between buttons */
+}
+
+.checkbox-wrapper-19 input[type="radio"] {
+    display: none; /* Hide the default checkbox */
+}
+
+.checkbox-wrapper-19 input[type="radio"] + label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e6e6e6;
+    color: black;
+    border: 1px solid #e6e6e6;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.checkbox-wrapper-19 input[type="radio"]:checked + label {
+    background-color: #2D5FB4;  /* Change to a nice shade */
+    color: white;
+    border: 1px solid #2D5FB4;
+}
+
+.checkbox-wrapper-19 input[type="radio"] + label:hover {
+    color: white;
+    background-color: #2D5FB4; /* Hover effect */
+}
+
+/* From Uiverse.io by vinodjangid07 */ 
+.filter {
+    margin: 0px 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e6e6e6;
+    background-color: #e6e6e6; /* Set initial background */
+    color: black; /* Set initial text color */
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.filter svg {
+    height: 16px;
+    fill: black;
+}
+
+.filter:hover {
+    background-color: #2D5FB4; /* Hover effect background */
+    color: white; /* Hover effect text color */
+    border: 1px solid #2D5FB4; /* Match border to hover color */
+}
+
+.filter:hover svg {
+    fill: white; /* Change SVG color on hover */
+}
+
+/* Simulate 'checked' state effect */
+.filter.active {
+    background-color: #2D5FB4; /* Checked background color */
+    color: white; /* Checked text color */
+    border: 1px solid #2D5FB4; /* Match border to active color */
+}
+
+.filter.active svg {
+    fill: white; /* Change SVG color when active */
+}
+
+/* Modal Styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 95%;
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay effect */
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    border-radius: 8px;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Flexbox for horizontal alignment */
+.filter-group {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping to the next line if needed */
+    gap: 10px; /* Spacing between items */
+    margin-bottom: 15px; /* Space below each filter group */
+}
+
+fieldset {
+    border: none;
+    margin: 10px 0;
+}
+
+legend {
+    font-weight: bold;
+    margin-bottom: 10px; /* Space between legend and options */
+}
+
+label {
+    display: flex;
+    align-items: center;
+}
+
+input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+button#applyFilters {
+    background-color: #2D5FB4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button#applyFilters:hover {
+    background-color: #5A8FD8;
+}
+
+button {
+    background-color: #1148A6;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0px 0;
+    display: inline-block;
+    font-size: small;
+}
+
+button:hover {
+    background-color: #0e3a82;
+}
+
+/* Enhanced Card Styling */
+.card {
+    border: 1px solid #ccc; /* Lighter border for a brighter look */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Softer shadow for a lighter effect */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effect */
+    overflow: hidden; /* Prevent content from spilling out */
+    background-color: #ffffff; /* Brighter background */
+}
+
+.card-body {
+    padding: 20px; /* Add padding inside the card */
+    background-color: #fefefe; /* Lighter background for contrast */
+    text-align: left; /* Left-align text */
+}
+
+.card-title {
+    font-size: 1.2rem; /* Larger title font size */
+    font-weight: bold;
+    margin-bottom: 10px; /* Space below the title */
+    color: #2D5FB4; /* Slightly brighter blue for the title */
+}
+
+.card-text {
+    font-size: 0.9rem; /* Smaller font for details */
+    margin-bottom: 8px; /* Space below each paragraph */
+    color: #333; /* Slightly lighter text color */
+}
+
+.roommate-details summary {
+    font-size: 0.95rem; /* Maintain font size for visibility */
+    background-color: #f3f3f3; /* Light gray background to highlight */
+    padding: 5px 10px; /* Add padding around the comment */
+    border-left: 4px solid #b0b0b0; /* Gray left border for emphasis */
+    margin-bottom: 10px; /* Space below the comment */
+    cursor: pointer; /* Change cursor to indicate interaction */
+    border-radius: 5px; /* Rounded corners for a softer look */
+    color: #333; /* Darker text color for contrast */
+}
+
+.chat-button {
+    background-color: #2D5FB4; /* Brighter button color */
+    color: white;
+    padding: 8px 16px; /* Adjusted padding for better appearance */
+    border-radius: 20px; /* Rounded button */
+    transition: background-color 0.3s;
+    text-align: center; /* Center-align text inside the button */
+}
+
+.chat-button:hover {
+    background-color: #5393F5; /* Lighter shade on hover */
+}

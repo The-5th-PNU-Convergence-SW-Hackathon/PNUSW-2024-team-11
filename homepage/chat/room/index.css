@@ -6,23 +6,62 @@
 
 .header {
     display: flex;
-    margin: 20px;
-    font-weight: bold;
+    align-items: center; /* 수직 정렬 */
+    padding: 20px 16px;
+    justify-content: space-between; /* 아이템 간 간격 유지 */
+    background-color: #eaeaea;
+    border-bottom: 1px solid #d4d8dc;
+    position:relative;
+}
+
+#report {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+#report-info{
+    padding:5px;
+    background-color: #eaeaea;
     text-align: center;
-    margin-bottom: 20px; /* 이 값을 필요에 따라 조정 */
-    justify-content: space-around;
-} 
+    border-bottom: 1px solid #dee2e6;
+    font-size:16px;
+    color:#666;
+}
 
 .header-basis {
-    flex-basis: 10px;
-    flex-grow: 1;
+    flex: 1;
+    text-align: center;
+}
+
+.header-icon {
+    flex: 0 0 auto;
+    margin-right: 8px;
+    cursor: pointer;
+}
+.header-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    padding:8px 0px;
+}
+
+.header-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0; 
+}
+
+.header-status {
+    font-size: 14px;
+    color: #666;
+    margin:0px;
 }
 
 #line {
     border-style: solid;
     border-color: rgb(161, 161, 161);
     margin-top: 0; /* 이 값을 필요에 따라 조정 */
-
 }
 
 .container {
@@ -36,7 +75,7 @@
 
 #chatlist {
     flex: 1;
-    margin-bottom: 70px; /* Ensure this matches the height + padding of .chatting */
+    margin-bottom: 60px; /* 채팅 입력창과 timetable 버튼 공간 확보 */
     overflow-y: auto;
 }
 
@@ -58,7 +97,6 @@
 }
 
 .time {
-    color: blueviolet;
     font-weight: 200;
     font-size: smaller;
 }
@@ -78,13 +116,34 @@
     bottom: 0px; 
     left: 5%; 
     width: 90%; 
-    height: 65px; 
-    background-color: white; 
+    /* background-color: white;  */
+    background-color: transparent;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     padding-top: 5px;
     padding-bottom: 5px;
+}
+
+.timetable-button {
+    margin-bottom: 10px; /* 입력창과 timetable 버튼 사이의 간격 */
+    text-align: center;
+    width: 100%;
+    background-color: transparent;
+}
+
+.timetable {
+    border: solid rgb(227, 219, 252) 0rem;
+    background-color: rgb(227, 219, 252);
+    border-radius: 2rem;
+    padding: 0.5rem 1rem;
+    font-size: 14px;
+}
+
+.timetable img {
+    width: 1.7rem;
+    margin-right: 1rem;
 }
 
 .msgLine {
@@ -105,4 +164,150 @@
 
 .date_hr {
     width: 40%;
+}
+
+/* General Styles */
+body {
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Button Styles */
+.filter {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    margin: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.filter svg {
+    fill: #333;
+    transition: fill 0.3s ease;
+}
+
+.filter:hover {
+    background-color: #f0f0f0;
+}
+
+.filter:hover svg {
+    fill: #007bff; /* Bootstrap primary color */
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* 기본적으로 숨기기 */
+    position: fixed; /* 화면에 고정 */
+    z-index: 1000; /* 화면의 가장 위로 */
+    left: 0;
+    top: 0;
+    width: 100vw; /* 화면 전체 너비 */
+    height: 100vh; /* 화면 전체 높이 */
+    overflow: hidden; /* 스크롤바 숨기기 */
+    background-color: rgba(0, 0, 0, 0.7); /* 반투명 검은색 배경 */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto; /* 자동으로 상하좌우 중앙 정렬 */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%; /* 화면 가로 90% 너비 */
+    max-width: 600px; /* 최대 너비 제한 */
+    border-radius: 8px;
+    position: relative;
+    top: 50%; /* 상단에서 50% 내려오기 */
+    transform: translateY(-50%); /* 상단에서 내려온 50% 위치 조정 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+}
+
+/* Close Button Styles */
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Form Styles */
+.filter-group {
+    margin: 10px 0;
+}
+
+.filter-group label {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+fieldset {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+/* Submit Button */
+#applyFilters {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#applyFilters:hover {
+    background-color: #0056b3;
+}
+.filter-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* 버튼 사이의 간격 */
+}
+
+.filter-group label {
+    flex: 1 1 45%; /* 한 줄에 두 개씩 배치되도록 */
+}
+#reportForm textarea {
+    width: 100%; /* 가로로 꽉 채우기 */
+    margin-bottom: 15px; /* 버튼과의 간격 추가 */
+    padding: 10px; /* 내부 여백 */
+    border: 1px solid #ddd; /* 테두리 */
+    border-radius: 4px; /* 모서리 둥글게 */
+    resize: vertical; /* 세로 방향 크기 조절 가능 */
+    font-family: inherit; /* 폰트 상속 */
+    font-size: 14px; /* 폰트 크기 */
+}
+
+#submitReport {
+    display: block;
+    width: 100%; /* 가로로 꽉 채우기 */
+    padding: 10px; /* 버튼 크기 */
+    background-color: #2D5FB4; /* 버튼 배경색 */
+    color: white; /* 버튼 텍스트 색 */
+    border: none; /* 테두리 제거 */
+    border-radius: 4px; /* 모서리 둥글게 */
+    cursor: pointer; /* 마우스 포인터 */
+    transition: background-color 0.3s ease; /* 호버 효과 */
+}
+
+#submitReport:hover {
+    background-color: #0056b3; /* 호버 시 배경색 */
 }

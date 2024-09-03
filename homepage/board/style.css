@@ -2,14 +2,14 @@ body {
     font-family: 'Arial', sans-serif;
     background-color: #f0f4f8;
     color: #333;
-    margin: 0;
+    margin: 10px;
     padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-/* Çì´õ ½ºÅ¸ÀÏ */
+/* í—¤ë” ìŠ¤íƒ€ì¼ */
 .header {
     display: flex;
 
@@ -20,22 +20,22 @@ body {
 
     width: 100%;
     z-index: 1000;
-    border-radius: 0 0 10px 10px; /* ¾Æ·¡ÂÊ ¸ð¼­¸® µÕ±Û°Ô */
+    border-radius: 0 0 10px 10px; /* ì•„ëž˜ìª½ ëª¨ì„œë¦¬ ë‘¥ê¸€ê²Œ */
 }
 
-/* µÚ·Î°¡±â ¾ÆÀÌÄÜ ½ºÅ¸ÀÏ */
+/* ë’¤ë¡œê°€ê¸° ì•„ì´ì½˜ ìŠ¤íƒ€ì¼ */
 .header img {
 
     margin : 10px;
     width: 16px;
     height: 16px;
 }
-/* a ÅÂ±× ½ºÅ¸ÀÏ¸µ */
+/* a íƒœê·¸ ìŠ¤íƒ€ì¼ë§ */
 .header a {
     display: flex;
     color: black;
 }
-/* Çì´õÀÇ ÅØ½ºÆ® ½ºÅ¸ÀÏ */
+/* í—¤ë”ì˜ í…ìŠ¤íŠ¸ ìŠ¤íƒ€ì¼ */
 .header > span {
     font-size: large;
     margin-left: 5px;

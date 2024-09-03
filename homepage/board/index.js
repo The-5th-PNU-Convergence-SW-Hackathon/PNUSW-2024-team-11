@@ -9,11 +9,12 @@ $(document).ready(() => {
     if (!currentSort || !currentOrder) {
         window.location.href = defaultUrl;
     }
-
+ 
     let posts = [];
     let currentPage = 0;
     const postsPerPage = 10;
     let responseClone;
+    let userClass = "";
 
     function fetchPosts(searchQuery) {
         fetch(`./posts?search=${encodeURIComponent(searchQuery)}`, {
@@ -22,21 +23,39 @@ $(document).ready(() => {
         })
         .then(response => {
             responseClone = response.clone();
+    
+            // Redirect to login page if unauthorized
+            if (response.status === 401) {
+                window.location.href = '/login';
+                return;
+            }
+    
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+    
             return response.json();
         })
         .then(data => {
-            posts = data;
-            applyCategoryFilter(); // 카테고리 필터 적용
-            currentPage = 0;
-            applySortingAndFiltering();
-            loadPosts(true);
+            if (data) {
+                posts = data.posts;
+                userClass = data.userClass;
+                applyCategoryFilter();
+                currentPage = 0;
+                applySortingAndFiltering();
+                loadPosts(true);
+            }
         })
         .catch(error => {
-            console.log('Error parsing JSON response:', error, responseClone);
-            responseClone.text()
-                .then(bodyText => {
+            console.error('Error fetching posts:', error);
+    
+            if (error.message.includes('502')) {
+                alert('The server is currently unavailable (Bad Gateway). Please try again later.');
+            } else {
+                responseClone.text().then(bodyText => {
                     console.log('Received instead of valid JSON:', bodyText);
                 });
+            }
         });
     }
 
@@ -49,7 +68,13 @@ $(document).ready(() => {
 
         const selectedCategory = categoryMap[currentCategory];
         if (selectedCategory) {
-            posts = posts.filter(post => post.category === selectedCategory);
+            if (selectedCategory === '도서') {
+                // 도서 카테고리의 경우 전공이 같은 게시글만 필터링
+                posts = posts.filter(post => post.category === selectedCategory && post.sellerClass === userClass);
+            } else {
+                // 그 외 카테고리 필터링
+                posts = posts.filter(post => post.category === selectedCategory);
+            }
         }
     }
 
@@ -110,14 +135,21 @@ $(document).ready(() => {
             const postElement = document.createElement('div');
             postElement.classList.add('post');
             postElement.setAttribute('data-product-id', post.productId);
+            const isSoldOut = post.status === 'Sold Out'; // 판매완료 상태 체크
+            const isReserved = post.status === 'Reserved'; // 예약중 상태 체크
+
             postElement.innerHTML = `
-                <img src="${post.photos || 'https://via.placeholder.com/150'}" class="post-image" alt="${post.title}">
+                <img src="${post.photos || 'https://via.placeholder.com/150'}" 
+                class="post-image ${isSoldOut ? 'sold-out' : ''} ${isReserved ? 'sold-out' : ''} " 
+                alt="${post.title}">
+                ${isSoldOut ? '<span class="sold-out-text">판매완료</span>' : ''}
+                ${isReserved ? '<span class="reserved-text">예약중</span>' : ''}
                 <div class="post-content">
                     <h3>${post.title}</h3>
                     <p class="post-time" style="color: grey;">${timeAgo(post.updatedAt)}</p>
                     <h3><strong>${pricecomma(post.price)}원</strong></h3>
                     <p class="post-info" style="color: grey;">${post.category} | ${statusMap(post.condition)}</p>
-                    <p class="post-views" style="color: grey; text-align: right;"><strong>👁️‍🗨️</strong> ${post.views}</p> 
+                    <p class="post-views" style="color: grey; text-align: right;"><strong>조회수</strong> ${post.views}</p>
                 </div>
             `;
             
@@ -190,8 +222,18 @@ $(document).ready(() => {
             $('#sortPopularity').addClass('active');
         } else if (sort === 'recent') {
             $('#sortRecent').addClass('active');
+            if (order === 'asc') {
+                $('#sortRecent').text('오래된순'); // 최신순 버튼을 오래된순으로 변경
+            } else {
+                $('#sortRecent').text('최신순'); // 오래된순 버튼을 최신순으로 변경
+            }
         } else if (sort === 'price') {
             $('#sortPrice').addClass('active');
+            if (order === 'asc') {
+                $('#sortPrice').text('낮은 가격순'); // 낮은 가격순 버튼을 높은 가격순으로 변경
+            } else {
+                $('#sortPrice').text('높은 가격순'); // 높은 가격순 버튼을 낮은 가격순으로 변경
+            }
         } else if (sort === 'condition') {
             $('#filterCondition').addClass('active');
         }

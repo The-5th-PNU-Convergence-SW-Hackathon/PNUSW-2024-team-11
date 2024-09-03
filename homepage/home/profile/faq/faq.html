@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard-dynamic-subset.css" />
+    <style>
+        *{
+            /* Pretendard 우선하는 경우 */
+            font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+        }
+    </style>
     <link rel="icon" type="image/png" href="/pict/logo_blue_notxt.png"> <!-- for title logo -->
     <script src="https://code.jquery.com/jquery-latest.js"></script> <!-- for jquery -->
     <!-- under the 2 lines for bootstrap -->
@@ -28,7 +35,7 @@
 </head>
 <body>
     <div class="header">
-        <a href="../home.html" ><img src="/pict/icons/arrow-left.png" alt="Arrow Icon" width="9.5" height="16"></a>
+        <a href="/profile" ><img src="/pict/icons/arrow-left.png" alt="Arrow Icon" width="9.5" height="16"></a>
         <span>FAQ</span>
     </div>
 
@@ -103,7 +110,16 @@
                 </div>
               </div>
             </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" id="customer-service">
+                    <span class="badge rounded-pill text-bg-success">1:1 문의</span> 
+                    <span id="question">  Q. 도움이 필요하신가요? </span>
+                </button>
+              </h2>
+            </div>
           </div>
     </div>
+        
 </body>
 </html>

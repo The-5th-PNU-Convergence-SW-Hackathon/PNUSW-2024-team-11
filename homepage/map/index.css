@@ -1,7 +1,18 @@
+.placeinfo_wrap {position:absolute;bottom:28px;left:-150px;width:300px;}
+.placeinfo {position:relative;width:100%;border-radius:6px;border: 1px solid #ccc;border-bottom:2px solid #ddd;padding-bottom: 10px;background: #fff;}
+.placeinfo:nth-of-type(n) {border:0; box-shadow:0px 1px 2px #888;}
+.placeinfo a, .placeinfo a:hover, .placeinfo a:active{color:#fff;text-decoration: none;}
+.placeinfo a, .placeinfo span {display: block;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+.placeinfo span {margin:5px 5px 0 5px;cursor: default;font-size:13px;}
+.placeinfo .title {font-weight: bold; font-size:14px;border-radius: 6px 6px 0 0;margin: -1px -1px 0 -1px;padding:10px; color: #fff;background: #d95050;background: #d95050 url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;}
+.placeinfo .tel {color:#0f7833;}
+.placeinfo .jibun {color:#999;font-size:11px;margin-top:0;}
+
 button.active {
     background-color: #1148A6;
     color: white;
 }
+
 a {
     text-decoration: none;
     color: black;
@@ -19,19 +30,24 @@ a {
     justify-content: space-between;
     padding: 0 10px;
 }
+
 .top_menu_1 {
-    top: 0px;
+    top: 2px;
 }
+
 .top_menu_1 .center {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     font-size: 18px;
     font-weight: bold;
+    background-color: white;
 }
+
 .top_menu_1 img {
     height: 30px;
 }
+
 .search_container {
     position: fixed;
     top: 50px;
@@ -39,88 +55,151 @@ a {
     width: 100%;
     height: 50px;
     z-index: 100;
-    background-color: white;
     text-align: center;
     padding-top: 10px;
-    border-bottom: 1px solid black;
 }
 
-  input {
+input {
     width: 100%;
-    border: 1px solid #bbb;
+    border: 1px solid #dadada;
     border-radius: 8px;
     padding: 10px 12px;
     font-size: 14px;
-  }
-  
-  .search_container img {
-    position : absolute;
+}
+
+.search_container img {
+    position: absolute;
     width: 17px;
     right: 10%;
     margin: 0;
     bottom: 20px;
-  }
+}
 
 .search_container input[type="text"] {
     width: 80%;
     height: 18px;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
 }
+
 .top_menu_2 {
     top: 100px;
     display: flex;
     justify-content: space-around;
     padding: 10px 0;
+    background-color: unset;
 }
+
 .top_menu_2 button {
     flex: 1;
     margin: 0 5px;
     padding: 10px;
-    font-size: 16px;
-    background-color: #F6F6F6;
+    font-size: 14px;
+    /* font-weight: bolder; */
+    background-color: #F6F6F6; /* 기본 배경 색상 */
     border: 0px solid #ddd;
-    border-radius: 20px;    /*버튼 20px만큼 둥글게*/
-}
-.top_menu_2 button:hover {
-    background-color: #3161b4;
-    color: white;
+    border-radius: 20px;
+    color: black; /* 기본 텍스트 색상 */
+    transition: background-color 0.3s, color 0.3s; /* 부드러운 색상 전환 */
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.top_menu_2 button.active {
-    background-color: #1148A6;
-    color: white;
+.top_menu_2 button.on {
+    background-color: #1148A6; /* 활성화 상태 배경 색상 */
+    color: white; /* 활성화 상태 텍스트 색상 */
 }
+
 .bottom_menu { 
     position: fixed; 
     bottom: 0px; 
     left: 0px; 
     width: 100%; 
-    height: 50px; 
+    height: 65px; 
+    padding-bottom: 20px;
     z-index: 100; 
-    border-top: 0px solid black; /*테두리를 할지.. 고민*/
+    border-top: 1px solid rgba(0, 0, 0, 0.200);
     background-color: white; 
     display: flex;
     align-items: center;
     justify-content: space-around;
     padding-top: 5px;
 }
+
 .bottom_menu > div { 
     text-align: center; 
 }
+
 .bottom_menu img {
     height: 30px;
 }
+
 .bottom_menu div span {
     display: block;
     font-size: 12px;
+    height: 18px;
 }
+
 body {
-    padding-top: 150px; /* to avoid content being hidden behind the top menus and search bar */
-    padding-bottom: 60px; /* to avoid content being hidden behind the bottom menu */
-    height: 100%;
+    padding-top: 0px; /* 상단 메뉴와 검색 바를 피하기 위해 여백 추가 */
+    padding-bottom: 60px; /* 하단 메뉴를 피하기 위해 여백 추가 */
+    margin: 0;
+    height: 100vh; /* 화면 전체 높이를 기준으로 설정 */
+    overflow: hidden;
+    background-color: transparent ; /* 배경색을 투명으로 설정 */
 }
-.lottery-button {
+
+.map {
+    position: absolute;
+    top: 50px; /* 상단 메뉴와 검색 바의 높이만큼 띄움 */
+    bottom: 60px; /* 하단 메뉴의 높이만큼 띄움 */
+    left: 0;
+    right: 0;
+    height: calc(100% - 110px); /* 전체 화면 높이에서 메뉴 높이를 뺀 값으로 설정 */
+    z-index: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.button-container {
     position: fixed;
-    bottom: 70px; /* 원하는 여백 조정 */
+    bottom: 70px; /* 버튼 컨테이너의 아래쪽 위치 */
+    right: 20px; /* 버튼 컨테이너의 오른쪽 위치 */
+    display: flex;
+    flex-direction: column; /* 버튼을 수직으로 정렬 */
+    align-items: center;
+    gap: 10px; /* 버튼 간의 간격 */
+    z-index: 1000; /* 높은 z-index 설정 */
+}
+
+.lottery-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background-color: #ee5757; 
+    border-radius: 40%; /* 원형 버튼을 위해 수정 */
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    text-decoration: none;
+    z-index: 1000; /* 높은 z-index 설정 */
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom:195%;
+}
+
+.lottery-button:hover {
+    background-color: rgb(177, 60, 60);
+}
+
+.lottery-button img {
+    width: 35px;
+    height: 35px;
+}
+
+.post-button {
+    position: fixed;
+    bottom: 12%; /* 원하는 여백 조정 */
     right: 20px; /* 원하는 여백 조정 */
     display: inline-flex;
     align-items: center;
@@ -134,20 +213,68 @@ body {
     font-size: 24px;
     cursor: pointer;
     text-decoration: none;
-}
-.lottery-button:hover {
-    background-color: darkblue;
-}
-.lottery-button img {
-    width: 30px; /* 이미지의 너비를 원하는 크기로 조정 */
-    height: 30px; /* 이미지의 높이를 원하는 크기로 조정 */
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.map {
-    height: 700px; 
+.post-button img {
+    width: 30px;
+    height: 30px;
+}
+
+.post-button:hover {
+    background-color: darkblue; /* 버튼 호버 시 색상 */
+}
+
+#markerForm {
+    display: none;
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    background-color: white;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px; /* 둥근 모서리 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    z-index: 1000;
+    width: 250px; /* 폼 크기 조절 */
+}
+
+#markerForm h3 {
+    margin-top: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+#markerForm label {
+    font-size: 14px;
+    color: #555;
+}
+
+#markerForm input {
     width: 100%;
-    position: relative;
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px; /* 입력 필드 둥근 모서리 */
+    box-sizing: border-box;
+}
+
+#markerForm button {
+    padding: 8px 12px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px; /* 버튼 둥근 모서리 */
+    background-color: #4CAF50; /* 기본 버튼 색상 */
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#markerForm button#closeFormButton {
+    background-color: #f44336; /* 취소 버튼 색상 */
+}
+
+#markerForm button#closeFormButton:hover {
+    background-color: #e53935; /* 취소 버튼 호버 색상 */
 }

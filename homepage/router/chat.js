@@ -6,5 +6,6 @@ router.get('/', (req, res) => req.session.login_status !== undefined || req.sess
     res.sendFile('index.html', {root: './chat'}) : res.redirect('/login'));
 router.get('/room', (req, res) => sql.check_room(req, res));
 router.post('/send', (req, res) => sql.send_chat(req, res));
+router.post('/away_nickname', (req, res) => sql.get_away_nickname(req, res));
 
 module.exports = router;

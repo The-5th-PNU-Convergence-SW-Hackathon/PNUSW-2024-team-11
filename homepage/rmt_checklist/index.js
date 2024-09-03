@@ -7,10 +7,11 @@ $(document).ready(() => {
             drinking_frequency: $('input[name="drinking_frequency"]:checked').val(),
             sleep_pattern: $('input[name="sleep_pattern"]:checked').val(),
             sleep_habit: $('input[name="sleep_habit"]:checked').val(),
-            guest_visit: $('input[name="guest_visit"]:checked').val()
+            guest_visit: $('input[name="guest_visit"]:checked').val(),
+            comment: $('#comment').val().trim() // Check if the comment field is not empty
         };
 
-        const isFormValid = Object.values(formData).every(value => value !== undefined);
+        const isFormValid = Object.values(formData).every(value => value !== undefined && value !== '');
 
         const checkRequired = () => {
             let allSelected = true;
@@ -35,11 +36,13 @@ $(document).ready(() => {
     const populateFormData = (data) => {
         if (data) {
             $(`input[name="gender"][value="${data.GENDER}"]`).prop('checked', true);
+            $(`input[name="dorm"][value="${data.DORM}"]`).prop('checked', true);
             $(`input[name="smoking"][value="${data.SMOKING}"]`).prop('checked', true);
             $(`input[name="drinking_frequency"][value="${data.DRINKING_FREQUENCY}"]`).prop('checked', true);
             $(`input[name="sleep_pattern"][value="${data.SLEEP_PATTERN}"]`).prop('checked', true);
             $(`input[name="sleep_habit"][value="${data.SLEEP_HABIT}"]`).prop('checked', true);
             $(`input[name="guest_visit"][value="${data.GUEST_VISIT}"]`).prop('checked', true);
+            $('#comment').val(data.COMMENT); // Populate the comment field
         }
 
         updateSubmitButtonState();
@@ -57,8 +60,8 @@ $(document).ready(() => {
         }
     });
 
-    // Update submit button state on input click
-    $("input[type='checkbox'], input[type='radio']").on('click', function () {
+    // Update submit button state on input click or textarea input
+    $("input[type='checkbox'], input[type='radio'], #comment").on('click keyup', function () {
         const name = $(this).attr('name');
         if (this.checked) {
             $(`input[name='${name}']`).not(this).prop('checked', false);

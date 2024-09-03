@@ -1,8 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard-dynamic-subset.css" />
+    <style>
+        *{
+            /* Pretendard 우선하는 경우 */
+            font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+        }
+    </style>
     <link rel="stylesheet" href="/bootstrap-5.3.3-dist/css/bootstrap.min.css" />
     <script src="/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -38,41 +45,73 @@
         </div>
     </div>
 
-    <form>
-      <div id="timetable">
+    <div class="instruction">
+        터치 한 번으로 <br> 거래 불가 시간을 지정할 수 있습니다!
+    </div>
 
-      </div>
-      <input type="submit" class="btn btn-dark" value="저장" />
-    </form>
+    <div class="container mb-3">
+        <div class="day">
+            <div>월</div>
+            <div>화</div>
+            <div>수</div>
+            <div>목</div>
+            <div>금</div>
+            <div>토</div>
+            <div>일</div>
+        </div>
+        
+        <div class="timetable-full">
+            <div class="time">
+                <div>09:00</div>
+                <div>10:00</div>
+                <div>11:00</div>
+                <div>12:00</div>
+                <div>13:00</div>
+                <div>14:00</div>
+                <div>15:00</div>
+                <div>16:00</div>
+                <div>17:00</div>
+                <div>18:00</div>
+                <div>19:00</div>
+                <div>20:00</div>
+                <div>21:00</div>
+            </div>
+            <form method="POST" action="./update">
+                <div id="timetable">
+        
+                </div>
+                <input type="submit" class="btn btn-dark btn-submit" value="저장" />
+            </form>
+        </div>
+    </div>
     
     <!-- Bottom Menu -->
     <div class="bottom_menu">
         <div>
             <a href="/">
-                <img src="/pict/bar/home.png" alt="홈">
+                <img src="/pict/bar/home_new_grey.png" alt="홈">
                 <span>홈</span>
             </a>
         </div>
         <div>
             <a href="/matching">
-                <img src="/pict/bar/collaboration.png" alt="룸메매칭">
+                <img src="/pict/bar/collaboration_new_grey.png" alt="룸메매칭">
                 <span>룸메매칭</span>
             </a>
         </div>
         <div>
-            <a href="map.html">
-                <img src="/pict/bar/placeholder.png" alt="지도">
+            <a href="/map">
+                <img src="/pict/bar/placeholder_new_grey.png" alt="지도">
                 <span>지도</span>
             </a>
         </div>
         <div>
-            <a href="notification.html">
-                <img src="/pict/bar/bell.png" alt="알림">
+            <a href="/notification">
+                <img src="/pict/bar/bell_new_grey.png" alt="알림">
                 <span>알림</span>
             </a>
         </div>
     </div>
 
-    <script src="index.js"></script>
 </body>
 </html>

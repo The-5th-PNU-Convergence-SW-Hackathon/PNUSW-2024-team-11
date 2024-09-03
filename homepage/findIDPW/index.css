@@ -4,18 +4,19 @@
   flex-direction: row;
   justify-content: center;
   width: 100%;
+  padding: 20px; /* 여백 추가 */
 }
 .div-wrapper .div {
   background-color: #ffffff;
-  width: 375px;
+  width: 320px; /* 너비 줄이기 */
   position: relative;
 }
 .button {
-  width: 250px;
-  height: 80px;
+  width: 50%; /* 너비 줄이기 */
+  height: 48px; /* 높이 줄이기 */
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
+  border-radius: 8px; /* 둥근 모서리 줄이기 */
   cursor: pointer;
 }
 .button.active {
@@ -30,93 +31,93 @@
 .div-wrapper .text-wrapper-3 {
   display: flex;
   font-family: "Inter-Bold", Helvetica;
-  font-weight: 700;
-  font-size: 24px;
+  font-weight: 600;
+  font-size: 16px; /* 글자 크기 줄이기 */
   cursor: pointer;
 }
-/* ���̵�ã�� ��ư */
+/* 아이디찾기 버튼 */
 .div-wrapper .text-wrapper-2 {
   position: absolute;
-  top: 268px;
-  left: -25%;
+  top: 220px; /* 위쪽 위치 조정 */
+  left: -5%;
 }
-/* ��й�ȣã�� ��ư */
+/* 비밀번호찾기 버튼 */
 .div-wrapper .text-wrapper-3 {
   position: absolute;
-  top: 268px;
-  left: 60%;
+  top: 220px; /* 위쪽 위치 조정 */
+  left: 55%;
 }
-/* ���̵�/���ã�� ���� �κ�*/
+/* 아이디/비번찾기 글자 부분*/
 .div-wrapper .text-wrapper-4 {
   position: absolute;
-  top: 190px;
-  left: -55px;
+  top: 140px; /* 위쪽 위치 조정 */
+  left: 10%;
   font-family: "Inter-Bold", Helvetica;
   font-weight: bolder;
   color: #000000;
-  font-size: xx-large;
+  font-size: 20px; /* 글자 크기 줄이기 */
   text-align: center;
-  line-height: 28px;
+  line-height: 24px; /* 줄 높이 조정 */
   letter-spacing: 0;
   white-space: nowrap;
 }
-/* P ������ */
+/* P 아이콘 */
 .div-wrapper .image {
   position: absolute;
-  top: 152px;
-  left: -50%;
+  top: 120px; /* 위쪽 위치 조정 */
+  left: -10%;
+  width: 20%;
 }
 .div-wrapper .form-container {
   display: none;
 }
-/* ���� */
+/* 블럭 */
 .div-wrapper .form-container.active {
   display: block;
   position: absolute;
-  width: 800px;
-  top: 380px;
-  left: -62%;
+  top: 300px; /* 위쪽 위치 조정 */
   background-color: #ffffff;
-  padding: 25px;
-  border-radius: 10px;
+  padding: 20px; /* 패딩 줄이기 */
+  border-radius: 8px; /* 둥근 모서리 줄이기 */
+  padding-bottom: 2%;
   border: solid #dfdfdf;
+  margin-top:-15px;
 }
-/* ���� �ȿ��ִ� ���̵�ã�� ���� */
+/* 블럭 안에있는 아이디찾기 글자 */
 .div-wrapper .form-container h2 {
   font-family: "Inter-Bold", Helvetica;
-  font-size: 25px;
+  font-size: 18px; /* 글자 크기 줄이기 */
   color: #000000;
-  margin-top: 30px;
-  margin-bottom: 35px;
-  margin-left: 6px;
-  font-family: "Inter-Bold", Helvetica;
+  margin-top: 20px; /* 상단 여백 줄이기 */
+  margin-bottom: 20px; /* 하단 여백 줄이기 */
+  margin-left: 4px; /* 좌측 여백 줄이기 */
   font-weight: bolder;
 }
-/* �Է� */
+/* 입력 */
 .div-wrapper .form-container input {
   width: 100%;
-  height: 80px;
-  padding: 15px;
-  margin-bottom: 20px;
+  height: 45px; /* 높이 줄이기 */
+  padding: 10px; /* 패딩 줄이기 */
+  margin-bottom: 15px; /* 하단 여백 줄이기 */
   border: solid #dfdfdf;
-  border-radius: 10px;
-  font-size: 23px;
-  box-sizing:border-box;
+  border-radius: 8px; /* 둥근 모서리 줄이기 */
+  font-size: 15px; /* 글자 크기 줄이기 */
+  box-sizing: border-box;
   font-family: "Inter-Bold", Helvetica;
   font-weight: bolder;
 }
-/* ��ȸ��ư */
+/* 조회버튼 */
 .div-wrapper .form-container button {
   width: 100%;
-  height: 70px;
-  padding: 10px;
+  height: 50px; /* 높이 줄이기 */
+  padding: 8px; /* 패딩 줄이기 */
   background-color: #2d5fb4;
   color: #ffffff;
   border: none;
-  margin-top:10px;
-  margin-bottom:10px;
-  border-radius: 10px;
-  font-size: 24px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px; /* 둥근 모서리 줄이기 */
+  font-size: 15px; /* 글자 크기 줄이기 */
   font-family: "Inter-Bold", Helvetica;
   font-weight: bolder;
   cursor: pointer;

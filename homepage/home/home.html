@@ -3,9 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard-dynamic-subset.css" />
+    <style>
+        *{
+            /* Pretendard 우선하는 경우 */
+            font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+        }
+    </style>
     <link rel="icon" type="image/png" href="/pict/logo_blue_notxt.png"> <!-- for title logo -->
     <!-- <link rel="stylesheet" href="index.css" /> -->
     <link rel="stylesheet" href="/bootstrap-5.3.3-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard-dynamic-subset.css" />
+    <style>
+        *{
+            /* Pretendard 우선하는 경우 */
+            font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+        }
+    </style>
     <script src="/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
     <link rel="manifest" href="/pwa/manifest.json">
     <style>
@@ -14,12 +28,12 @@
             color: black;
         }
     </style>
-    <link rel="stylesheet" href="index.css"> 
-    <!-- <script type="text/javascript">
+    <script type="text/javascript">
         let today = new Date();
         let nowTime = "?ver=" + today.getTime();
 
-        console.log(nowTime);
+        // console.log(nowTime);
+        
 
         let scriptElement = document.createElement("script");
         scriptElement.src = "index.js" + nowTime;
@@ -30,7 +44,7 @@
         cssElement.href = "index.css" + nowTime;
         cssElement.rel = "stylesheet";
         document.head.appendChild(cssElement);
-    </script> -->
+    </script>
     <title>P-BUD</title>
 </head>
 <body>
@@ -40,7 +54,7 @@
             <img src="/pict/bar/user.png" alt="프로필사진">
         </a>
         <div class="center">홈</div>
-        <div style="position: relative; margin-right: 3.5%;">
+        <div style="position: relative;">
             <a href="/chat">
                 <img src="/pict/bar/chat.png" alt="메세지사진">
             </a>
@@ -49,13 +63,13 @@
 
     <div class="search main">
         <!-- 로고 -->
-        <img src="/pict/logo_blue_txt.png" />
+        <img src="/pict/home.png" /> 
         
         <!-- 검색창 -->
         <form>
             <div class="input-group">
-                <input type="search" class="form-control rounded" id="searchInput" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                <button type="button" class="btn btn-outline-primary" id="searchButton">search</button>
+                <input type="search" class="form-control rounded" id="searchInput" placeholder="검색어 입력" aria-label="Search" aria-describedby="search-addon" />
+                <button type="button" class="btn btn-outline-primary" id="searchButton">검색</button>
             </div>
         </form>
 
@@ -63,28 +77,50 @@
         <div class="category">
             <div>
                 <a href="/board/?sort=popularity&order=desc">
-                <img src="/pict/category/star.png" />
-                <span>피벗's PICK!</span>
+                    <div class="img-box">
+                        <img src="/pict/category/star.png" />
+                    </div>
+                    <span>피벗's PICK!</span>
                 </a>
             </div>
             <div>
                 <a href="/board/?category=book">
-                <img src="/pict/category/book.png" />
-                <span>도서</span>
+                    <div class="img-box">
+                        <img src="/pict/category/book.png" />
+                    </div>
+                    <span>추천 도서</span>
                 </a>
             </div>
             <div>
                 <a href="/board/?category=clothes">
-                <img src="/pict/category/clothes.png" />
-                <span>의류</span>
+                    <div class="img-box">
+                        <img src="/pict/category/clothes.png" />
+                    </div>
+                    <span>의류</span>
                 </a>
             </div>
             <div>
                 <a href="/board/?category=electronics">
-                <img src="/pict/category/computer.png" />
-                <span>전자기기</span>
+                    <div class="img-box">
+                        <img src="/pict/category/computer.png" />
+                    </div>
+                    <span>전자기기</span>
                 </a>
             </div>
+        </div>
+    </div>
+    <div class="banner">
+        <div class="text-content">
+            <div class="app-link">
+                <img src="/pict/logo_blue_notxt.png" alt="로고" class="app-icon">
+                우리학과 추천도서 보러가기 >
+            </div>
+            <div class="banner-content">
+                <span class="banner-content"> 대학생 중고거래는? <br> 피벗에서!</span> 
+            </div>
+        </div>
+        <div class="image-content">
+            <img src="/pict/logo_blue_txt.png" alt="텍스트로고" class="product-image">
         </div>
     </div>
 
@@ -92,41 +128,29 @@
     <div class="bottom_menu">
         <div>
             <a href="/">
-                <img src="/pict/bar/home.png" alt="홈">
-                <span>홈</span>
+                <img src="/pict/bar/home_new.png" alt="홈">
+                <span style="color: #2349A4;">홈</span>
             </a>
         </div>
         <div>
             <a href="/matching">
-                <img src="/pict/bar/collaboration.png" alt="룸메매칭">
+                <img src="/pict/bar/collaboration_new_grey.png" alt="룸메매칭">
                 <span>룸메매칭</span>
             </a>
         </div>
         <div>
             <a href="/map">
-                <img src="/pict/bar/placeholder.png" alt="지도">
+                <img src="/pict/bar/placeholder_new_grey.png" alt="지도">
                 <span>지도</span>
             </a>
         </div>
         <div>
             <a href="/notification">
-                <img src="/pict/bar/bell.png" alt="알림">
+                <img src="/pict/bar/bell_new_grey.png" alt="알림">
                 <span>알림</span>
             </a>
         </div>
     </div>
-
-    <!-- <script type="text/javascript">
-        let today = new Date();
-        let nowTime = "?ver=" + today.getTime();
-
-        let scriptElement = document.createElement("script");
-        scriptElement.src = "index.js" + nowTime;
-        scriptElement.type = "text/javascript";
-        document.head.appendChild(scriptElement);
-    </script> -->
-    <!-- <script src="index.js" type="text/javascript"></script> -->
-    <script src="index.js" type="text/javascript"></script>
 
     <script type="text/javascript">
         document.getElementById('searchButton').addEventListener('click', function() {

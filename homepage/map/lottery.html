@@ -1,1 +1,325 @@
-<h1>룰렛 돌리기</h1>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard-dynamic-subset.css" />
+    <style>
+        * {
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: auto;
+}
+
+h1 {
+    margin-bottom: 30px;
+    font-size: 36px;
+    color: #2D5FB4; /* 새로운 색상 적용 */
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+#back-button {
+            position: absolute;
+            top: 20px;
+            left: 5px;
+            padding: 5px 10px;
+            font-size: 16px;
+            border: none;
+            background: none;
+            color: #2D5FB4; /* 새로운 색상 적용 */
+            cursor: pointer;
+            border-radius: 12px;
+            font-weight: bold;
+        }
+
+
+.cuisine-buttons {
+    margin-bottom: 20px;
+}
+
+.cuisine-buttons button {
+    margin: 5px;
+    padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 25px;
+    background-color: #2D5FB4; /* 새로운 색상 적용 */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cuisine-buttons button:hover {
+    background-color: #1a3d6d; /* 약간 어두운 색상으로 호버 효과 추가 */
+}
+
+#roulette-container {
+    position: relative;
+    margin: 20px auto;
+}
+
+#roulette {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    color: #2D5FB4;
+    font-weight: bold;
+    transition: transform 4s ease-out;
+    border: 5px solid #ffffff;
+    background-image: conic-gradient(
+        #f3c4fb 0% 6.67%, 
+        #fde1c9 6.67% 13.33%, 
+        #fff9c4 13.33% 20%, 
+        #d0f0c0 20% 26.67%, 
+        #a3d8f4 26.67% 33.33%, 
+        #a5c8f0 33.33% 40%, 
+        #b3c9f0 40% 46.67%, 
+        #d0b3f0 46.67% 53.33%, 
+        #f3b3f0 53.33% 60%, 
+        #ffcad4 60% 66.67%, 
+        #ffe1c9 66.67% 73.33%, 
+        #ffffcc 73.33% 80%, 
+        #e2e1d5 80% 86.67%, 
+        #d0e0db 86.67% 93.33%, 
+        #c7e0db 93.33% 100%
+    );
+    text-align: center;
+}
+
+#spin-button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    background-color: #2D5FB4; /* 새로운 색상 적용 */
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+#spin-button:hover {
+    background-color: #1a3d6d; /* 약간 어두운 색상으로 호버 효과 추가 */
+}
+
+#food-list {
+    margin-top: 20px;
+    max-width: 320px;
+    text-align: left;
+    padding: 15px;
+    display: none;
+    position: relative;
+    z-index: 5;
+    overflow: auto;
+    max-height: 50vh;
+    background-color: #ffffff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    border: 2px solid #2D5FB4; /* 새로운 색상 적용 */
+    margin-bottom: 20px;
+}
+
+#food-list ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#food-list li {
+    background-color: #fff;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#food-list li:hover {
+    background-color: #f1f1f1;
+}
+
+#confirmation {
+    margin-top: 20px;
+    display: none;
+    font-size: 20px;
+    color: #2D5FB4; /* 새로운 색상 적용 */
+    margin-top: -10px;
+    font-weight: bold;
+}
+
+#confirmation p {
+    margin: 0;
+    font-size: 20px;
+}
+
+#confirmation button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 20px;
+    background-color: #2D5FB4; /* 새로운 색상 적용 */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#confirmation button:hover {
+    background-color: #1a3d6d; /* 약간 어두운 색상으로 호버 효과 추가 */
+}
+
+.info {
+    font-size: 14px;
+    color: #555;
+}
+
+    </style>
+</head>
+<body>
+    <h1>🕹️메뉴 추천 룰렛🕹️</h1>
+
+    <button id="back-button" onclick="window.location.href='/map'">< 뒤로가기</button>
+
+    <div class="cuisine-buttons">
+        <button onclick="selectCuisine('한식')">한식</button>
+        <button onclick="selectCuisine('중식')">중식</button>
+        <button onclick="selectCuisine('양식')">양식</button>
+        <button onclick="selectCuisine('일식')">일식</button>
+        <button onclick="selectCuisine('간단식')">간단식</button>
+        <button onclick="selectCuisine('디저트')">디저트</button>
+    </div>
+
+    <div id="roulette-container">
+        <div id="roulette">?</div>
+        <button id="spin-button" onclick="spinRoulette()">룰렛 돌리기</button>
+    </div>
+
+    <div id="confirmation">
+        <p>맛집 정보들을 보시겠습니까?</p>
+        <button onclick="showFoodList()">예</button>
+        <button onclick="hideConfirmation()">아니오</button>
+    </div>
+
+    <div id="food-list"></div>
+
+    <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=ff690f2ea35628c29cb346f55fdf0d40&libraries=services"></script>
+    <script>
+        let selectedCuisine = '';
+        let spinCount = 0; // 룰렛 회전 횟수 추적
+        let foods = {
+            '한식': ['비빔밥', '찌개', '불고기', '두부김치', '냉면', '칼국수', '잡채', '닭갈비', '삼겹살', '제육', '국밥', '샤브샤브', '쭈꾸미', '보쌈', '치킨'],
+            '중식': ['짜장면', '짬뽕', '탕수육', '마파두부', '만두', '마라탕', '마라샹궈', '마라훠궈', '유산슬', '딤섬', '꿔바로우', '잡채밥', '우동', '쌀탕면', '양꼬치'],
+            '양식': ['스테이크', '파스타', '피자', '햄버거', '샐러드', '리조또', '오믈렛', '브런치', '그라탕', '부리또', '스프', '샌드위치', '카레라이스', '스파게티', '미트볼'],
+            '일식': ['초밥', '라멘', '돈카츠', '우동', '덮밥', '생선회', '규동', '카레라이스', '모밀', '소바', '텐동', '가츠동', '타코야키', '가라아게', '돈부리'],
+            '디저트': ['케이크', '마카롱', '크로플', '빙수', '도넛', '쿠키', '타르트', '아이스크림', '푸딩', '전통차', '브라우니', '초콜릿', '모나카', '크레페', '와플'],
+            '간단식': ['토스트', '김밥', '샌드위치', '햄버거', '핫도그', '떡볶이', '튀김', '순대', '라면', '감자튀김', '핫바', '샐러드', '샌드위치', '컵밥', '죽'],
+        };
+
+        const places = new kakao.maps.services.Places();
+
+        function selectCuisine(cuisine) {
+            selectedCuisine = cuisine;
+            document.getElementById('food-list').innerHTML = '';
+            document.getElementById('food-list').style.display = 'none';
+            document.getElementById('roulette-container').style.display = 'block';
+            document.getElementById('confirmation').style.display = 'none';
+            document.getElementById('roulette').style.transform = 'rotate(0deg)';
+            document.getElementById('roulette').innerText = '?';
+        }
+
+        function spinRoulette() {
+            if (selectedCuisine === '') {
+                alert('먼저 음식을 선택해주세요!');
+                return;
+            }
+
+            // 룰렛과 검색 결과 초기화
+            document.getElementById('food-list').style.display = 'none';
+            document.getElementById('confirmation').style.display = 'none';
+            document.getElementById('roulette-container').style.display = 'block';
+
+            spinCount++; // 회전 횟수 증가
+
+            let foodOptions = foods[selectedCuisine];
+            let randomIndex = Math.floor(Math.random() * foodOptions.length);
+            let selectedFood = foodOptions[randomIndex];
+
+            // 홀수 번째는 시계 방향, 짝수 번째는 반시계 방향으로 회전
+            let direction = spinCount % 2 === 0 ? -1 : 1;
+            let randomDegree = direction * (Math.floor(Math.random() * 360) + 720);
+            document.getElementById('roulette').style.transform = `rotate(${randomDegree}deg)`;
+
+            setTimeout(() => {
+                document.getElementById('roulette').innerText = selectedFood;
+                document.getElementById('confirmation').style.display = 'block';
+            }, 4000);
+        }
+
+        function showFoodList() {
+            const selectedFood = document.getElementById('roulette').innerText;
+            searchPlaces(selectedFood);
+        }
+
+        function hideConfirmation() {
+            document.getElementById('confirmation').style.display = 'none';
+        }
+
+        function searchPlaces(keyword) {
+            const query = `부산대 ${keyword}`;
+            places.keywordSearch(query, (data, status) => {
+                if (status === kakao.maps.services.Status.OK) {
+                    displayPlaces(data);
+                } else {
+                    console.error('검색 중 오류가 발생했습니다. 상태:', status);
+                    document.getElementById('food-list').innerHTML = '<h3>검색 중 오류가 발생했습니다.</h3>';
+                }
+            });
+        }
+
+        function displayPlaces(places) {
+            const foodListHTML = '<h3>검색 결과</h3><ul>' +
+                places.map(place => 
+                    `<li onclick="window.open('${place.place_url}', '_blank')" title="${place.place_name}">
+                        <strong>${place.place_name}</strong><br>
+                        ${place.address_name}<br>
+                        <div class="info">
+                            전화번호: ${place.phone ? place.phone : '정보 없음'}<br>
+                            영업시간: ${place.opening_hours ? place.opening_hours : '정보 없음'}
+                        </div>
+                    </li>`
+                ).join('') + '</ul>';
+
+            const foodListContainer = document.getElementById('food-list');
+            foodListContainer.innerHTML = foodListHTML;
+            foodListContainer.style.display = 'block';
+            document.getElementById('confirmation').style.display = 'none';
+            document.getElementById('roulette-container').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

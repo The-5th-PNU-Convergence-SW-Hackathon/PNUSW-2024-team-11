@@ -1,0 +1,32 @@
+.header{
+    margin: 20px;
+    display: flex;
+    font-weight: bold;
+    text-align: center;
+} header > a {
+    display: flex;
+    align-items: center;
+}
+header img {
+    align-items:center ;
+}
+#line{
+    border-style: solid;
+    border-color: rgb(161, 161, 161);
+}
+
+.header > span {
+    font-size: large;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+body h2{
+    text-align: center;
+    font-weight: bold;
+    padding : 0.3em;
+}
+
+#question {
+    padding: 0.3em;
+}

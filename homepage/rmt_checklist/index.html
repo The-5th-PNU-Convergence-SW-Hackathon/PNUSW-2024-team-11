@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard-dynamic-subset.css" />
+    <style>
+        *{
+            /* Pretendard 우선하는 경우 */
+            font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+        }
+    </style>
     <!-- <link rel="stylesheet" href="index.css" /> -->
     <link rel="stylesheet" href="/bootstrap-5.3.3-dist/css/bootstrap.min.css" />
     <script src="/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
@@ -75,6 +82,27 @@
                         <input class="form-check-input" type="checkbox" name="smoking" id="비흡연" value="0">
                         <label class="check-box" for="비흡연"></label>
                         <label class="chk-label" for="비흡연">비흡연</label>
+                    </div>
+                </div>
+            </li>
+
+            <li>
+                <div class="input_label">기숙사</div>
+                <div class="align-chkbox">
+                    <div class="checkbox-wrapper-19">
+                        <input class="form-check-input" type="checkbox" name="dorm" id="자유관" value="0">
+                        <label class="check-box" for="자유관"></label>
+                        <label class="chk-label" for="자유관">자유관</label>
+                    </div>
+                    <div class="checkbox-wrapper-19">
+                        <input class="form-check-input" type="checkbox" name="dorm" id="웅비관" value="1">
+                        <label class="check-box" for="웅비관"></label>
+                        <label class="chk-label" for="웅비관">웅비관</label>
+                    </div>
+                    <div class="checkbox-wrapper-19">
+                        <input class="form-check-input" type="checkbox" name="dorm" id="효원재" value="2">
+                        <label class="check-box" for="효원재"></label>
+                        <label class="chk-label" for="효원재">효원재</label>
                     </div>
                 </div>
             </li>
@@ -162,6 +190,13 @@
                     </div>
                 </div>
             </li>
+
+            <li>
+                <div class="input_label">코멘트</div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="comment" name="comment" placeholder="하고싶은 말 한마디" style="font-size: 0.9rem;"></textarea>
+                </div>
+            </li>
             
             <div class="mb-3">
                 <input type="submit" class="btn btn-light" style="color: rgb(81, 132, 221);" placeholder="제출" id="submit" value="저장" disabled />
@@ -173,29 +208,30 @@
     <div class="bottom_menu">
         <div>
             <a href="/">
-                <img src="/pict/bar/home.png" alt="홈">
+                <img src="/pict/bar/home_new_grey.png" alt="홈">
                 <span>홈</span>
             </a>
         </div>
         <div>
             <a href="/matching">
-                <img src="/pict/bar/collaboration.png" alt="룸메매칭">
-                <span>룸메매칭</span>
+                <img src="/pict/bar/collaboration_new.png" alt="룸메매칭">
+                <span style="color: #2349A4;">룸메매칭</span>
             </a>
         </div>
         <div>
             <a href="/map">
-                <img src="/pict/bar/placeholder.png" alt="지도">
+                <img src="/pict/bar/placeholder_new_grey.png" alt="지도">
                 <span>지도</span>
             </a>
         </div>
         <div>
             <a href="/notification">
-                <img src="/pict/bar/bell.png" alt="알림">
+                <img src="/pict/bar/bell_new_grey.png" alt="알림">
                 <span>알림</span>
             </a>
         </div>
     </div>
+
 
     <!-- <script src="index.js"></script> -->
     <!-- <script type="text/javascript">

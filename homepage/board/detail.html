@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post Details</title>
+    <link rel="icon" type="image/png" href="/pict/logo_blue_notxt.png"> <!-- for title logo -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard-dynamic-subset.css" />
+    <style>
+        *{
+            /* Pretendard 우선하는 경우 */
+            font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+        }
+    </style>
     <script type="text/javascript">
         let today = new Date();
         let nowTime = "?ver=" + today.getTime();
@@ -28,6 +36,7 @@
 
 <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
 <script>
+    
     document.addEventListener('DOMContentLoaded', () => {
         loadPostDetails();
     });
@@ -66,14 +75,14 @@
 
         container.innerHTML = `
             <h2>${post.title}</h2>
-            <p><strong>Category:</strong> ${post.category}</p>
-            <p><strong>Price:</strong> ${priceComma(post.price)}원</p>
-            <p><strong>Condition:</strong> ${statusMap(post.condition)}</p>
-            <p><strong>Views:</strong> ${post.views}</p>
-            <p><strong>Status:</strong> ${post.status === 'On Sale' ? '판매중' : '판매 완료'}</p>
-            <p><strong>Updated At:</strong> ${timeAgo(post.updatedAt)}</p>
+            <p><strong>카테고리:</strong> ${post.category}</p>
+            <p><strong>상품 가격:</strong> ${priceComma(post.price)}원</p>
+            <p><strong>상품 상태:</strong> ${statusMap(post.condition)}</p>
+            <p><strong>조회수:</strong> ${post.views}</p>
+            <p><strong>판매 상태:</strong> ${post.status === 'On Sale' ? '판매중' : '판매 완료'}</p>
+            <p><strong>최근 업데이트:</strong> ${timeAgo(post.updatedAt)}</p>
             <div>
-                <h3>Content</h3>
+                <h3>자세한 설명</h3>
                 <p>${post.content}</p>
             </div>
             <div>
@@ -95,11 +104,14 @@
             const buttonContainer = document.createElement('div');
             buttonContainer.className = 'button-container';
             buttonContainer.innerHTML = `
-                <button>찜하기 ♥</button>
+                <button id= "heart">찜하기 ♥</button>
                 <button id="chatting">채팅하기</button>
             `;
             container.appendChild(buttonContainer);
-
+            
+            document.getElementById("heart").addEventListener('click', () => {
+                alert('해당 상품을 찜했습니다!');
+            });
             // 채팅하기 버튼 클릭 이벤트 핸들러
             document.getElementById("chatting").addEventListener('click', () => {
                 const httpRequest = new XMLHttpRequest();
@@ -184,4 +196,5 @@
     function editPost(postId) {
         window.location.href = `/board/post/${postId}/edit`;
     }
+    
 </script>

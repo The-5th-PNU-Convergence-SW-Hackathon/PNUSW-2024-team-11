@@ -17,10 +17,7 @@ $(document).ready(() => {
                 data: {} 
             }) 
             .done(USER => {
-                // USER = info.USER; 
-                console.log(USER);
                 const YearPart = USER[2].substring(2, 4);
-                console.log(`학번 : ${YearPart}`);
                 $("#mention").text(`${USER[0]}님 환영합니다.`);
                 $("#studentInfo").text(`${USER[1]} ${YearPart}학번`); 
                 $("#mention").show();
@@ -33,10 +30,6 @@ $(document).ready(() => {
     })
     .fail((xhr, status, error) => console.log(error));
     $("#timetable").on("click", () => {
-    });
-    
-    $("#logout").on("click", () => {
-        location.href = '/logout';
     });
 
     $("#setting").on("click", () => {

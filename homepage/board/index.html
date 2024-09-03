@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <link rel="icon" type="image/png" href="/pict/logo_blue_notxt.png"> <!-- for title logo -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard-dynamic-subset.css" />
+    <style>
+        *{
+            /* Pretendard 우선하는 경우 */
+            font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+        }
+    </style>
     <!-- <link rel="stylesheet" href="index.css" /> -->
     <script type="text/javascript">
         let today = new Date();
@@ -29,8 +37,8 @@
             <img src="/pict/bar/user.png" alt="프로필사진">
         </a>
         <div class="center">검색결과</div>
-        <div style="position: relative; margin-right: 3.5%;">
-            <a href="chat.html">
+        <div style="position: relative; margin-right: 5%;">
+            <a href="/chat">
                 <img src="/pict/bar/chat.png" alt="메세지사진">
             </a>
         </div>
@@ -47,7 +55,7 @@
     <div class="menu top_menu_2">
         <button id="sortPopularity">인기순</button>
         <button id="sortRecent">최신순</button>
-        <button id="sortPrice">가격순</button>
+        <button id="sortPrice">낮은 가격순</button>
         <button id="filterCondition">상태</button>
     </div>
 
@@ -62,7 +70,7 @@
     </div>
 
     <!-- 글쓰기 버튼 -->
-    <a href="post.html" class="post-button">
+    <a href="./post" class="post-button">
         <img src="/pict/bar/pencil.png" alt="게시">
     </a>
 
@@ -70,25 +78,25 @@
     <div class="bottom_menu">
         <div>
             <a href="/">
-                <img src="/pict/bar/home.png" alt="홈">
+                <img src="/pict/bar/home_new_grey.png" alt="홈">
                 <span>홈</span>
             </a>
         </div>
         <div>
             <a href="/matching">
-                <img src="/pict/bar/collaboration.png" alt="룸메매칭">
+                <img src="/pict/bar/collaboration_new_grey.png" alt="룸메매칭">
                 <span>룸메매칭</span>
             </a>
         </div>
         <div>
-            <a href="map.html">
-                <img src="/pict/bar/placeholder.png" alt="지도">
+            <a href="/map">
+                <img src="/pict/bar/placeholder_new_grey.png" alt="지도">
                 <span>지도</span>
             </a>
         </div>
         <div>
-            <a href="notification.html">
-                <img src="/pict/bar/bell.png" alt="알림">
+            <a href="/notification">
+                <img src="/pict/bar/bell_new_grey.png" alt="알림">
                 <span>알림</span>
             </a>
         </div>

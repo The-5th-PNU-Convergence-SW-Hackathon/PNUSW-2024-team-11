@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Post</title>
+    <link rel="icon" type="image/png" href="/pict/logo_blue_notxt.png"> <!-- for title logo -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard-dynamic-subset.css" />
+    <style>
+        *{
+            /* Pretendard 우선하는 경우 */
+            font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+        }
+    </style>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -124,7 +132,7 @@
             </div>
             
             <div class="form-group">
-                <label for="condition">상태</label>
+                <label for="condition">상품 상태</label>
                 <select id="condition" name="condition" class="form-control" required>
                     <option value="" disabled selected>상태를 선택하세요</option>
                     <option value="very_good">매우 좋음</option>
@@ -135,7 +143,16 @@
                 </select>
             </div>
             
-            
+            <div class="form-group">
+                <label for="status">판매 상태</label>
+                <select id="status" name="status" class="form-control" required>
+                    <option value="" disabled selected>판매 상태를 선택하세요</option>
+                    <option value="On Sale">판매중</option>
+                    <option value="Sold Out">판매완료</option>
+                    <option value="Reserved">예약중</option>
+                </select>
+            </div>
+
             <button type="submit">수정하기</button>
         </form>
     </main>
@@ -167,6 +184,7 @@
                     document.getElementById('condition').value = post.condition;
                     document.getElementById('content').value = post.content;
                     document.getElementById('category').value = post.category;
+                    document.getElementById('status').value = post.saleStatus;
 
                     if (post.category=="도서") document.getElementById('category').value = "1";
                     else if (post.category=="의류") document.getElementById('category').value = "2";
@@ -202,7 +220,8 @@
                 category: document.getElementById('category').value,
                 price: document.getElementById('price').value,
                 condition: document.getElementById('condition').value,
-                content: document.getElementById('content').value
+                content: document.getElementById('content').value,
+                status: document.getElementById('status').value
             };
 
             fetch(`/board/api/post/${postId}`, {

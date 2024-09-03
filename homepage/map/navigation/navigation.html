@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard-dynamic-subset.css" />
+    <style>
+        *{
+            /* Pretendard 우선하는 경우 */
+            font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+        }
+    </style>
+    <title>P-BUD</title>
+    <link rel="icon" type="image/png" href="/pict/logo_blue_notxt.png"> <!-- for title logo -->
+    <!-- <link rel="stylesheet" href="index.css" /> -->
+    <link rel="stylesheet" href="/bootstrap-5.3.3-dist/css/bootstrap.min.css" />
+    <script src="/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="navigation.css?ver=0.7">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.js"></script> <!-- for jquery -->
+    <script src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=cf1bhoh6co" type="text/javascript"></script>
+    <script src="navigation.json" type="text/javascript"></script>
+    <script src="nodelenlist.json" type="text/javascript"></script>
+    <script src="pointlist.json" type="text/javascript"></script>
+    <script src="navigation.js?ver=0.4.12" type="text/javascript"></script>
+</head>
+<body>
+    <header>
+        <div class="menu top_menu_1">
+            <a href="/profile">
+                <img src="/pict/bar/user.png" alt="프로필사진">
+            </a>
+            <div class="center">홈</div>
+            <div style="position: relative; margin-right: 3.5%;">
+                <a href="/chat">
+                    <img src="/pict/bar/chat.png" alt="메세지사진">
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="wrapper">
+        <div class="container">
+            <button class="btn-select" onclick="change_to_findplace()">건물 찾기</button>
+            <button class="btn-select" onclick="change_to_findroad()">경로 탐색</button>
+            <div id="map"></div>
+        </div>
+        <div class="container" id="findplace">
+            <input type="text" id="place" class="placeinput" placeholder="건물명/장소명/번호" onkeypress="enterchk(event)">
+            <input type="button" onclick="findplace('place')" value="검색" class="btn-input">
+            <p>찾고 싶은 장소, 건물의 이름 또는 번호를 입력하세요.<br><br>예) 컴퓨터공학관<br>202(동)</p>
+        </div>
+        <div class="container-form" id="findroad">
+            <p>최단거리로 안내합니다.</p>
+            <p class="p-small">지도에 나오지 않으나 사람이 다닐수 있는 길로도 안내합니다.</p>
+            <div class="container" style="justify-content: center;">
+                <section>
+                    <div class="input-location">
+                        <input type="text" id="placestart" class="textinput" placeholder="시작 건물/장소/번호" onkeypress="enterchk(event)">
+                        <input type="button" onclick="findplace('placestart')" value="검색" class="btn-input">
+                        <p>출발할 건물의 이름/장소/번호를 입력하세요.<br><br>예) 컴퓨터공학관<br>무지개문<br>202(동)</p>
+                    </div>
+                </section>
+                <section>
+                    <div class="input-location">
+                        <input type="text" id="placedesti" class="textinput" placeholder="도착 건물/장소/번호" onkeypress="enterchk(event)">
+                        <input type="button" onclick="findplace('placedesti')" value="검색" class="btn-input">
+                        <p>도착할 건물의 이름/장소/번호를 입력하세요.<br><br>예) 새벽벌도서관<br>문창쪽문<br>412(동)</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <button class="btn-select" id="findroadclick" onclick="findroad()">경로 탐색</button>
+    </div>
+    <div class="bottom_menu">
+        <div>
+            <a href="/">
+                <img src="/pict/bar/home_new_grey.png" alt="홈">
+                <span>홈</span>
+            </a>
+        </div>
+        <div>
+            <a href="/matching">
+                <img src="/pict/bar/collaboration_new_grey.png" alt="룸메매칭">
+                <span>룸메매칭</span>
+            </a>
+        </div>
+        <div>
+            <a href="/map">
+                <img src="/pict/bar/placeholder_new.png" alt="지도">
+                <span style="color: #2349A4;">지도</span>
+            </a>
+        </div>
+        <div>
+            <a href="/notification">
+                <img src="/pict/bar/bell_new_grey.png" alt="알림">
+                <span>알림</span>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

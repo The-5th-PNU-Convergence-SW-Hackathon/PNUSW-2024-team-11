@@ -11,7 +11,7 @@ $(document).ready(() => {
       for (let j = 1; j <= 12; j++) {
         const $tableCol = $(`
           <div class="table-box">
-            <input type="checkbox" id="checkbox${i}-${j}">
+            <input type="checkbox" id="checkbox${i}-${j}" name="checkbox${i}-${j}">
             <label for="checkbox${i}-${j}"></label>
           </div>
         `);
@@ -21,6 +21,20 @@ $(document).ready(() => {
   
       $timetable.append($tableRow);
     }
+
+    $.ajax({
+      url : "/ajax/timetable", // get login status
+      type : 'POST', 
+      dataType: 'JSON',
+      data: {}
+    })
+    .done(json => {
+      for(i of json) {
+        let str = i.toString();
+        $("#checkbox" + str.slice(0, 1) + '-' + str.slice(1)).prop('checked', true);
+      }
+    })
+    .fail((xhr, status, error) => console.error(error));
   
     // 체크박스 드래그 및 클릭 기능
     $timetable.on('mousedown', 'label', function(e) {

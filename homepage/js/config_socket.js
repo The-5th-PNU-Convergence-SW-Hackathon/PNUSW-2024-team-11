@@ -6,22 +6,39 @@ let connection_status = {};
 const config = server => {
     const io = new SocketIO.Server(server, {
         path: '/socket.io',
-        // cors: {
-        //     origin: "*",
-        // }
+        cors: {
+            origin: "*",
+        }
     });
 
     io.on('connection', socket => {
-        const id = ret_room_id();
-        
-        socket.join(id);
-        if(connection_status[id] === undefined) connection_status[id] = 1;
-        else connection_status[id]++;
-        // console.log(connection_status);
-        io.to(id).emit('status', connection_status[id]);
-        
+        let id;
+        socket.on('chatroom', data => {
+            id = ret_room_id();
+            if(id == null || id == undefined) return;
+            socket.join(id);
+            if(connection_status[id] === undefined) connection_status[id] = 1;
+            else connection_status[id]++;
+            io.to(id).emit('status', connection_status[id]);
+        });
+        socket.on('navigation', data => {
+            id = ret_room_id();
+            if(id == null || id == undefined) {
+                io.to(socket.id).emit('mode', 0);
+                return;
+            }
+            id += 'navi';
+            socket.join(id);
+            if(connection_status[id] === undefined) connection_status[id] = 1;
+            else connection_status[id]++;
+            io.to(id).emit('status', connection_status[id]);
+            io.to(socket.id).emit('mode', 1);
+        });
         // message receives
         socket.on('msg', data => socket.broadcast.to(id).emit('msg', data));
+
+        // send location
+        socket.on('location', data => socket.broadcast.to(id).emit('location', data));
     
         // user connection lost
         socket.on('disconnecting', () => {

@@ -6,8 +6,10 @@ const { getPosts } = require('./sql/board');
 const {post_checklist, get_checklist} = require('./sql/checklist');
 const {get_roommate} = require('./sql/matching');
 const {get_notification} = require('./sql/notification.js');
+const {get_timetable, matching, recommend} = require('./sql/timetable')
 
 
 module.exports =    {member_insert, login, check_id, check_nickname, post_insert,
                     check_email, get_room_id, getPosts, make_room, update_room_id,
-                    post_checklist, get_checklist, get_roommate, get_notification};
+                    post_checklist, get_checklist, get_roommate, get_notification,
+                    get_timetable, matching, recommend};

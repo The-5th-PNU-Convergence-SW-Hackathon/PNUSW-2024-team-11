@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=ff690f2ea35628c29cb346f55fdf0d40&libraries=services"></script>
+    <!-- <link rel="stylesheet" href="/bootstrap-5.3.3-dist/css/bootstrap.min.css" />
+    <script src="/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script> -->
     <script>
         let today = new Date();
         let nowTime = "?ver=" + today.getTime();
@@ -19,7 +21,8 @@
         cssElement.rel = "stylesheet";
         document.head.appendChild(cssElement);
     </script>
-    <title>Board</title>
+    <title>P-BUD</title>
+    <link rel="icon" type="image/png" href="/pict/logo_blue_notxt.png"> <!-- for title logo -->
 </head>
 <body>
     <!-- Top Menu 1 -->
@@ -28,8 +31,15 @@
             <img src="/pict/bar/user.png" alt="프로필사진">
         </a>
         <div class="center">지도</div>
-        <div style="position: relative; margin-right: 3.5%;">
-            <a href="chat.html">
+        <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard-dynamic-subset.css" />
+    <style>
+        *{
+            /* Pretendard 우선하는 경우 */
+            font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+        }
+    </style>
+        <div style="position: relative; margin-right: 5%;">
+            <a href="/chat">
                 <img src="/pict/bar/chat.png" alt="메세지사진">
             </a>
         </div>
@@ -38,23 +48,42 @@
     <!-- Search Container -->
     <div class="search_container">
         <input type="text" placeholder="검색어 입력">
-        <img id="searchimg" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png" alt="검색">
+        <img id="searchimg" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png" alt="검색" onclick="searchPlaces()">
     </div>
 
-    <!-- category Menu -->
-    <!-- category Menu -->
-<div id="category" class="menu top_menu_2">
-    <button id="FD6" data-order="0"><span class="category_bg"></span>음식점/주점</button>
-    <button id="CE7" data-order="1"><span class="category_bg"></span>카페/디저트</button>
-    <button id="store" data-order="2"><span class="category_bg"></span>편의점/마트</button>
-    <button id="health" data-order="3"><span class="category_bg"></span>병원/약국</button>
+    <!-- Category Menu -->
+    <div id="category" class="menu top_menu_2">
+        <button id="FD6" data-order="0"><span class="category_bg"></span>음식점/주점</button>
+        <button id="CE7" data-order="1"><span class="category_bg"></span>카페/디저트</button>
+        <button id="store" data-order="2"><span class="category_bg"></span>편의점/마트</button>
+        <button id="health" data-order="3"><span class="category_bg"></span>병원/약국</button>
+    </div>
+
+    <!-- 마커 생성 폼 -->
+<div id="markerForm" style="display:none; position: absolute; top: 20%; left: 20%; background-color: white; padding: 20px; border: 1px solid #ccc; z-index: 1000;">
+    <h3>맛집 등록</h3>
+    <label for="placeName">맛집 이름:</label>
+    <input type="text" id="placeName" placeholder="맛집 이름 입력"><br><br>
+    <label for="placeLat">위도:</label>
+    <input type="text" id="placeLat" placeholder="위도 입력"><br><br>
+    <label for="placeLng">경도:</label>
+    <input type="text" id="placeLng" placeholder="경도 입력"><br><br>
+    <button id="addMarkerButton">마커 추가</button>
+    <button id="closeFormButton">취소</button>
 </div>
 
-
-    <!-- 룰렛 버튼 -->
-    <a href="/map/lottery.html" class="lottery-button">
-        <img src="/pict/bar/lottery.png" alt="룰렛">
-    </a>
+    <!-- 버튼 컨테이너 -->
+    <div class="button-container">
+        <!-- 룰렛 버튼 -->
+        <a href="/map/lottery" class="lottery-button">
+            <img src="/pict/bar/lottery5.png" alt="룰렛">
+        </a>
+        
+        <!-- 글쓰기 버튼 -->
+        <a class="post-button">
+            <img src="/pict/bar/pencil.png" alt="게시">
+        </a>
+    </div>
 
     <section class="map" id="map">
         <div class="cover" rel="cover">지도를 불러오는 중</div>
@@ -64,28 +93,29 @@
     <div class="bottom_menu">
         <div>
             <a href="/">
-                <img src="/pict/bar/home.png" alt="홈">
+                <img src="/pict/bar/home_new_grey.png" alt="홈">
                 <span>홈</span>
             </a>
         </div>
         <div>
-            <a href="matching.html">
-                <img src="/pict/bar/collaboration.png" alt="룸메매칭">
+            <a href="/matching">
+                <img src="/pict/bar/collaboration_new_grey.png" alt="룸메매칭">
                 <span>룸메매칭</span>
             </a>
         </div>
         <div>
-            <a href="map.html">
-                <img src="/pict/bar/placeholder.png" alt="지도">
-                <span>지도</span>
+            <a href="/map">
+                <img src="/pict/bar/placeholder_new.png" alt="지도">
+                <span style="color: #2349A4;">지도</span>
             </a>
         </div>
         <div>
-            <a href="notification.html">
-                <img src="/pict/bar/bell.png" alt="알림">
+            <a href="/notification">
+                <img src="/pict/bar/bell_new_grey.png" alt="알림">
                 <span>알림</span>
             </a>
         </div>
     </div>
+
 </body>
 </html>

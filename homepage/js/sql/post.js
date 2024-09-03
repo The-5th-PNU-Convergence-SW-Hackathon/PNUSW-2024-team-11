@@ -47,7 +47,7 @@ let post_insert = async (req, res) => {
             return res.status(500).send("<script>alert('파일 업로드 실패'); location.href='/board/index.html'; </script>");
         }
 
-        const { title, content, price, category, underline, notes, condition } = req.body;
+        const { title, content, price, category, underline, notes, condition, lecture } = req.body;
         const photos = req.files; // 파일 배열
         const sellerId = req.session.USER ? req.session.USER[0] : null;
 
@@ -63,8 +63,8 @@ let post_insert = async (req, res) => {
         const notesValue = (notes === 'no') ? 0 : 1;
 
         // SQL 쿼리 작성
-        const sql = 'INSERT INTO PRODUCT (SELLER_ID, TITLE, CONTENT, PRICE, CATEGORY_ID, UNDERLINE, NOTES, PRODUCT_CONDITION) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
-        connection.query(sql, [sellerId, title, contentValue, price, category, underlineValue, notesValue, condition], (err, result) => {
+        const sql = 'INSERT INTO PRODUCT (SELLER_ID, TITLE, CONTENT, PRICE, CATEGORY_ID, UNDERLINE, NOTES, PRODUCT_CONDITION, LECTURE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        connection.query(sql, [sellerId, title, contentValue, price, category, underlineValue, notesValue, condition, lecture], (err, result) => {
             if (err) {
                 console.error(err);
                 return res.status(500).send("<script>alert('상품 등록 실패'); location.href='/board/index.html'; </script>");

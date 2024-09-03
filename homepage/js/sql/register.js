@@ -1,6 +1,8 @@
 const mysql       = require('mysql');
 const dbconfig    = require('../../config/database.js');
+const timetabledbconfig = require('../../config/timetable.js');
 const connection  = mysql.createConnection(dbconfig);
+const timetableconnection = mysql.createConnection(timetabledbconfig);
 const crypto = require("../crypto.js");
 const { verify } = require('../verify.js');
 
@@ -10,6 +12,7 @@ let member_insert = async (req, res) => {
     req.session.iv = iv;
     // console.log(iv);
     let id = await crypto.create_crypto(body.id);
+    let id_aes = await crypto.create_aes(body.id, iv);
     let pw = await crypto.create_crypto(body.pw);
     let name = await crypto.create_aes(body.name, iv);
     let phone = await crypto.create_aes(body.phone_front + body.phone_back, iv);
@@ -22,18 +25,38 @@ let member_insert = async (req, res) => {
     let nickname_sha = await crypto.create_crypto(body.nickname);
     let iv_str = iv.toString("hex");
 
-    connection.query(`INSERT INTO USER VALUES ('${id}', '${pw}', '${name}', '${phone}', '${phone_sha}', '${email}', '${email_sha}', '${Class}', '${stu_num}', '${nickname}', '${nickname_sha}', '${iv_str}', now(), now(), 0, 0);`, (error) => {
+    timetableconnection.query(`SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'p-bud_timetable';`, (error, row) => {
+        // console.log(row, "#############");
+        if(error) {
+            console.log(error, "@@@@@@");
+            return res.redirect('/error');
+        }
+        timetableconnection.query(`INSERT INTO INFO VALUES ('${id}', ${row[0]['COUNT(*)']})`, (error) => {
+            if(error) {
+                console.log(error, "$$$$$$$$$$$");
+                return res.redirect('/error');
+            }
+        });
+        timetableconnection.query(`CREATE TABLE \`${row[0]['COUNT(*)']}\`(\`USED\` INT NOT NULL ) ENGINE = InnoDB;`, (error) => {
+            if(error) {
+                console.log(error, "!!!!!!!!!!!!!");
+                return res.redirect('/error');
+            }
+        });
+    });
+
+    connection.query(`INSERT INTO USER VALUES ('${id}', '${id_aes}', '${pw}', '${name}', '${phone}', '${phone_sha}', '${email}', '${email_sha}', '${Class}', '${stu_num}', '${nickname}', '${nickname_sha}', '${iv_str}', now(), now(), 0, 0);`, (error) => {
         if (error) {
             console.log(error);
             req.session.register_status = false;
-            res.redirect("/register/status");
+            return res.redirect("/register/status");
         }
         else {
             // console.log("register success");
             req.session.register_status = true;
             // req.session.verify_info = [id, body.email, email];
             verify(req, [body.email, id, email]);
-            res.redirect("/register/status");
+            return res.redirect("/register/status");
         }
     });
 }

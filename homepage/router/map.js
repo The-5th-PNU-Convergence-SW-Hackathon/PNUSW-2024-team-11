@@ -4,14 +4,16 @@ const router = express.Router();
 router.get('/', (req, res) => req.session.login_status ?
 res.sendFile('index.html', {root: './map'}) : res.redirect('/login'));
 
-router.get('/map/lottery', (req, res) => {
+router.get('/lottery', (req, res) => {
     if (req.session && req.session.USER) {
-        // »ç¿ëÀÚ°¡ ·Î±×ÀÎÇÑ °æ¿ì »ó¼¼ ÆäÀÌÁö¸¦ Á¦°ø
+        // ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         res.sendFile('lottery.html', { root: './map' });
     } else {
-        // »ç¿ëÀÚ°¡ ·Î±×ÀÎÇÏÁö ¾ÊÀº °æ¿ì ·Î±×ÀÎ ÆäÀÌÁö·Î ¸®´ÙÀÌ·ºÆ®
+        // ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì·ï¿½Æ®
         res.redirect('/login');
     }
 });
+
+router.get('/navigation', (req, res) => res.sendFile('navigation.html', {root: './map/navigation'}));
 
 module.exports = router;

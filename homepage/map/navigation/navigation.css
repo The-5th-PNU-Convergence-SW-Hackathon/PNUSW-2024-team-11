@@ -1,0 +1,146 @@
+.menu {
+    position: fixed; 
+    left: 0px; 
+    width: 100%; 
+    height: 50px; 
+    z-index: 100; 
+    background-color: white; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+.top_menu_1 {
+    top: 0px;
+}
+.top_menu_1 .center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px;
+    font-weight: bold;
+}
+.top_menu_1 img {
+    height: 30px;
+}
+.bottom_menu { 
+    position: fixed; 
+    bottom: 0px; 
+    left: 0px; 
+    width: 100%; 
+    height: 90px; 
+    padding-bottom: 20px;
+    z-index: 100; 
+    border-top: 1px solid rgba(0, 0, 0, 0.200);
+    background-color: white; 
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 5px;
+}
+.bottom_menu > div { 
+    text-align: center; 
+}
+.bottom_menu img {
+    height: 30px;
+}
+.bottom_menu div span {
+    display: block;
+    font-size: 12px;
+}
+body {
+    padding-top: 0px; /* 상단 메뉴와 검색 바를 피하기 위해 여백 추가 */
+    padding-bottom: 60px; /* 하단 메뉴를 피하기 위해 여백 추가 */
+    margin: 0;
+    height: 100vh; /* 화면 전체 높이를 기준으로 설정 */
+    overflow: hidden;
+    background-color: transparent ; /* 배경색을 투명으로 설정 */
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+p {
+    margin-bottom: 0px;
+}
+
+@media only screen and (max-width:900px) {
+    .container:last-child{
+        margin: auto;
+        width: 100%;
+        text-align: center;
+        display: flex;
+    }
+    .container-form{
+        margin: auto;
+        width: 100%;
+        text-align: center;
+    }
+    .input-location{
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    .placeinput{
+        width: 20%;
+        height: 30px;
+        font-size: 100%;
+        margin-top: 10px;
+    }
+    .textinput{
+        width: 50%;
+        height: 30px;
+        font-size: 100%;
+        margin-top: 10px;
+    }
+    #map{
+        border: solid 1px black;
+        width: 80%;
+        height: 500px;
+        margin: auto;
+    }
+    p{
+        font-size: 80%;
+    }
+    .p-small{
+        font-size: 10px;
+    }
+}
+@media only screen and (min-width:900px) {
+    .container:last-child{
+        margin: auto;
+        width: 1060px;
+        text-align: center;
+        display: flex;
+    }
+    .container-form{
+        margin: auto;
+        width: 1060px;
+        text-align: center;
+    }
+    .input-location{
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .textinput, .placeinput{
+        width: 200px;
+        height: 30px;
+        font-size: 20px;
+        margin-top: 20px;
+    }
+    #map{
+        border: solid 1px black;
+        width: 600px;
+        height: 500px;
+        margin: auto;
+    }
+    p{
+        font-size: 100%;
+    }
+    .p-small{
+        font-size: 10px;
+    }
+}

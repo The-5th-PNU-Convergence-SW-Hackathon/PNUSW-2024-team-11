@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/bootstrap-5.3.3-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard-dynamic-subset.css" />
+    <style>
+        *{
+            /* Pretendard 우선하는 경우 */
+            font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+        }
+    </style>
     <script src="/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
@@ -34,21 +41,105 @@
     <!-- Top Menu 1 -->
     <div class="menu top_menu_1">
         <a href="/profile">
-            <img src="../pict/bar/user.png" alt="프로필사진">
+            <img src="/pict/bar/user.png" alt="프로필사진">
         </a>
         <div class="center">룸메 매칭</div>
         <div style="position: relative; margin-right: 3.5%;">
             <a href="/chat">
-                <img src="../pict/bar/chat.png" alt="메세지사진">
+                <img src="/pict/bar/chat.png" alt="메세지사진">
             </a>
         </div>
     </div>
 
+    <!-- 필터 버튼 -->
+     <div>
+        <div class="align-chkbox">
+            <button title="filter" class="filter" id="filterButton">
+                <svg viewBox="0 0 512 512" height="1em">
+                  <path
+                    d="M0 416c0 17.7 14.3 32 32 32l54.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 448c17.7 0 32-14.3 32-32s-14.3-32-32-32l-246.7 0c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48L32 384c-17.7 0-32 14.3-32 32zm128 0a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zM320 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm32-80c-32.8 0-61 19.7-73.3 48L32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l246.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48l54.7 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-54.7 0c-12.3-28.3-40.5-48-73.3-48zM192 128a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm73.3-64C253 35.7 224.8 16 192 16s-61 19.7-73.3 48L32 64C14.3 64 0 78.3 0 96s14.3 32 32 32l86.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 128c17.7 0 32-14.3 32-32s-14.3-32-32-32L265.3 64z"
+                  ></path>
+                </svg>
+            </button>
+            <!-- Modal Structure -->
+            <div id="filterModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h2>필터링</h2>
+                    <form id="filterForm">
+                    <!-- Smoking Filter -->
+                        <fieldset>
+                            <legend>흡연 여부 :</legend>
+                            <div class="filter-group">
+                                <label><input type="checkbox" name="smoking" value="0"> 비흡연</label>
+                                <label><input type="checkbox" name="smoking" value="1"> 흡연</label>
+                            </div>
+                        </fieldset>
+
+                        <!-- Drinking Frequency Filter -->
+                        <fieldset>
+                            <legend>음주 빈도 :</legend>
+                            <div class="filter-group">
+                                <label><input type="checkbox" name="drinking_frequency" value="주1회미만"> 주1회미만</label>
+                                <label><input type="checkbox" name="drinking_frequency" value="주2~3회"> 주2~3회</label>
+                                <label><input type="checkbox" name="drinking_frequency" value="주4회이상"> 주4회이상</label>
+                            </div>
+                        </fieldset>
+
+                        <!-- Sleep Pattern Filter -->
+                        <fieldset>
+                            <legend>수면 패턴 :</legend>
+                            <div class="filter-group">
+                                <label><input type="checkbox" name="sleep_pattern" value="아침형"> 아침형</label>
+                                <label><input type="checkbox" name="sleep_pattern" value="저녁형"> 저녁형</label>
+                            </div>
+                        </fieldset>
+
+                        <!-- Sleep Habit Filter -->
+                        <fieldset>
+                            <legend>잠버릇 :</legend>
+                            <div class="filter-group">
+                                <label><input type="checkbox" name="sleep_habit" value="없음"> 없음</label>
+                                <label><input type="checkbox" name="sleep_habit" value="이갈이"> 이갈이</label>
+                                <label><input type="checkbox" name="sleep_habit" value="잠꼬대"> 잠꼬대</label>
+                                <label><input type="checkbox" name="sleep_habit" value="코골이"> 코골이</label>
+                            </div>
+                        </fieldset>
+
+                        <!-- Guest Visit Filter -->
+                        <fieldset>
+                            <legend>룸메의 지인 방문 :</legend>
+                            <div class="filter-group">
+                                <label><input type="checkbox" name="guest_visit" value="0"> 불가능</label>
+                                <label><input type="checkbox" name="guest_visit" value="1"> 상관X</label>
+                                <label><input type="checkbox" name="guest_visit" value="2"> 사전허락</label>
+                            </div>
+                        </fieldset>
+
+                        <!-- Submit Button -->
+                        <button type="submit" id="applyFilters">적용</button>
+                    </form>
+                </div>
+            </div>
+            <div class="checkbox-wrapper-19">
+                <input class="form-check-input" type="radio" name="dorm" id="자유관" value="0">
+                <label class="chk-label" for="자유관">자유관</label>
+            </div>
+            <div class="checkbox-wrapper-19">
+                <input class="form-check-input" type="radio" name="dorm" id="웅비관" value="1">
+                <label class="chk-label" for="웅비관">웅비관</label>
+            </div>
+            <div class="checkbox-wrapper-19">
+                <input class="form-check-input" type="radio" name="dorm" id="효원재" value="2">
+                <label class="chk-label" for="효원재">효원재</label>
+            </div>
+        </div>
+     </div>
+
     <!-- 매칭 목록 -->
     <div id="roommate-list" class="row">
-
+        
     </div>
-
 
     <!-- 수정 버튼 -->
     <div>
@@ -63,29 +154,28 @@
     <div class="bottom_menu">
         <div>
             <a href="/">
-                <img src="/pict/bar/home.png" alt="홈">
+                <img src="/pict/bar/home_new_grey.png" alt="홈">
                 <span>홈</span>
             </a>
         </div>
         <div>
             <a href="/matching">
-                <img src="/pict/bar/collaboration.png" alt="룸메매칭">
-                <span>룸메매칭</span>
+                <img src="/pict/bar/collaboration_new.png" alt="룸메매칭">
+                <span style="color: #2349A4;">룸메매칭</span>
             </a>
         </div>
         <div>
             <a href="/map">
-                <img src="/pict/bar/placeholder.png" alt="지도">
+                <img src="/pict/bar/placeholder_new_grey.png" alt="지도">
                 <span>지도</span>
             </a>
         </div>
         <div>
             <a href="/notification">
-                <img src="/pict/bar/bell.png" alt="알림">
+                <img src="/pict/bar/bell_new_grey.png" alt="알림">
                 <span>알림</span>
             </a>
         </div>
     </div>
-
 </body>
 </html>

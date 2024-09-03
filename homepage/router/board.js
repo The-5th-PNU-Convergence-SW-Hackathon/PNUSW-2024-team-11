@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const router = express.Router();
-const { deletePost, incrementViewCount, getPosts, getPostDetails, editPost, make_chat } = require('../js/sql/board');
+const { deletePost, incrementViewCount, getPosts, getPostDetails, editPost, make_chat} = require('../js/sql/board');
 
 // 메인 페이지 로드
 router.get('/', (req, res) => {
@@ -10,10 +10,18 @@ router.get('/', (req, res) => {
 
 // 게시글 목록 API
 router.get('/posts', async (req, res) => {
+    if (!req.session || !req.session.USER) {
+        return res.status(401).send('로그인 정보가 없습니다.');
+    }
     const searchQuery = req.query.search || '';
+    const userClass = req.session.USER[2];
     try {
-        const posts = await getPosts(searchQuery);
-        res.json(posts);
+        console.log(userClass);
+        const posts = await getPosts(searchQuery,userClass);
+        res.json({
+            posts: posts,
+            userClass: userClass // 클라이언트로 userClass도 전달
+        });
     } catch (error) {
         res.status(500).json({ message: '게시글 목록을 불러오는데 실패했습니다.', error: error.message });
     }
@@ -23,6 +31,7 @@ router.get('/posts', async (req, res) => {
 router.get('/post/:postId', (req, res) => {
     if (req.session && req.session.USER) {
         // 사용자가 로그인한 경우 상세 페이지를 제공
+        req.session.post_id = req.params.postId;
         res.sendFile('detail.html', { root: './board' });
     } else {
         // 사용자가 로그인하지 않은 경우 로그인 페이지로 리다이렉트
@@ -102,8 +111,10 @@ router.put('/api/post/:postId', async (req, res) => {
     }
 });
 
-router.post('/chat', (req, res) => {
-    make_chat(req, res);
-})
+router.post('/chat', (req, res) => make_chat(req, res));
+
+router.get('/matching', (req, res) => res.sendFile('index.html', {root: './board/matching'}));
+
+router.get('/post', (req, res) => res.sendFile('post.html', {root: './board'}));
 
 module.exports = router;
