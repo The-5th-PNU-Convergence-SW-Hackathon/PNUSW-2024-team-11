@@ -1,4 +1,4 @@
-### 1. 프로젝트 소개
+<img width="811" alt="기능명세서-홈상하단바" src="https://github.com/user-attachments/assets/97fff4aa-de7c-4362-b25f-462078a9e8db">### 1. 프로젝트 소개
 #### 1.1. 개발배경 및 필요성
 > 프로젝트를 실행하게 된 배경 및 필요성을 작성하세요.
 
@@ -64,25 +64,25 @@
 
 #### 3.3. 기능명세서
 - 회원가입
-<img width="666" alt="기능명세-회원가입" src="[https://github.com/user-attachments/assets/a37094ed-28d0-4c97-a7c7-4f7370063a96](https://prod-files-secure.s3.us-west-2.amazonaws.com/8ae02ed1-2865-4911-9cfc-29874aba8bc1/d56420d3-357a-4ffc-9129-bafa58e69f9f/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2024-09-03_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_4.32.34.png]">
+<img width="613" alt="기능명세서-홈상하단바" src="https://github.com/user-attachments/assets/37236283-da5b-49e1-8fdb-f8037e6e756e">
 
 - 로그인
-<img width="835" alt="기능명세-로그인" src="https://github.com/user-attachments/assets/5e5f34d7-6781-4a3b-b027-255cf0ff5967">
+<img width="613" alt="기능명세서-로그인" src="https://github.com/user-attachments/assets/0d8599bc-0975-4986-abc5-c0fce4e234a4">
 
 - 마이페이지
-<img width="830" alt="기능명세-마이페이지" src="https://github.com/user-attachments/assets/2145bed7-b4ee-401d-b488-18f658762555">
+<img width="613" alt="기능명세서-마이페이지" src="https://github.com/user-attachments/assets/834ac611-1220-4f01-9111-93c3a32b75c8">
 
 - 게시판
-<img width="289" alt="기능명세-게시판" src="https://github.com/user-attachments/assets/d312da75-a6d8-4746-b26f-0117bfa76e8d">
+<img width="613" alt="기능명세서-게시판" src="https://github.com/user-attachments/assets/3946a5aa-6275-4fa6-a9d9-a38be0818462">
 
 - 채팅
-<img width="832" alt="기능명세-채팅" src="https://github.com/user-attachments/assets/e707ea04-c967-42ff-a5f9-f69aad19894f">
+<img width="613" alt="기능명세서-채팅" src="https://github.com/user-attachments/assets/11005c42-f86a-488d-9c56-cde66d506876">
 
 - 룸메이트 매칭
-<img width="666" alt="기능명세-룸메매칭" src="https://github.com/user-attachments/assets/ce83ccea-0609-4397-bafe-75e115707823">
+<img width="613" alt="기능명세서-룸메매칭" src="https://github.com/user-attachments/assets/20b0d29f-5030-4387-82ff-e453f7274f1e">
 
 - 지도
-<img width="668" alt="기능명세-지도" src="https://github.com/user-attachments/assets/62f37d74-5721-477d-891f-55212dd02e12">
+<img width="613" alt="기능명세서-지도" src="https://github.com/user-attachments/assets/e9dd3eb2-b2fb-4a34-9095-2cc118f1d9c5">
 
 
 #### 3.4. 디렉토리 구조
