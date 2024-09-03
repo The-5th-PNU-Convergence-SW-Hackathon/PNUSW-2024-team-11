@@ -64,7 +64,7 @@
 
 #### 3.3. 기능명세서
 - 회원가입
-<img width="666" alt="기능명세-회원가입" src="[https://github.com/user-attachments/assets/a37094ed-28d0-4c97-a7c7-4f7370063a96](https://prod-files-secure.s3.us-west-2.amazonaws.com/8ae02ed1-2865-4911-9cfc-29874aba8bc1/d56420d3-357a-4ffc-9129-bafa58e69f9f/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2024-09-03_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_4.32.34.png)">
+<img width="666" alt="기능명세-회원가입" src="[https://github.com/user-attachments/assets/a37094ed-28d0-4c97-a7c7-4f7370063a96](https://prod-files-secure.s3.us-west-2.amazonaws.com/8ae02ed1-2865-4911-9cfc-29874aba8bc1/d56420d3-357a-4ffc-9129-bafa58e69f9f/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2024-09-03_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_4.32.34.png]">
 
 - 로그인
 <img width="835" alt="기능명세-로그인" src="https://github.com/user-attachments/assets/5e5f34d7-6781-4a3b-b027-255cf0ff5967">
