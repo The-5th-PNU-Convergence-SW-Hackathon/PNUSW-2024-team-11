@@ -16,12 +16,21 @@
 
 ### 2. 상세설계
 #### 2.1. 시스템 구성도
-> 시스템 구성도(infra, front, back등의 node 간의 관계)의 사진을 삽입하세요.
+<img width="656" alt="시스템구성도" src="https://github.com/user-attachments/assets/d0d108be-96ad-405c-ba89-01cec4856617">
 
 #### 2.1. 사용 기술
-> 스택 별(backend, frontend, designer등) 사용한 기술 및 버전을 작성하세요.
-> 
-> ex) React.Js - React14, Node.js - v20.0.2
+| 기술       | 버전       |
+|------------|------------|
+| HTML       | html5      |
+| CSS        | css3       |
+| Node.js    | v20.15.0   |
+| npm        | 10.7.0     |
+| jQuery     | 1.11.1     |
+| PHP        | 8.3.6      |
+| Nginx      | 1.24.0     |
+| MySQL      | 8.0.39     |
+| Bootstrap  | 5.3.3      |
+| Express.js | 4.19.2     |
 
 ### 3. 개발결과
 #### 3.1. 전체시스템 흐름도
@@ -31,6 +40,9 @@
 - 컴포넌트   
   <img width="479" alt="컴포넌트_형식" src="https://github.com/user-attachments/assets/8d9caa10-826e-4084-a76b-1213d59d3066">
 
+- 마이페이지   
+  <img width="695" alt="마이페이지" src="https://github.com/user-attachments/assets/8d13d214-d613-4090-89c8-0d039a66f51c">
+
 - 회원가입/로그인   
   <img width="674" alt="회원가입-로그인" src="https://github.com/user-attachments/assets/e49a411f-6bc5-4816-bb5b-57db3e384a52">
 
@@ -39,10 +51,6 @@
 
 - 채팅   
   <img width="389" alt="채팅" src="https://github.com/user-attachments/assets/36f5771d-abc3-4f05-9179-d1b165163519">
-
-- 마이페이지   
-  <img width="695" alt="마이페이지" src="https://github.com/user-attachments/assets/8d13d214-d613-4090-89c8-0d039a66f51c">
-
 
 #### 3.2. 기능설명
 > 각 페이지 마다 사용자의 입력의 종류와 입력에 따른 결과 설명 및 시연 영상.
@@ -62,14 +70,14 @@
 > (영상)
 
 #### 3.3. 기능명세서
-- 홈, 상하단바   
-  <img width="700" alt="기능명세서-홈상하단바" src="https://github.com/user-attachments/assets/9c116cf2-51b1-480c-8f06-394797566a5d">
-
 - 회원가입   
   <img width="700" alt="기능명세서-회원가입" src="https://github.com/user-attachments/assets/21d587fe-9fec-40c3-b8a7-d8a45468a255">
 
 - 로그인   
   <img width="700" alt="기능명세서-로그인" src="https://github.com/user-attachments/assets/0d8599bc-0975-4986-abc5-c0fce4e234a4">
+
+- 홈, 상하단바   
+  <img width="700" alt="기능명세서-홈상하단바" src="https://github.com/user-attachments/assets/9c116cf2-51b1-480c-8f06-394797566a5d">
 
 - 마이페이지   
   <img width="700" alt="기능명세서-마이페이지" src="https://github.com/user-attachments/assets/834ac611-1220-4f01-9111-93c3a32b75c8">
@@ -81,7 +89,7 @@
   <img width="700" alt="기능명세서-채팅" src="https://github.com/user-attachments/assets/11005c42-f86a-488d-9c56-cde66d506876">
 
 - 룸메이트 매칭   
-  <img width="700" alt="기능명세서-룸메매칭" src="https://github.com/user-attachments/assets/20b0d29f-5030-4387-82ff-e453f7274f1e">
+  <img width="700" alt="기능명세서-룸메매칭" src="https://github.com/user-attachments/assets/9213f6bf-ffbc-4b38-9ae5-41f132797562">
 
 - 지도   
   <img width="700" alt="기능명세서-지도" src="https://github.com/user-attachments/assets/e9dd3eb2-b2fb-4a34-9095-2cc118f1d9c5">
