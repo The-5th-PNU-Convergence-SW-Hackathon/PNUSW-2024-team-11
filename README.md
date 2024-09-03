@@ -52,22 +52,20 @@
   <img width="389" alt="채팅" src="https://github.com/user-attachments/assets/36f5771d-abc3-4f05-9179-d1b165163519">
 
 #### 3.2. 기능설명
-> 각 페이지 마다 사용자의 입력의 종류와 입력에 따른 결과 설명 및 시연 영상.
-> 
-> ex. 로그인 페이지:
-> 
-> - 이메일 주소와 비밀번호를 입력하면 입력창에서 유효성 검사가 진행됩니다.
-> 
-> - 요효성 검사를 통과하지 못한 경우, 각 경고 문구가 입력창 하단에 표시됩니다.
->   
-> - 유효성 검사를 통과한 경우, 로그인 버튼이 활성화 됩니다.
->   
-> - 로그인 버튼을 클릭 시, 입력한 이메일 주소와 비밀번호에 대한 계정이 있는지 확인합니다.
->   
-> - 계정이 없는 경우, 경고문구가 나타납니다.
->
-> (영상)
-
+- 회원가입
+  1. 아이디/비밀번호 입력 
+    - 사용자가 **아이디 입력 필드**에 원하는 아이디를 입력한다.
+    - 입력 후 중복 확인 버튼을 눌러 중복 여부를 확인한 후 , 중복된 아이디일 경우 경고문구가 표시된다.
+    - 사용 가능한 아이디일 경우, "사용 가능한 아이디입니다."라는 확인 메시지가 표시된다.
+    - 사용자가 **비밀번호 입력 필드**에 원하는 비밀번호를 입력한다.
+    - 비밀번호는 일정 기준(8자이상-16자이하,영어, 숫자 및 특수문자 포함 )을 만족해야 하며 만족하지 않을 시 경고문구가 표시된다.
+    - 사용자가 **비밀번호 재입력 필드**에 동일한 비밀번호를 한 번 더 입력하여, 비밀번호를 정확하게 입력했는지 확인한다.
+  2. **회원 정보 입력**
+    - 이름,단과 대학, 학과, 학번, 전화번호, 닉네임, 부산대 이메일 등의 회원 정보를 입력하는 필드가 제공된다.
+    - 전화번호 뒷자리나 학번이 유효한 형식(8자리숫자/9자리 숫자)으로 입력되지 않으면 경고 문자가 표시된다.
+  3. **제출 및 이메일 인증**
+    - 제출 버튼을 누르면 이메일 인증 절차를 거친다.
+    - 화면에 나온 링크를 클릭 하여 이메일 인증이 완료되면 가입 완료 메세지가 표시되며 로그인 페이지로 이동한다.
 #### 3.3. 기능명세서
 - 회원가입   
   <img width="700" alt="기능명세서-회원가입" src="https://github.com/user-attachments/assets/21d587fe-9fec-40c3-b8a7-d8a45468a255">
@@ -215,7 +213,7 @@ P-bud
 ### 6. 팀 소개
 | 김진목 | 박혜린 | 여채언 | 이유민 | 이유진 |
 |:-------:|:-------:|:-------:|:-------:|:-------:|
-|<img width="100px" alt="안성수" src="https://avatars.githubusercontent.com/u/67642811?v=4" /> | <img width="100px" alt="홍태근" src="https://avatars.githubusercontent.com/u/79072462?v=4" /> | <img width="100px" alt="정솔빈" src="https://avatars.githubusercontent.com/u/108869351?v=4" /> | <img width="100px" alt="임정근" src="https://avatars.githubusercontent.com/u/102662177?v=4" /> | <img width="100px" alt="김상준" src="https://avatars.githubusercontent.com/u/133668870?v=4" /> |
+|<img width="100px" alt="1" src="https://avatars.githubusercontent.com/u/67642811?v=4" /> | <img width="100px" alt="2" src="https://avatars.githubusercontent.com/u/79072462?v=4" /> | <img width="100px" alt="3" src="https://avatars.githubusercontent.com/u/108869351?v=4" /> | <img width="100px" alt="4" src="https://avatars.githubusercontent.com/u/102662177?v=4" /> | <img width="100px" alt="5" src="https://avatars.githubusercontent.com/u/133668870?v=4" /> |
 | truetree@pusan.ac.kr | hyerin010140@pusan.ac.kr | codjs2659@pusan.ac.kr | wint123@pusan.ac.kr | pustraw0454@naver.com |
 | 정보컴퓨터공학과 <br/> 백엔드, 보안 | 언어정보학과 <br/> 기획, 디자인 |  정보컴퓨터공학과 <br/> 백엔드 | 정보컴퓨터공학과 <br/> 프론트엔드, 디자인 | 정보컴퓨터공학과 <br/> 벡엔드, DB | 
 
