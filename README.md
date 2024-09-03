@@ -177,6 +177,7 @@ P-bud
 ```
 
 ### 4. 설치 및 사용 방법
+
 > IOS
 1. https://p-bud.duckdns.org 링크로 접속하기
 2. 하단 공유 버튼 클릭하기
@@ -185,6 +186,19 @@ P-bud
 ![iphone](https://github.com/user-attachments/assets/a8038c69-ab61-473d-9474-fb835893ff0c)
 ![다운로드완료_아이폰](https://github.com/user-attachments/assets/61ecf333-63ec-45c2-b844-424ebe4d4776)
 
+
+<table>
+  <tr>
+    <td>
+      1. 첫 번째 항목<br>
+      2. 두 번째 항목<br>
+      3. 세 번째 항목
+    </td>
+    <td>
+      <img src="https://github.com/user-attachments/assets/4f33a8a3-3e70-4fc7-b00b-35bb3d322371" alt="Android_process" width="200">
+    </td>
+  </tr>
+</table>
 > Android 
 1. https://p-bud.duckdns.org 링크로 접속하기
 2. 오른쪽 상단 더보기 버튼 클릭하기
