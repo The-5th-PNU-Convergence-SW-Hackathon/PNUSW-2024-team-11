@@ -516,8 +516,8 @@ P-bud
 <br>
 
 ### 5. 소개 및 시연 영상
-> 프로젝트에 대한 소개와 시연 영상을 넣으세요.
-> 프로젝트 소개 동영상을 교육원 메일(swedu@pusan.ac.kr)로 제출 이후 센터에서 부여받은 youtube URL주소를 넣으세요.
+
+[<img width="700px" alt="소개 및 시연영상" src="https://github.com/user-attachments/assets/f31b7efa-e9e3-4024-be0a-8079cfda92b2" />](https://youtu.be/350R6k2Sd9Q?si=tn_4dlyI9ikdQEDy)
 
 <br>
 
