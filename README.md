@@ -96,7 +96,6 @@
 
 #### 1.4. 기존 서비스 대비 차별성
 
-> **중고 거래 기능상에서의 차별점**
 <img width="750" alt="차별성" src="https://github.com/user-attachments/assets/4feed1df-c260-4ee3-9742-e211fae0d471">
 
 1. **맞춤형 거래 경험 제공**
