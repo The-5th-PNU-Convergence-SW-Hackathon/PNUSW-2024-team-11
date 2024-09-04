@@ -140,6 +140,10 @@
 
 <br>
 
+---
+
+<br>
+
 ### 2. 상세설계
 #### 2.1. 시스템 구성도
 
@@ -164,6 +168,10 @@
 | MySQL      | 8.0.39     |
 | Bootstrap  | 5.3.3      |
 | Express.js | 4.19.2     |
+
+<br>
+
+---
 
 <br>
 
@@ -461,6 +469,10 @@ P-bud
 
 <br>
 
+---
+
+<br>
+
 ### 4. 설치 및 사용 방법
 
 > **IOS**
@@ -500,6 +512,10 @@ P-bud
 
 <br>
 
+---
+
+<br>
+
 ### 5. 소개 및 시연 영상
 > 프로젝트에 대한 소개와 시연 영상을 넣으세요.
 > 프로젝트 소개 동영상을 교육원 메일(swedu@pusan.ac.kr)로 제출 이후 센터에서 부여받은 youtube URL주소를 넣으세요.
@@ -512,6 +528,10 @@ P-bud
 |<img width="100px" alt="1" src="https://avatars.githubusercontent.com/u/67642811?v=4" /> | <img width="100px" alt="2" src="https://avatars.githubusercontent.com/u/79072462?v=4" /> | <img width="100px" alt="3" src="https://avatars.githubusercontent.com/u/108869351?v=4" /> | <img width="100px" alt="4" src="https://avatars.githubusercontent.com/u/102662177?v=4" /> | <img width="100px" alt="5" src="https://avatars.githubusercontent.com/u/133668870?v=4" /> |
 | truetree@pusan.ac.kr | hyerin010140@pusan.ac.kr | codjs2659@pusan.ac.kr | wint123@pusan.ac.kr | pustraw0454@naver.com |
 | 정보컴퓨터공학과 <br/> 백엔드, 보안 | 언어정보학과 <br/> 기획, 디자인 |  정보컴퓨터공학과 <br/> 백엔드 | 정보컴퓨터공학과 <br/> 프론트엔드, 디자인 | 정보컴퓨터공학과 <br/> 벡엔드, DB | 
+
+<br>
+
+---
 
 <br>
 
