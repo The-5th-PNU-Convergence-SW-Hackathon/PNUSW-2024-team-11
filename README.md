@@ -517,7 +517,7 @@ P-bud
 
 ### 5. 소개 및 시연 영상
 
-[<img width="700px" alt="소개 및 시연영상" src="https://github.com/user-attachments/assets/f31b7efa-e9e3-4024-be0a-8079cfda92b2" />](https://youtu.be/350R6k2Sd9Q?si=tn_4dlyI9ikdQEDy)
+[<img width="700px" alt="소개 및 시연영상" src="https://github.com/user-attachments/assets/785768a8-9821-4e9f-947a-6b9934590f10" />](https://youtu.be/350R6k2Sd9Q?si=tn_4dlyI9ikdQEDy)
 
 <br>
 
