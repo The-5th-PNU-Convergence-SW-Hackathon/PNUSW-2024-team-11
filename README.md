@@ -129,23 +129,31 @@
 
 ### 3. 개발결과
 #### 3.1. 전체시스템 흐름도
-- IA (information architecture)   
+> IA (information architecture)   
   <img width="800" alt="IA" src="https://github.com/user-attachments/assets/98d31b78-52bb-44c4-b0ae-b563e74b0a8b">
+
+> 플로우차트
 
 - 컴포넌트   
   <img width="479" alt="컴포넌트_형식" src="https://github.com/user-attachments/assets/8d9caa10-826e-4084-a76b-1213d59d3066">
 
-- 마이페이지   
-  <img width="695" alt="마이페이지" src="https://github.com/user-attachments/assets/8d13d214-d613-4090-89c8-0d039a66f51c">
-
 - 회원가입/로그인   
   <img width="674" alt="회원가입-로그인" src="https://github.com/user-attachments/assets/e49a411f-6bc5-4816-bb5b-57db3e384a52">
+
+- 마이페이지   
+  <img width="695" alt="마이페이지" src="https://github.com/user-attachments/assets/8d13d214-d613-4090-89c8-0d039a66f51c">
 
 - 게시판   
   <img width="514" alt="게시판" src="https://github.com/user-attachments/assets/3c9be36a-9f6c-44eb-90d1-21f26e8591e2">
 
 - 채팅   
   <img width="389" alt="채팅" src="https://github.com/user-attachments/assets/36f5771d-abc3-4f05-9179-d1b165163519">
+
+- 룸메이트 매칭
+<img width="319" alt="흐름도-룸메매칭" src="https://github.com/user-attachments/assets/4622baee-b25f-43b4-b337-bbcde78155d8">
+
+- 맛집 지도
+<img width="422" alt="흐름도-맛집지도" src="https://github.com/user-attachments/assets/27f52a6e-9490-4c52-9275-317d1cfaf9b6">
 
 <br>
 
