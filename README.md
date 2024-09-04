@@ -112,7 +112,15 @@
 
 ### 2. 상세설계
 #### 2.1. 시스템 구성도
+
+> **전체 시스템 구성도**
+
 <img width="656" alt="시스템구성도" src="https://github.com/user-attachments/assets/d0d108be-96ad-405c-ba89-01cec4856617">
+
+> **ERD**
+
+<img src="https://github.com/user-attachments/assets/c8b29fc5-a87d-46e8-9ba9-2cd33f4fa2bf" alt="erd" width="800"/>
+
 
 #### 2.1. 사용 기술
 | 기술       | 버전       |
@@ -133,9 +141,6 @@
 #### 3.1. 전체시스템 흐름도
 > **IA (information architecture)**   
   <img width="800" alt="IA" src="https://github.com/user-attachments/assets/98d31b78-52bb-44c4-b0ae-b563e74b0a8b">
-
-> **ERD**
-  <img src="https://github.com/user-attachments/assets/c8b29fc5-a87d-46e8-9ba9-2cd33f4fa2bf" alt="erd" width="800"/>
 
 > **플로우차트**
 
